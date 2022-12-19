@@ -8,7 +8,7 @@ categories: gssql custom function replacement to QUERY
 ## About
 
 * A new custom function written in Javascript for use in Google Sheets.
-* Add one file into your App Script and the function is immediately available.
+* See it working with 100 test cases:  [Test gsSQL](https://docs.google.com/spreadsheets/d/1Zmyk7a7u0xvICrxen-c0CdpssrLTkHwYx6XL00Tb1ws/edit?usp=sharing)
 
 ## Purpose
 

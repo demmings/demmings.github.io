@@ -10,7 +10,7 @@ categories: cachefinance custom function replacement for CACHEFINANCE
 ## About
 
 * A new custom function written in Javascript for use in Google Sheets.
-* Add one file into your App Script and the function is immediately available.
+* Used in conjunction with GOOGLEFINANCE() and sheets cache, so that valid results are always available.
 
 ## Purpose
 
