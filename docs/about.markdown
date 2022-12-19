@@ -5,7 +5,7 @@ permalink: /about/
 ---
 
 # Author
-* Name:          demmings (no relation to Val Demings)
+* Name:          Chris Demmings (no relation to Val Demings)
 * Age:           6?
 * Sex:           huh?
 * Country:       Canada-er  (as prounouned by my American friends)

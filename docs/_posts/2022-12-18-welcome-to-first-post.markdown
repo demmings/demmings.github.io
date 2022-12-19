@@ -2,7 +2,7 @@
 layout: post
 title:  "Welcome to First Post!"
 date:   2022-12-18 17:00:00 -0500
-categories: jekyll update
+categories: Work status update
 ---
 
 # State of the Poster
