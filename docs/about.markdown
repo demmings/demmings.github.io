@@ -5,11 +5,14 @@ permalink: /about/
 ---
 
 # Author
-* Name:          Chris Demmings (no relation to Val Demings)
-* Age:           6?
-* Sex:           huh?
-* Country:       Canada-er  (as prounouned by my American friends)
-* State:         (of) Confusion (provincial - as in provincial bumpkin)
-* Employment:    Retired
-* Current:       Google Sheets tracking all things for personal finance.
-* Goals:         One visitor using one of my custom functions and leaving a not so brutal comment.
+
+| Property          | Value                     | /* Comment */ |
+| --------          | -----                     | ------------- |
+| this.Name         | Chris Demmings            | (no relation to Val Demings) |
+| this.Age          | 6?                        | no comment (literally) |
+| this.Sex          | huh?                      | too old? |
+| this.Country      | Canada-er                 |  (as prounouned by my American friends) |
+| this.State        | (of) Confusion            | (provincial - as in provincial bumpkin) |
+| this.Employment   | Retired                   |  |
+| this.Current      | Google Sheets             | tracking all things for personal finance. |
+| this.Goals        | One visitor, one comment  | Nice to hear of someone using one of my custom functions and leaving a not so brutal comment. |
