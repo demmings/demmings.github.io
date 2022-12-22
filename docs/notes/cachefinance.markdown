@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title:  "cachefinance Custom Function"
 date:   2022-12-19 12:00:00 -0500
 categories: cachefinance custom function replacement for CACHEFINANCE

@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title:  "gsSQL Custom Function"
 date:   2022-12-19 12:00:00 -0500
 categories: gssql custom function replacement to QUERY
@@ -31,13 +31,16 @@ categories: gssql custom function replacement to QUERY
   ```
 
     * Advanced select with no configuration example.  Requires sheets named 'books', 'authors' and 'translators'.
-  ```
-     =gsSQL("SELECT 
+  ```sql
+     =gsSQL
+     (
+        "SELECT 
             books.id, books.title, books.type, authors.last_name, translators.last_name 
         FROM books 
         LEFT JOIN authors ON books.author_id = authors.id 
         LEFT JOIN translators ON books.translator_id = translators.id 
-        ORDER BY books.id")
+        ORDER BY books.id"
+    )
   ```
 
     * Only the **SELECT** statement is supported.
@@ -63,11 +66,14 @@ categories: gssql custom function replacement to QUERY
         * **{{a, b, c}; {a, b, c}}**
     * For example, if there are no column titles on the sheet, we must use the table definitions.
   ```
-     =gsSQL("SELECT 
+     =gsSQL
+     (
+        "SELECT 
             booksales.A as 'Invoice', booksales.B as 'Book ID', CUST.A, CUST.B 
         FROM booksales 
         LEFT JOIN customers as CUST on booksales.C = customers.A ",
-        {{"CUSTOMERS","CUSTOMERS!A2:F",60, false}; {"BOOKSALES","BOOKSALES!A2:F",60, false}}, true)
+        {{"CUSTOMERS","CUSTOMERS!A2:F",60, false}; {"BOOKSALES","BOOKSALES!A2:F",60, false}}, true
+    )
   ```
     
 1.  **ColumnOutputFlag**  (Optional)
@@ -80,17 +86,20 @@ categories: gssql custom function replacement to QUERY
     * You can concatenate the various string components with the variable data to make a valid SELECT.  It is just less messy using bind data.
     * In the following example, **startDate** and **endDate** are named ranges on the sheet.
   ```
-    =gsSQL("select  
-        booksales.invoice as 'Invoice', booksales.quantity as 'Quantity', booksales.price as 'Price', booksales.quantity * booksales.price as 'Sales', booksales.date, books.title, customers.name, authors.first_name + ' ' + authors.last_name as 'Author', translators.first_name + ' ' + translators.last_name as 'Translator', editors.first_name + ' ' + editors.last_name as 'Editor' 
-    from booksales left join books on booksales.book_id = books.id 
-    left join customers on booksales.customer_id = customers.id 
-    left join authors on books.author_id = authors.id 
-    left join translators on books.translator_id = translators.id 
-    left join editors on books.editor_id = editors.id 
-    where booksales.date >= ? and booksales.date <= ? 
-    union all select 'Total', SUM(booksales.quantity), avg(booksales.price), SUM(booksales.quantity * booksales.price), '' ,'', '', '', '', '' from booksales 
-    where booksales.date >= ? and booksales.date <= ?",
-    , true, startDate, endDate, startDate, endDate)
+    =gsSQL
+    (
+        "select  
+            booksales.invoice as 'Invoice', booksales.quantity as 'Quantity', booksales.price as 'Price', booksales.quantity * booksales.price as 'Sales', booksales.date, books.title, customers.name, authors.first_name + ' ' + authors.last_name as 'Author', translators.first_name + ' ' + translators.last_name as 'Translator', editors.first_name + ' ' + editors.last_name as 'Editor' 
+        from booksales left join books on booksales.book_id = books.id 
+        left join customers on booksales.customer_id = customers.id 
+        left join authors on books.author_id = authors.id 
+        left join translators on books.translator_id = translators.id 
+        left join editors on books.editor_id = editors.id 
+        where booksales.date >= ? and booksales.date <= ? 
+        union all select 'Total', SUM(booksales.quantity), avg(booksales.price), SUM(booksales.quantity * booksales.price), '' ,'', '', '', '', '' from booksales 
+        where booksales.date >= ? and booksales.date <= ?",
+        , true, startDate, endDate, startDate, endDate
+    )
   ```
 
 {% endraw %}

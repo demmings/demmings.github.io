@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: default
 title:  "Welcome to First Post!"
 date:   2022-12-18 17:00:00 -0500
-categories: Work status update
+categories: status
 ---
 
 # State of the Poster
