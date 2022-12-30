@@ -31,7 +31,8 @@ github_username:  demmings
 #theme: minima
 theme: jekyll-theme-leap-day
 
-#plugins:
+plugins:
+  - jekyll-sitemap
 #  - jekyll-feed
 
 
