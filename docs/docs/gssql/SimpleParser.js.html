@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>SimpleParser.js - gsSQL</title>
+    
+    <meta name="description" content="Query Google Sheets using standard SQL SELECT syntax." />
+    
+        <meta name="keywords" content="Google Sheets Query SQL SELECT" />
+        <meta name="keyword" content="Google Sheets Query SQL SELECT" />
+    
+    
+    
+    <meta property="og:title" content="gsSQL Sheets Custom Function"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="https://demmings.github.io/img/logo.png"/>
+    <meta property="og:site_name" content="gsSQL"/>
+    <meta property="og:url" content="https://demmings.github.io/"/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://demmings.github.io" target="_blank" class="menu-item" id="website_link" >Project Website</a></h2><h2><a href="https://github.com/demmings/gsSQL" target="_blank" class="menu-item" id="website_link" >Github Website</a></h2><h3>Classes</h3><ul><li><a href="CalculatedField.html">CalculatedField</a><ul class='methods'><li data-type='method'><a href="CalculatedField.html#createAssignmentStatments">createAssignmentStatments</a></li><li data-type='method'><a href="CalculatedField.html#evaluateCalculatedField">evaluateCalculatedField</a></li><li data-type='method'><a href="CalculatedField.html#sqlServerCalcFields">sqlServerCalcFields</a></li><li data-type='method'><a href="CalculatedField.html#sqlServerFunctions">sqlServerFunctions</a></li></ul></li><li><a href="CondLexer.html">CondLexer</a><ul class='methods'><li data-type='method'><a href="CondLexer.html#isFinishedWord">isFinishedWord</a></li><li data-type='method'><a href="CondLexer.html#isStartOrEndOfString">isStartOrEndOfString</a></li></ul></li><li><a href="CondParser.html">CondParser</a><ul class='methods'><li data-type='method'><a href="CondParser.html#parseBaseExpression">parseBaseExpression</a></li><li data-type='method'><a href="CondParser.html#parseGroupExpression">parseGroupExpression</a></li><li data-type='method'><a href="CondParser.html#parseSelectExistsSubQuery">parseSelectExistsSubQuery</a></li><li data-type='method'><a href="CondParser.html#parseSelectIn">parseSelectIn</a></li><li data-type='method'><a href="CondParser.html#parseWordExpression">parseWordExpression</a></li></ul></li><li><a href="ConglomerateRecord.html">ConglomerateRecord</a><ul class='methods'><li data-type='method'><a href="ConglomerateRecord.html#squish">squish</a></li><li data-type='method'><a href="ConglomerateRecord.html#.aggregateColumn">aggregateColumn</a></li><li data-type='method'><a href="ConglomerateRecord.html#.maxCase">maxCase</a></li><li data-type='method'><a href="ConglomerateRecord.html#.minCase">minCase</a></li></ul></li><li><a href="CorrelatedSubQuery.html">CorrelatedSubQuery</a><ul class='methods'><li data-type='method'><a href="CorrelatedSubQuery.html#replaceOuterFieldValueInCorrelatedWhere">replaceOuterFieldValueInCorrelatedWhere</a></li><li data-type='method'><a href="CorrelatedSubQuery.html#select">select</a></li><li data-type='method'><a href="CorrelatedSubQuery.html#traverseWhere">traverseWhere</a></li></ul></li><li><a href="DerivedTable.html">DerivedTable</a><ul class='methods'><li data-type='method'><a href="DerivedTable.html#createTable">createTable</a></li><li data-type='method'><a href="DerivedTable.html#getTableData">getTableData</a></li><li data-type='method'><a href="DerivedTable.html#isDerivedTable">isDerivedTable</a></li><li data-type='method'><a href="DerivedTable.html#setIsOuterJoin">setIsOuterJoin</a></li><li data-type='method'><a href="DerivedTable.html#setLeftField">setLeftField</a></li><li data-type='method'><a href="DerivedTable.html#setLeftRecords">setLeftRecords</a></li><li data-type='method'><a href="DerivedTable.html#setRightField">setRightField</a></li><li data-type='method'><a href="DerivedTable.html#.getCombinedColumnTitles">getCombinedColumnTitles</a></li></ul></li><li><a href="JoinTables.html">JoinTables</a><ul class='methods'><li data-type='method'><a href="JoinTables.html#getJoinedTableInfo">getJoinedTableInfo</a></li><li data-type='method'><a href="JoinTables.html#isDerivedTable">isDerivedTable</a></li><li data-type='method'><a href="JoinTables.html#.joinTables">joinTables</a></li><li data-type='method'><a href="JoinTables.html#.leftRightJoin">leftRightJoin</a></li></ul></li><li><a href="PropertyData.html">PropertyData</a><ul class='methods'><li data-type='method'><a href="PropertyData.html#.getData">getData</a></li><li data-type='method'><a href="PropertyData.html#.isExpired">isExpired</a></li></ul></li><li><a href="Schema.html">Schema</a><ul class='methods'><li data-type='method'><a href="Schema.html#getAllExtendedNotationFieldNames">getAllExtendedNotationFieldNames</a></li><li data-type='method'><a href="Schema.html#getAllFieldNames">getAllFieldNames</a></li><li data-type='method'><a href="Schema.html#getAllVirtualFields">getAllVirtualFields</a></li><li data-type='method'><a href="Schema.html#getColumnNameVariants">getColumnNameVariants</a></li><li data-type='method'><a href="Schema.html#getFieldColumn">getFieldColumn</a></li><li data-type='method'><a href="Schema.html#getFieldColumns">getFieldColumns</a></li><li data-type='method'><a href="Schema.html#load">load</a></li><li data-type='method'><a href="Schema.html#setFieldVariantsColumNumber">setFieldVariantsColumNumber</a></li><li data-type='method'><a href="Schema.html#setTable">setTable</a></li><li data-type='method'><a href="Schema.html#setTableAlias">setTableAlias</a></li><li data-type='method'><a href="Schema.html#setTableData">setTableData</a></li><li data-type='method'><a href="Schema.html#setTableName">setTableName</a></li></ul></li><li><a href="ScriptSettings.html">ScriptSettings</a><ul class='methods'><li data-type='method'><a href="ScriptSettings.html#expire">expire</a></li><li data-type='method'><a href="ScriptSettings.html#get">get</a></li><li data-type='method'><a href="ScriptSettings.html#put">put</a></li><li data-type='method'><a href="ScriptSettings.html#putAll">putAll</a></li></ul></li><li><a href="SelectKeywordAnalysis.html">SelectKeywordAnalysis</a><ul class='methods'><li data-type='method'><a href="SelectKeywordAnalysis.html#.getNameAndAlias">getNameAndAlias</a></li><li data-type='method'><a href="SelectKeywordAnalysis.html#.lastIndexOfOutsideLiteral">lastIndexOfOutsideLiteral</a></li><li data-type='method'><a href="SelectKeywordAnalysis.html#.parseForCorrelatedSubQuery">parseForCorrelatedSubQuery</a></li><li data-type='method'><a href="SelectKeywordAnalysis.html#.protect_split">protect_split</a></li></ul></li><li><a href="SelectTables.html">SelectTables</a><ul class='methods'><li data-type='method'><a href="SelectTables.html#createGroupByKey">createGroupByKey</a></li><li data-type='method'><a href="SelectTables.html#getColumnTitles">getColumnTitles</a></li><li data-type='method'><a href="SelectTables.html#getRecordIDs">getRecordIDs</a></li><li data-type='method'><a href="SelectTables.html#getViewData">getViewData</a></li><li data-type='method'><a href="SelectTables.html#groupBy">groupBy</a></li><li data-type='method'><a href="SelectTables.html#groupByFields">groupByFields</a></li><li data-type='method'><a href="SelectTables.html#having">having</a></li><li data-type='method'><a href="SelectTables.html#join">join</a></li><li data-type='method'><a href="SelectTables.html#orderBy">orderBy</a></li><li data-type='method'><a href="SelectTables.html#removeTempColumns">removeTempColumns</a></li><li data-type='method'><a href="SelectTables.html#resolveCondition">resolveCondition</a></li><li data-type='method'><a href="SelectTables.html#resolveFieldCondition">resolveFieldCondition</a></li><li data-type='method'><a href="SelectTables.html#whereCondition">whereCondition</a></li><li data-type='method'><a href="SelectTables.html#.dateToMs">dateToMs</a></li><li data-type='method'><a href="SelectTables.html#.extractStringConstant">extractStringConstant</a></li><li data-type='method'><a href="SelectTables.html#.getConditionValue">getConditionValue</a></li><li data-type='method'><a href="SelectTables.html#.getSubQueryTableSet">getSubQueryTableSet</a></li><li data-type='method'><a href="SelectTables.html#.inCondition">inCondition</a></li><li data-type='method'><a href="SelectTables.html#.isCondition">isCondition</a></li><li data-type='method'><a href="SelectTables.html#.isConditionTrue">isConditionTrue</a></li><li data-type='method'><a href="SelectTables.html#.isStringConstant">isStringConstant</a></li><li data-type='method'><a href="SelectTables.html#.likeCondition">likeCondition</a></li><li data-type='method'><a href="SelectTables.html#.parseForFunctions">parseForFunctions</a></li><li data-type='method'><a href="SelectTables.html#.parseForParams">parseForParams</a></li><li data-type='method'><a href="SelectTables.html#.sortByColumnASC">sortByColumnASC</a></li><li data-type='method'><a href="SelectTables.html#.sortByColumnDESC">sortByColumnDESC</a></li><li data-type='method'><a href="SelectTables.html#.toUpperCaseExceptQuoted">toUpperCaseExceptQuoted</a></li></ul></li><li><a href="Sql.html">Sql</a><ul class='methods'><li data-type='method'><a href="Sql.html#addBindNamedRangeParameter">addBindNamedRangeParameter</a></li><li data-type='method'><a href="Sql.html#addBindParameter">addBindParameter</a></li><li data-type='method'><a href="Sql.html#addTableData">addTableData</a></li><li data-type='method'><a href="Sql.html#areColumnTitlesOutput">areColumnTitlesOutput</a></li><li data-type='method'><a href="Sql.html#clearBindParameters">clearBindParameters</a></li><li data-type='method'><a href="Sql.html#enableColumnTitle">enableColumnTitle</a></li><li data-type='method'><a href="Sql.html#execute">execute</a></li><li data-type='method'><a href="Sql.html#getBindData">getBindData</a></li><li data-type='method'><a href="Sql.html#getTableAlias">getTableAlias</a></li><li data-type='method'><a href="Sql.html#getTableAliasUnion">getTableAliasUnion</a></li><li data-type='method'><a href="Sql.html#getTableAliasWhereIn">getTableAliasWhereIn</a></li><li data-type='method'><a href="Sql.html#getTableAliasWhereTerms">getTableAliasWhereTerms</a></li><li data-type='method'><a href="Sql.html#getTables">getTables</a></li><li data-type='method'><a href="Sql.html#getUniquePivotData">getUniquePivotData</a></li><li data-type='method'><a href="Sql.html#pivotField">pivotField</a></li><li data-type='method'><a href="Sql.html#select">select</a></li><li data-type='method'><a href="Sql.html#selectFromSubQuery">selectFromSubQuery</a></li><li data-type='method'><a href="Sql.html#setBindValues">setBindValues</a></li><li data-type='method'><a href="Sql.html#setTables">setTables</a></li><li data-type='method'><a href="Sql.html#unionSets">unionSets</a></li><li data-type='method'><a href="Sql.html#.addCalculatedPivotFieldsToAst">addCalculatedPivotFieldsToAst</a></li><li data-type='method'><a href="Sql.html#.appendUniqueRows">appendUniqueRows</a></li><li data-type='method'><a href="Sql.html#.distinctField">distinctField</a></li><li data-type='method'><a href="Sql.html#.exceptRows">exceptRows</a></li><li data-type='method'><a href="Sql.html#.extractAstTables">extractAstTables</a></li><li data-type='method'><a href="Sql.html#.getReferencedTableNames">getReferencedTableNames</a></li><li data-type='method'><a href="Sql.html#.getTableAliasFromJoin">getTableAliasFromJoin</a></li><li data-type='method'><a href="Sql.html#.getTableNamesFromOrJoin">getTableNamesFromOrJoin</a></li><li data-type='method'><a href="Sql.html#.getTableNamesUnion">getTableNamesUnion</a></li><li data-type='method'><a href="Sql.html#.getTableNamesWhereIn">getTableNamesWhereIn</a></li><li data-type='method'><a href="Sql.html#.getTableNamesWhereTerms">getTableNamesWhereTerms</a></li><li data-type='method'><a href="Sql.html#.intersectRows">intersectRows</a></li><li data-type='method'><a href="Sql.html#.locateAstTableAlias">locateAstTableAlias</a></li></ul></li><li><a href="SqlParse.html">SqlParse</a><ul class='methods'><li data-type='method'><a href="SqlParse.html#.analyzeParts">analyzeParts</a></li><li data-type='method'><a href="SqlParse.html#.generateSqlSeparatorWords">generateSqlSeparatorWords</a></li><li data-type='method'><a href="SqlParse.html#.generateUsedKeywordList">generateUsedKeywordList</a></li><li data-type='method'><a href="SqlParse.html#.getPositionsOfSqlParts">getPositionsOfSqlParts</a></li><li data-type='method'><a href="SqlParse.html#.hideInnerSql">hideInnerSql</a></li><li data-type='method'><a href="SqlParse.html#.makeSqlPartsSplitterRegEx">makeSqlPartsSplitterRegEx</a></li><li data-type='method'><a href="SqlParse.html#.protect">protect</a></li><li data-type='method'><a href="SqlParse.html#.removeDuplicateEntries">removeDuplicateEntries</a></li><li data-type='method'><a href="SqlParse.html#.reorganizeJoins">reorganizeJoins</a></li><li data-type='method'><a href="SqlParse.html#.reorganizeSpecificJoin">reorganizeSpecificJoin</a></li><li data-type='method'><a href="SqlParse.html#.reorganizeUnions">reorganizeUnions</a></li><li data-type='method'><a href="SqlParse.html#.resolveSqlCondition">resolveSqlCondition</a></li><li data-type='method'><a href="SqlParse.html#.sql2ast">sql2ast</a></li><li data-type='method'><a href="SqlParse.html#.sqlCondition2JsCondition">sqlCondition2JsCondition</a></li><li data-type='method'><a href="SqlParse.html#.sqlStatementSplitter">sqlStatementSplitter</a></li><li data-type='method'><a href="SqlParse.html#.unprotect">unprotect</a></li></ul></li><li><a href="SqlServerFunctions.html">SqlServerFunctions</a><ul class='methods'><li data-type='method'><a href="SqlServerFunctions.html#caseEnd">caseEnd</a></li><li data-type='method'><a href="SqlServerFunctions.html#caseStart">caseStart</a></li><li data-type='method'><a href="SqlServerFunctions.html#caseWhen">caseWhen</a></li><li data-type='method'><a href="SqlServerFunctions.html#convertToJs">convertToJs</a></li><li data-type='method'><a href="SqlServerFunctions.html#parseFunctionArgs">parseFunctionArgs</a></li><li data-type='method'><a href="SqlServerFunctions.html#.charIndex">charIndex</a></li><li data-type='method'><a href="SqlServerFunctions.html#.coalesce">coalesce</a></li><li data-type='method'><a href="SqlServerFunctions.html#.concat_ws">concat_ws</a></li></ul></li><li><a href="Table.html">Table</a><ul class='methods'><li data-type='method'><a href="Table.html#addColumnLetters">addColumnLetters</a></li><li data-type='method'><a href="Table.html#addIndex">addIndex</a></li><li data-type='method'><a href="Table.html#concat">concat</a></li><li data-type='method'><a href="Table.html#getAllExtendedNotationFieldNames">getAllExtendedNotationFieldNames</a></li><li data-type='method'><a href="Table.html#getAllFieldNames">getAllFieldNames</a></li><li data-type='method'><a href="Table.html#getAllVirtualFields">getAllVirtualFields</a></li><li data-type='method'><a href="Table.html#getColumnCount">getColumnCount</a></li><li data-type='method'><a href="Table.html#getFieldColumn">getFieldColumn</a></li><li data-type='method'><a href="Table.html#getFieldColumns">getFieldColumns</a></li><li data-type='method'><a href="Table.html#getRecords">getRecords</a></li><li data-type='method'><a href="Table.html#loadArrayData">loadArrayData</a></li><li data-type='method'><a href="Table.html#loadNamedRangeData">loadNamedRangeData</a></li><li data-type='method'><a href="Table.html#loadSchema">loadSchema</a></li><li data-type='method'><a href="Table.html#numberToSheetColumnLetter">numberToSheetColumnLetter</a></li><li data-type='method'><a href="Table.html#search">search</a></li><li data-type='method'><a href="Table.html#setHasColumnTitle">setHasColumnTitle</a></li><li data-type='method'><a href="Table.html#setTableAlias">setTableAlias</a></li></ul></li><li><a href="TableData.html">TableData</a><ul class='methods'><li data-type='method'><a href="TableData.html#.cacheGetArray">cacheGetArray</a></li><li data-type='method'><a href="TableData.html#.cachePutArray">cachePutArray</a></li><li data-type='method'><a href="TableData.html#.cacheStatusName">cacheStatusName</a></li><li data-type='method'><a href="TableData.html#.fixJSONdates">fixJSONdates</a></li><li data-type='method'><a href="TableData.html#.forceLongCacheExpiryCheck">forceLongCacheExpiryCheck</a></li><li data-type='method'><a href="TableData.html#.getValueCached">getValueCached</a></li><li data-type='method'><a href="TableData.html#.getValuesCached">getValuesCached</a></li><li data-type='method'><a href="TableData.html#.isRangeLoading">isRangeLoading</a></li><li data-type='method'><a href="TableData.html#.isTimeToRunLongCacheExpiry">isTimeToRunLongCacheExpiry</a></li><li data-type='method'><a href="TableData.html#.loadTableData">loadTableData</a></li><li data-type='method'><a href="TableData.html#.loadValuesFromRangeOrSheet">loadValuesFromRangeOrSheet</a></li><li data-type='method'><a href="TableData.html#.lockLoadAndCache">lockLoadAndCache</a></li><li data-type='method'><a href="TableData.html#.setLongCacheExpiry">setLongCacheExpiry</a></li><li data-type='method'><a href="TableData.html#.setValueCached">setValueCached</a></li><li data-type='method'><a href="TableData.html#.setValuesCached">setValuesCached</a></li><li data-type='method'><a href="TableData.html#.verifyCachedData">verifyCachedData</a></li><li data-type='method'><a href="TableData.html#.waitForRangeToLoad">waitForRangeToLoad</a></li></ul></li><li><a href="TableField.html">TableField</a><ul class='methods'><li data-type='method'><a href="TableField.html#addAlias">addAlias</a></li><li data-type='method'><a href="TableField.html#getData">getData</a></li><li data-type='method'><a href="TableField.html#setAggregateFunction">setAggregateFunction</a></li><li data-type='method'><a href="TableField.html#setCalculatedFormula">setCalculatedFormula</a></li><li data-type='method'><a href="TableField.html#setColumnName">setColumnName</a></li><li data-type='method'><a href="TableField.html#setColumnTitle">setColumnTitle</a></li><li data-type='method'><a href="TableField.html#setIsPrimaryTable">setIsPrimaryTable</a></li><li data-type='method'><a href="TableField.html#setIsTempField">setIsTempField</a></li><li data-type='method'><a href="TableField.html#setOriginalTable">setOriginalTable</a></li><li data-type='method'><a href="TableField.html#setOriginalTableColumn">setOriginalTableColumn</a></li><li data-type='method'><a href="TableField.html#setSelectColumn">setSelectColumn</a></li><li data-type='method'><a href="TableField.html#setSubQueryAst">setSubQueryAst</a></li><li data-type='method'><a href="TableField.html#setTableInfo">setTableInfo</a></li><li data-type='method'><a href="TableField.html#.getAllExtendedAliasNames">getAllExtendedAliasNames</a></li></ul></li><li><a href="TableFields.html">TableFields</a><ul class='methods'><li data-type='method'><a href="TableFields.html#addReferencedColumnstoSelectFieldList">addReferencedColumnstoSelectFieldList</a></li><li data-type='method'><a href="TableFields.html#addTempMissingSelectedField">addTempMissingSelectedField</a></li><li data-type='method'><a href="TableFields.html#findTableField">findTableField</a></li><li data-type='method'><a href="TableFields.html#getColumnNames">getColumnNames</a></li><li data-type='method'><a href="TableFields.html#getColumnTitles">getColumnTitles</a></li><li data-type='method'><a href="TableFields.html#getConglomerateFieldCount">getConglomerateFieldCount</a></li><li data-type='method'><a href="TableFields.html#getFieldColumn">getFieldColumn</a></li><li data-type='method'><a href="TableFields.html#getFieldInfo">getFieldInfo</a></li><li data-type='method'><a href="TableFields.html#getNextSelectColumnNumber">getNextSelectColumnNumber</a></li><li data-type='method'><a href="TableFields.html#getSelectFieldColumn">getSelectFieldColumn</a></li><li data-type='method'><a href="TableFields.html#getSelectFieldNames">getSelectFieldNames</a></li><li data-type='method'><a href="TableFields.html#getSelectFields">getSelectFields</a></li><li data-type='method'><a href="TableFields.html#getTableInfo">getTableInfo</a></li><li data-type='method'><a href="TableFields.html#getTempSelectedColumnNumbers">getTempSelectedColumnNumbers</a></li><li data-type='method'><a href="TableFields.html#hasField">hasField</a></li><li data-type='method'><a href="TableFields.html#indexTableField">indexTableField</a></li><li data-type='method'><a href="TableFields.html#loadVirtualFields">loadVirtualFields</a></li><li data-type='method'><a href="TableFields.html#updateDerivedTableVirtualFields">updateDerivedTableVirtualFields</a></li><li data-type='method'><a href="TableFields.html#updateSelectFieldList">updateSelectFieldList</a></li><li data-type='method'><a href="TableFields.html#.getSelectCountModifiers">getSelectCountModifiers</a></li><li data-type='method'><a href="TableFields.html#.sortPrimaryFields">sortPrimaryFields</a></li></ul></li><li><a href="TestedStatements.html">TestedStatements</a><ul class='methods'><li data-type='method'><a href="TestedStatements.html#getTableDefinitionString">getTableDefinitionString</a></li></ul></li><li><a href="VirtualField.html">VirtualField</a></li><li><a href="VirtualFields.html">VirtualFields</a><ul class='methods'><li data-type='method'><a href="VirtualFields.html#add">add</a></li><li data-type='method'><a href="VirtualFields.html#getAllVirtualFields">getAllVirtualFields</a></li><li data-type='method'><a href="VirtualFields.html#.expandWildcardFields">expandWildcardFields</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#SQLselfTest">SQLselfTest</a></li><li><a href="global.html#customMenuGenerateTests">customMenuGenerateTests</a></li><li><a href="global.html#gsSQL">gsSQL</a></li><li><a href="global.html#isEqual">isEqual</a></li><li><a href="global.html#onOpen">onOpen</a></li><li><a href="global.html#parseTableSettings">parseTableSettings</a></li><li><a href="global.html#sqlTestCases">sqlTestCases</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">SimpleParser.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//  Remove comments for testing in NODE
+//  *** DEBUG START ***
+export { SqlParse };
+//  *** DEBUG END  ***/
+
+//  Code inspired from:  https://github.com/dsferruzza/simpleSqlParser
+
+/** Parse SQL SELECT statement and convert into Abstract Syntax Tree */
+class SqlParse {
+    /**
+     * 
+     * @param {String} cond 
+     * @returns {String}
+     */
+    static sqlCondition2JsCondition(cond) {
+        const ast = SqlParse.sql2ast(`SELECT A FROM c WHERE ${cond}`);
+        let sqlData = "";
+
+        if (typeof ast.WHERE !== 'undefined') {
+            const conditions = ast.WHERE;
+            if (typeof conditions.logic === 'undefined')
+                sqlData = SqlParse.resolveSqlCondition("OR", [conditions]);
+            else
+                sqlData = SqlParse.resolveSqlCondition(conditions.logic, conditions.terms);
+
+        }
+
+        return sqlData;
+    }
+
+    /**
+     * Parse a query
+     * @param {String} query 
+     * @returns {Object}
+     */
+    static sql2ast(query) {
+        // Define which words can act as separator
+        const myKeyWords = SqlParse.generateUsedKeywordList(query);
+        const [parts_name, parts_name_escaped] = SqlParse.generateSqlSeparatorWords(myKeyWords);
+
+        //  Include brackets around separate selects used in things like UNION, INTERSECT...
+        let modifiedQuery = SqlParse.sqlStatementSplitter(query);
+
+        // Hide words defined as separator but written inside brackets in the query
+        modifiedQuery = SqlParse.hideInnerSql(modifiedQuery, parts_name_escaped, SqlParse.protect);
+
+        // Write the position(s) in query of these separators
+        const parts_order = SqlParse.getPositionsOfSqlParts(modifiedQuery, parts_name);
+
+        // Delete duplicates (caused, for example, by JOIN and INNER JOIN)
+        SqlParse.removeDuplicateEntries(parts_order);
+
+        // Generate protected word list to reverse the use of protect()
+        let words = parts_name_escaped.slice(0);
+        words = words.map(function (item) {
+            return SqlParse.protect(item);
+        });
+
+        // Split parts
+        const parts = modifiedQuery.split(new RegExp(parts_name_escaped.join('|'), 'i'));
+
+        // Unhide words precedently hidden with protect()
+        for (let i = 0; i &lt; parts.length; i++) {
+            parts[i] = SqlParse.hideInnerSql(parts[i], words, SqlParse.unprotect);
+        }
+
+        // Analyze parts
+        const result = SqlParse.analyzeParts(parts_order, parts);
+
+        return result;
+    }
+
+    /**
+    * 
+    * @param {String} logic 
+    * @param {Object} terms 
+    * @returns {String}
+    */
+    static resolveSqlCondition(logic, terms) {
+        let jsCondition = "";
+
+        for (const cond of terms) {
+            if (typeof cond.logic === 'undefined') {
+                if (jsCondition !== "" &amp;&amp; logic === "AND") {
+                    jsCondition += " &amp;&amp; ";
+                }
+                else if (jsCondition !== "" &amp;&amp; logic === "OR") {
+                    jsCondition += " || ";
+                }
+
+                jsCondition += ` ${cond.left}`;
+                if (cond.operator === "=")
+                    jsCondition += " == ";
+                else
+                    jsCondition += ` ${cond.operator}`;
+                jsCondition += ` ${cond.right}`;
+            }
+            else {
+                jsCondition += SqlParse.resolveSqlCondition(cond.logic, cond.terms);
+            }
+        }
+
+        return jsCondition;
+    }
+
+    /**
+     * 
+     * @param {String} query
+     * @returns {String[]} 
+     */
+    static generateUsedKeywordList(query) {
+        const generatedList = new Set();
+        // Define which words can act as separator
+        const keywords = ['SELECT', 'FROM', 'JOIN', 'LEFT JOIN', 'RIGHT JOIN', 'INNER JOIN', 'FULL JOIN', 'ORDER BY', 'GROUP BY', 'HAVING', 'WHERE', 'LIMIT', 'UNION ALL', 'UNION', 'INTERSECT', 'EXCEPT', 'PIVOT'];
+
+        const modifiedQuery = query.toUpperCase();
+
+        for (const word of keywords) {
+            let pos = 0;
+            while (pos !== -1) {
+                pos = modifiedQuery.indexOf(word, pos);
+
+                if (pos !== -1) {
+                    generatedList.add(query.substring(pos, pos + word.length));
+                    pos++;
+                }
+            }
+        }
+
+        // @ts-ignore
+        return [...generatedList];
+    }
+
+    /**
+     * 
+     * @param {String[]} keywords 
+     * @returns {String[][]}
+     */
+    static generateSqlSeparatorWords(keywords) {
+        let parts_name = keywords.map(function (item) {
+            return `${item} `;
+        });
+        parts_name = parts_name.concat(keywords.map(function (item) {
+            return `${item}(`;
+        }));
+        const parts_name_escaped = parts_name.map(function (item) {
+            return item.replace('(', '[\\(]');
+        });
+
+        return [parts_name, parts_name_escaped];
+    }
+
+    /**
+     * 
+     * @param {String} src 
+     * @returns {String}
+     */
+    static sqlStatementSplitter(src) {
+        let newStr = src;
+
+        // Define which words can act as separator
+        const reg = SqlParse.makeSqlPartsSplitterRegEx(["UNION ALL", "UNION", "INTERSECT", "EXCEPT"]);
+
+        const matchedUnions = newStr.match(reg);
+        if (matchedUnions === null || matchedUnions.length === 0)
+            return newStr;
+
+        let prefix = "";
+        const parts = [];
+        let pos = newStr.search(matchedUnions[0]);
+        if (pos > 0) {
+            prefix = newStr.substring(0, pos);
+            newStr = newStr.substring(pos + matchedUnions[0].length);
+        }
+
+        for (let i = 1; i &lt; matchedUnions.length; i++) {
+            const match = matchedUnions[i];
+            pos = newStr.search(match);
+
+            parts.push(newStr.substring(0, pos));
+            newStr = newStr.substring(pos + match.length);
+        }
+        if (newStr.length > 0)
+            parts.push(newStr);
+
+        newStr = prefix;
+        for (let i = 0; i &lt; matchedUnions.length; i++) {
+            newStr += `${matchedUnions[i]} (${parts[i]}) `;
+        }
+
+        return newStr;
+    }
+
+    /**
+     * 
+     * @param {String[]} keywords 
+     * @returns {RegExp}
+     */
+    static makeSqlPartsSplitterRegEx(keywords) {
+        // Define which words can act as separator
+        let parts_name = keywords.map(function (item) {
+            return `${item} `;
+        });
+        parts_name = parts_name.concat(keywords.map(function (item) {
+            return `${item}(`;
+        }));
+        parts_name = parts_name.concat(parts_name.map(function (item) {
+            return item.toLowerCase();
+        }));
+        const parts_name_escaped = parts_name.map(function (item) {
+            return item.replace('(', '[\\(]');
+        });
+
+        return new RegExp(parts_name_escaped.join('|'), 'gi');
+    }
+
+    /**
+     * 
+     * @param {String} str 
+     * @param {String[]} parts_name_escaped
+     * @param {Object} replaceFunction
+     */
+    static hideInnerSql(str, parts_name_escaped, replaceFunction) {
+        if (str.indexOf("(") === -1 &amp;&amp; str.indexOf(")") === -1)
+            return str;
+
+        let bracketCount = 0;
+        let endCount = -1;
+        let newStr = str;
+
+        for (let i = newStr.length - 1; i >= 0; i--) {
+            const ch = newStr.charAt(i);
+
+            if (ch === ")") {
+                bracketCount++;
+
+                if (bracketCount === 1) {
+                    endCount = i;
+                }
+            }
+            else if (ch === "(") {
+                bracketCount--;
+                if (bracketCount === 0) {
+
+                    let query = newStr.substring(i, endCount + 1);
+
+                    // Hide words defined as separator but written inside brackets in the query
+                    query = query.replace(new RegExp(parts_name_escaped.join('|'), 'gi'), replaceFunction);
+
+                    newStr = newStr.substring(0, i) + query + newStr.substring(endCount + 1);
+                }
+            }
+        }
+        return newStr;
+    }
+
+    /**
+     * 
+     * @param {String} modifiedQuery 
+     * @param {String[]} parts_name 
+     * @returns {String[]}
+     */
+    static getPositionsOfSqlParts(modifiedQuery, parts_name) {
+        // Write the position(s) in query of these separators
+        const parts_order = [];
+        function realNameCallback(_match, name) {
+            return name;
+        }
+        parts_name.forEach(function (item) {
+            let pos = 0;
+            let part = 0;
+
+            do {
+                part = modifiedQuery.indexOf(item, pos);
+                if (part !== -1) {
+                    const realName = item.replace(/^((\w|\s)+?)\s?\(?$/i, realNameCallback);
+
+                    if (typeof parts_order[part] === 'undefined' || parts_order[part].length &lt; realName.length) {
+                        parts_order[part] = realName;	// Position won't be exact because the use of protect()  (above) and unprotect() alter the query string ; but we just need the order :)
+                    }
+
+                    pos = part + realName.length;
+                }
+            }
+            while (part !== -1);
+        });
+
+        return parts_order;
+    }
+
+    /**
+     * Delete duplicates (caused, for example, by JOIN and INNER JOIN)
+     * @param {String[]} parts_order
+     */
+    static removeDuplicateEntries(parts_order) {
+        let busy_until = 0;
+        parts_order.forEach(function (item, key) {
+            if (busy_until > key)
+                delete parts_order[key];
+            else {
+                busy_until = key + item.length;
+
+                // Replace JOIN by INNER JOIN
+                if (item.toUpperCase() === 'JOIN')
+                    parts_order[key] = 'INNER JOIN';
+            }
+        });
+    }
+
+    /**
+     * Add some # inside a string to avoid it to match a regex/split
+     * @param {String} str 
+     * @returns {String}
+     */
+    static protect(str) {
+        let result = '#';
+        const length = str.length;
+        for (let i = 0; i &lt; length; i++) {
+            result += `${str[i]}#`;
+        }
+        return result;
+    }
+
+    /**
+     * Restore a string output by protect() to its original state
+     * @param {String} str 
+     * @returns {String}
+     */
+    static unprotect(str) {
+        let result = '';
+        const length = str.length;
+        for (let i = 1; i &lt; length; i = i + 2) result += str[i];
+        return result;
+    }
+
+    /**
+     * 
+     * @param {String[]} parts_order 
+     * @param {String[]} parts 
+     * @returns {Object}
+     */
+    static analyzeParts(parts_order, parts) {
+        const result = {};
+        let j = 0;
+        parts_order.forEach(function (item, _key) {
+            const itemName = item.toUpperCase();
+            j++;
+            const part_result = SelectKeywordAnalysis.analyze(item, parts[j]);
+
+            if (typeof result[itemName] !== 'undefined') {
+                if (typeof result[itemName] === 'string' || typeof result[itemName][0] === 'undefined') {
+                    const tmp = result[itemName];
+                    result[itemName] = [];
+                    result[itemName].push(tmp);
+                }
+
+                result[itemName].push(part_result);
+            }
+            else {
+                result[itemName] = part_result;
+            }
+
+        });
+
+        // Reorganize joins
+        SqlParse.reorganizeJoins(result);
+
+        if (typeof result.JOIN !== 'undefined') {
+            result.JOIN.forEach(function (item, key) {
+                result.JOIN[key].cond = CondParser.parse(item.cond);
+            });
+        }
+
+        SqlParse.reorganizeUnions(result);
+
+        return result;
+    }
+
+    /**
+     * 
+     * @param {Object} result 
+     */
+    static reorganizeJoins(result) {
+        const joinArr = [
+            ['FULL JOIN', 'full'],
+            ['RIGHT JOIN', 'right'],
+            ['INNER JOIN', 'inner'],
+            ['LEFT JOIN', 'left']
+        ];
+
+        for (const join of joinArr) {
+            const [joinName, joinType] = join;
+            SqlParse.reorganizeSpecificJoin(result, joinName, joinType);
+        }
+    }
+
+    /**
+     * 
+     * @param {Object} result 
+     * @param {String} joinName 
+     * @param {String} joinType 
+     */
+    static reorganizeSpecificJoin(result, joinName, joinType) {
+        if (typeof result[joinName] !== 'undefined') {
+            if (typeof result.JOIN === 'undefined') result.JOIN = [];
+            if (typeof result[joinName][0] !== 'undefined') {
+                result[joinName].forEach(function (item) {
+                    item.type = joinType;
+                    result.JOIN.push(item);
+                });
+            }
+            else {
+                result[joinName].type = joinType;
+                result.JOIN.push(result[joinName]);
+            }
+            delete result[joinName];
+        }
+    }
+
+    /**
+     * 
+     * @param {Object} result 
+     */
+    static reorganizeUnions(result) {
+        const astRecursiveTableBlocks = ['UNION', 'UNION ALL', 'INTERSECT', 'EXCEPT'];
+
+        for (const union of astRecursiveTableBlocks) {
+            if (typeof result[union] === 'string') {
+                result[union] = [SqlParse.sql2ast(SqlParse.parseUnion(result[union]))];
+            }
+            else if (typeof result[union] !== 'undefined') {
+                for (let i = 0; i &lt; result[union].length; i++) {
+                    result[union][i] = SqlParse.sql2ast(SqlParse.parseUnion(result[union][i]));
+                }
+            }
+        }
+    }
+
+    static parseUnion(inStr) {
+        let unionString = inStr;
+        if (unionString.startsWith("(") &amp;&amp; unionString.endsWith(")")) {
+            unionString = unionString.substring(1, unionString.length - 1);
+        }
+
+        return unionString;
+    }
+}
+
+/*
+ * LEXER &amp; PARSER FOR SQL CONDITIONS
+ * Inspired by https://github.com/DmitrySoshnikov/Essentials-of-interpretation
+ */
+
+/** Lexical analyzer for SELECT statement. */
+class CondLexer {
+    constructor(source) {
+        this.source = source;
+        this.cursor = 0;
+        this.currentChar = "";
+        this.startQuote = "";
+        this.bracketCount = 0;
+
+        this.readNextChar();
+    }
+
+    // Read the next character (or return an empty string if cursor is at the end of the source)
+    readNextChar() {
+        if (typeof this.source !== 'string') {
+            this.currentChar = "";
+        }
+        else {
+            this.currentChar = this.source[this.cursor++] || "";
+        }
+    }
+
+    // Determine the next token
+    readNextToken() {
+        if (/\w/.test(this.currentChar))
+            return this.readWord();
+        if (/["'`]/.test(this.currentChar))
+            return this.readString();
+        if (/[()]/.test(this.currentChar))
+            return this.readGroupSymbol();
+        if (/[!=&lt;>]/.test(this.currentChar))
+            return this.readOperator();
+        if (/[+\-*/%]/.test(this.currentChar))
+            return this.readMathOperator();
+        if (this.currentChar === '?')
+            return this.readBindVariable();
+
+        if (this.currentChar === "") {
+            return { type: 'eot', value: '' };
+        }
+
+        this.readNextChar();
+        return { type: 'empty', value: '' };
+    }
+
+    readWord() {
+        let tokenValue = "";
+        this.bracketCount = 0;
+        let insideQuotedString = false;
+        this.startQuote = "";
+
+        while (/./.test(this.currentChar)) {
+            // Check if we are in a string
+            insideQuotedString = this.isStartOrEndOfString(insideQuotedString);
+
+            if (this.isFinishedWord(insideQuotedString))
+                break;
+
+            tokenValue += this.currentChar;
+            this.readNextChar();
+        }
+
+        if (/^(AND|OR)$/i.test(tokenValue)) {
+            return { type: 'logic', value: tokenValue.toUpperCase() };
+        }
+
+        if (/^(IN|IS|NOT|LIKE|NOT EXISTS|EXISTS)$/i.test(tokenValue)) {
+            return { type: 'operator', value: tokenValue.toUpperCase() };
+        }
+
+        return { type: 'word', value: tokenValue };
+    }
+
+    /**
+     * 
+     * @param {Boolean} insideQuotedString 
+     * @returns {Boolean}
+     */
+    isStartOrEndOfString(insideQuotedString) {
+        if (!insideQuotedString &amp;&amp; /['"`]/.test(this.currentChar)) {
+            this.startQuote = this.currentChar;
+
+            return true;
+        }
+        else if (insideQuotedString &amp;&amp; this.currentChar === this.startQuote) {
+            //  End of quoted string.
+            return false;
+        }
+
+        return insideQuotedString;
+    }
+
+    /**
+     * 
+     * @param {Boolean} insideQuotedString 
+     * @returns {Boolean}
+     */
+    isFinishedWord(insideQuotedString) {
+        if (insideQuotedString)
+            return false;
+
+        // Token is finished if there is a closing bracket outside a string and with no opening
+        if (this.currentChar === ')' &amp;&amp; this.bracketCount &lt;= 0) {
+            return true;
+        }
+
+        if (this.currentChar === '(') {
+            this.bracketCount++;
+        }
+        else if (this.currentChar === ')') {
+            this.bracketCount--;
+        }
+
+        // Token is finished if there is a operator symbol outside a string
+        if (/[!=&lt;>]/.test(this.currentChar)) {
+            return true;
+        }
+
+        // Token is finished on the first space which is outside a string or a function
+        return this.currentChar === ' ' &amp;&amp; this.bracketCount &lt;= 0;
+    }
+
+    readString() {
+        let tokenValue = "";
+        const quote = this.currentChar;
+
+        tokenValue += this.currentChar;
+        this.readNextChar();
+
+        while (this.currentChar !== quote &amp;&amp; this.currentChar !== "") {
+            tokenValue += this.currentChar;
+            this.readNextChar();
+        }
+
+        tokenValue += this.currentChar;
+        this.readNextChar();
+
+        // Handle this case : `table`.`column`
+        if (this.currentChar === '.') {
+            tokenValue += this.currentChar;
+            this.readNextChar();
+            tokenValue += this.readString().value;
+
+            return { type: 'word', value: tokenValue };
+        }
+
+        return { type: 'string', value: tokenValue };
+    }
+
+    readGroupSymbol() {
+        const tokenValue = this.currentChar;
+        this.readNextChar();
+
+        return { type: 'group', value: tokenValue };
+    }
+
+    readOperator() {
+        let tokenValue = this.currentChar;
+        this.readNextChar();
+
+        if (/[=&lt;>]/.test(this.currentChar)) {
+            tokenValue += this.currentChar;
+            this.readNextChar();
+        }
+
+        return { type: 'operator', value: tokenValue };
+    }
+
+    readMathOperator() {
+        const tokenValue = this.currentChar;
+        this.readNextChar();
+
+        return { type: 'mathoperator', value: tokenValue };
+    }
+
+    readBindVariable() {
+        const tokenValue = this.currentChar;
+        this.readNextChar();
+
+        return { type: 'bindVariable', value: tokenValue };
+    }
+}
+
+/** SQL Condition parser class. */
+class CondParser {
+    constructor(source) {
+        this.lexer = new CondLexer(source);
+        this.currentToken = {};
+
+        this.readNextToken();
+    }
+
+    // Parse a string
+    static parse(source) {
+        return new CondParser(source).parseExpressionsRecursively();
+    }
+
+    // Read the next token (skip empty tokens)
+    readNextToken() {
+        this.currentToken = this.lexer.readNextToken();
+        while (this.currentToken.type === 'empty')
+            this.currentToken = this.lexer.readNextToken();
+        return this.currentToken;
+    }
+
+    // Wrapper function ; parse the source
+    parseExpressionsRecursively() {
+        return this.parseLogicalExpression();
+    }
+
+    // Parse logical expressions (AND/OR)
+    parseLogicalExpression() {
+        let leftNode = this.parseConditionExpression();
+
+        while (this.currentToken.type === 'logic') {
+            const logic = this.currentToken.value;
+            this.readNextToken();
+
+            const rightNode = this.parseConditionExpression();
+
+            // If we are chaining the same logical operator, add nodes to existing object instead of creating another one
+            if (typeof leftNode.logic !== 'undefined' &amp;&amp; leftNode.logic === logic &amp;&amp; typeof leftNode.terms !== 'undefined')
+                leftNode.terms.push(rightNode);
+            else {
+                const terms = [leftNode, rightNode];
+                leftNode = { 'logic': logic, 'terms': terms.slice(0) };
+            }
+        }
+
+        return leftNode;
+    }
+
+    // Parse conditions ([word/string] [operator] [word/string])
+    parseConditionExpression() {
+        let leftNode = this.parseBaseExpression();
+
+        if (this.currentToken.type !== 'operator') {
+            return leftNode;
+        }
+
+        let operator = this.currentToken.value;
+        this.readNextToken();
+
+        // If there are 2 adjacent operators, join them with a space (exemple: IS NOT)
+        if (this.currentToken.type === 'operator') {
+            operator += ` ${this.currentToken.value}`;
+            this.readNextToken();
+        }
+
+        let rightNode = null;
+        if (this.currentToken.type === 'group' &amp;&amp; (operator === 'EXISTS' || operator === 'NOT EXISTS')) {
+            [leftNode, rightNode] = this.parseSelectExistsSubQuery();
+        } else {
+            rightNode = this.parseBaseExpression(operator);
+        }
+
+        return { 'operator': operator, 'left': leftNode, 'right': rightNode };
+    }
+
+    /**
+     * 
+     * @returns {Object[]}
+     */
+    parseSelectExistsSubQuery() {
+        let rightNode = null;
+        const leftNode = '""';
+
+        this.readNextToken();
+        if (this.currentToken.type === 'word' &amp;&amp; this.currentToken.value === 'SELECT') {
+            rightNode = this.parseSelectIn("", true);
+            if (this.currentToken.type === 'group') {
+                this.readNextToken();
+            }
+        }
+
+        return [leftNode, rightNode];
+    }
+
+    // Parse base items
+    /**
+     * 
+     * @param {String} operator 
+     * @returns {Object}
+     */
+    parseBaseExpression(operator = "") {
+        let astNode = {};
+
+        // If this is a word/string, return its value
+        if (this.currentToken.type === 'word' || this.currentToken.type === 'string') {
+            astNode = this.parseWordExpression();
+        }
+        // If this is a group, skip brackets and parse the inside
+        else if (this.currentToken.type === 'group') {
+            astNode = this.parseGroupExpression(operator);
+        }
+        else if (this.currentToken.type === 'bindVariable') {
+            astNode = this.currentToken.value;
+            this.readNextToken();
+        }
+
+        return astNode;
+    }
+
+    /**
+     * 
+     * @returns {Object}
+     */
+    parseWordExpression() {
+        let astNode = this.currentToken.value;
+        this.readNextToken();
+
+        if (this.currentToken.type === 'mathoperator') {
+            astNode += ` ${this.currentToken.value}`;
+            this.readNextToken();
+            while ((this.currentToken.type === 'mathoperator' || this.currentToken.type === 'word') &amp;&amp; this.currentToken.type !== 'eot') {
+                astNode += ` ${this.currentToken.value}`;
+                this.readNextToken();
+            }
+        }
+
+        return astNode;
+    }
+
+    /**
+     * 
+     * @param {String} operator 
+     * @returns {Object}
+     */
+    parseGroupExpression(operator) {
+        this.readNextToken();
+        let astNode = this.parseExpressionsRecursively();
+
+        const isSelectStatement = typeof astNode === "string" &amp;&amp; astNode.toUpperCase() === 'SELECT';
+
+        if (operator === 'IN' || isSelectStatement) {
+            astNode = this.parseSelectIn(astNode, isSelectStatement);
+        }
+        else {
+            //  Are we within brackets of mathmatical expression ?
+            let inCurrentToken = this.currentToken;
+
+            while (inCurrentToken.type !== 'group' &amp;&amp; inCurrentToken.type !== 'eot') {
+                this.readNextToken();
+                if (inCurrentToken.type !== 'group') {
+                    astNode += ` ${inCurrentToken.value}`;
+                }
+
+                inCurrentToken = this.currentToken;
+            }
+
+        }
+
+        this.readNextToken();
+
+        return astNode;
+    }
+
+    /**
+     * 
+     * @param {Object} startAstNode 
+     * @param {Boolean} isSelectStatement 
+     * @returns {Object}
+     */
+    parseSelectIn(startAstNode, isSelectStatement) {
+        let astNode = startAstNode;
+        let inCurrentToken = this.currentToken;
+        let bracketCount = 1;
+        while (bracketCount !== 0 &amp;&amp; inCurrentToken.type !== 'eot') {
+            this.readNextToken();
+            if (isSelectStatement) {
+                astNode += ` ${inCurrentToken.value}`;
+            }
+            else {
+                astNode += `, ${inCurrentToken.value}`;
+            }
+
+            inCurrentToken = this.currentToken;
+            bracketCount += CondParser.groupBracketIncrementer(inCurrentToken);
+        }
+
+        if (isSelectStatement) {
+            astNode = SqlParse.sql2ast(astNode);
+        }
+
+        return astNode;
+    }
+
+    static groupBracketIncrementer(inCurrentToken) {
+        let diff = 0;
+        if (inCurrentToken.type === 'group') {
+            if (inCurrentToken.value === '(') {
+                diff = 1;
+            }
+            else if (inCurrentToken.value === ')') {
+                diff = -1;
+            }
+        }
+
+        return diff
+    }
+}
+
+/** Analyze each distinct component of SELECT statement. */
+class SelectKeywordAnalysis {
+    static analyze(itemName, part) {
+        const keyWord = itemName.toUpperCase().replace(/ /g, '_');
+
+        if (typeof SelectKeywordAnalysis[keyWord] === 'undefined') {
+            throw new Error(`Can't analyze statement ${itemName}`);
+        }
+
+        return SelectKeywordAnalysis[keyWord](part);
+    }
+
+    static SELECT(str) {
+        const selectParts = SelectKeywordAnalysis.protect_split(',', str);
+        const selectResult = selectParts.filter(function (item) {
+            return item !== '';
+        }).map(function (item) {
+            //  Is there a column alias?
+            const [field, alias] = SelectKeywordAnalysis.getNameAndAlias(item);
+
+            const splitPattern = /[\s()*/%+-]+/g;
+            let terms = field.split(splitPattern);
+
+            if (terms !== null) {
+                const aggFunc = ["SUM", "MIN", "MAX", "COUNT", "AVG", "DISTINCT"];
+                terms = (aggFunc.indexOf(terms[0].toUpperCase()) === -1) ? terms : null;
+            }
+            if (field !== "*" &amp;&amp; terms !== null &amp;&amp; terms.length > 1) {
+                const astSelect = SelectKeywordAnalysis.parseForCorrelatedSubQuery(item);
+                return {
+                    name: field,
+                    terms: terms,
+                    as: alias,
+                    subQuery: astSelect
+                };
+            }
+            return { name: field, as: alias };
+        });
+
+        return selectResult;
+    }
+
+    static FROM(str) {
+        const isSubQuery = this.parseForCorrelatedSubQuery(str);
+        if (isSubQuery !== null) {
+            const [, alias] = SelectKeywordAnalysis.getNameAndAlias(str);
+            if (alias !== "" &amp;&amp; typeof isSubQuery.FROM !== 'undefined') {
+                isSubQuery.FROM[0].as = alias.toUpperCase();
+            }
+            return isSubQuery;
+        }
+
+        let fromResult = str.split(',');
+        fromResult = fromResult.map(function (item) {
+            return SelectKeywordAnalysis.trim(item);
+        });
+        fromResult = fromResult.map(function (item) {
+            const [table, alias] = SelectKeywordAnalysis.getNameAndAlias(item);
+            return { table: table, as: alias };
+        });
+        return fromResult;
+    }
+
+    static LEFT_JOIN(str) {
+        return SelectKeywordAnalysis.allJoins(str);
+    }
+
+    static INNER_JOIN(str) {
+        return SelectKeywordAnalysis.allJoins(str);
+    }
+
+    static RIGHT_JOIN(str) {
+        return SelectKeywordAnalysis.allJoins(str);
+    }
+
+    static FULL_JOIN(str) {
+        return SelectKeywordAnalysis.allJoins(str);
+    }
+
+    static allJoins(str) {
+        const strParts = str.toUpperCase().split(' ON ');
+        const table = strParts[0].split(' AS ');
+        const joinResult = {};
+        joinResult.table = SelectKeywordAnalysis.trim(table[0]);
+        joinResult.as = SelectKeywordAnalysis.trim(table[1]) || '';
+        joinResult.cond = SelectKeywordAnalysis.trim(strParts[1]);
+
+        return joinResult;
+    }
+
+    static WHERE(str) {
+        return CondParser.parse(str);
+    }
+
+    static ORDER_BY(str) {
+        const strParts = str.split(',');
+        const orderByResult = [];
+        strParts.forEach(function (item, _key) {
+            const order_by = /([\w.]+)\s*(ASC|DESC)?/gi;
+            const orderData = order_by.exec(item);
+            if (orderData !== null) {
+                const tmp = {};
+                tmp.column = SelectKeywordAnalysis.trim(orderData[1]);
+                tmp.order = SelectKeywordAnalysis.trim(orderData[2]);
+                if (typeof orderData[2] === 'undefined') {
+                    const orderParts = item.trim().split(" ");
+                    if (orderParts.length > 1)
+                        throw new Error(`Invalid ORDER BY:  ${item}`);
+                    tmp.order = "ASC";
+                }
+                orderByResult.push(tmp);
+            }
+        });
+        return orderByResult;
+    }
+
+    static GROUP_BY(str) {
+        const strParts = str.split(',');
+        const groupByResult = [];
+        strParts.forEach(function (item, _key) {
+            const group_by = /([\w.]+)/gi;
+            const groupData = group_by.exec(item);
+            if (groupData !== null) {
+                const tmp = {};
+                tmp.column = SelectKeywordAnalysis.trim(groupData[1]);
+                groupByResult.push(tmp);
+            }
+        });
+        return groupByResult;
+    }
+
+    static PIVOT(str) {
+        const strParts = str.split(',');
+        const pivotResult = [];
+        strParts.forEach(function (item, _key) {
+            const pivotOn = /([\w.]+)/gi;
+            const pivotData = pivotOn.exec(item);
+            if (pivotData !== null) {
+                const tmp = {};
+                tmp.name = SelectKeywordAnalysis.trim(pivotData[1]);
+                tmp.as = "";
+                pivotResult.push(tmp);
+            }
+        });
+        return pivotResult;
+    }
+
+    static LIMIT(str) {
+        const limitResult = {};
+        limitResult.nb = parseInt(str, 10);
+        limitResult.from = 0;
+        return limitResult;
+    }
+
+    static HAVING(str) {
+        return CondParser.parse(str);
+    }
+
+    static UNION(str) {
+        return SelectKeywordAnalysis.trim(str);
+    }
+
+    static UNION_ALL(str) {
+        return SelectKeywordAnalysis.trim(str);
+    }
+
+    static INTERSECT(str) {
+        return SelectKeywordAnalysis.trim(str);
+    }
+
+    static EXCEPT(str) {
+        return SelectKeywordAnalysis.trim(str);
+    }
+
+    /**
+     * 
+     * @param {String} selectField 
+     * @returns {Object}
+     */
+    static parseForCorrelatedSubQuery(selectField) {
+        let subQueryAst = null;
+
+        const regExp = /\(\s*(SELECT[\s\S]+)\)/;
+        const matches = regExp.exec(selectField.toUpperCase());
+
+        if (matches !== null &amp;&amp; matches.length > 1) {
+            subQueryAst = SqlParse.sql2ast(matches[1]);
+        }
+
+        return subQueryAst;
+    }
+
+    // Split a string using a separator, only if this separator isn't beetween brackets
+    /**
+     * 
+     * @param {String} separator 
+     * @param {String} str 
+     * @returns {String[]}
+     */
+    static protect_split(separator, str) {
+        const sep = '######';
+
+        let inQuotedString = false;
+        let quoteChar = "";
+        let bracketCount = 0;
+        let newStr = "";
+        for (const c of str) {
+            if (!inQuotedString &amp;&amp; /['"`]/.test(c)) {
+                inQuotedString = true;
+                quoteChar = c;
+            }
+            else if (inQuotedString &amp;&amp; c === quoteChar) {
+                inQuotedString = false;
+            }
+            else if (!inQuotedString &amp;&amp; c === '(') {
+                bracketCount++;
+            }
+            else if (!inQuotedString &amp;&amp; c === ')') {
+                bracketCount--;
+            }
+
+            if (c === separator &amp;&amp; (bracketCount > 0 || inQuotedString)) {
+                newStr += sep;
+            }
+            else {
+                newStr += c;
+            }
+        }
+
+        let strParts = newStr.split(separator);
+        strParts = strParts.map(function (item) {
+            return SelectKeywordAnalysis.trim(item.replace(new RegExp(sep, 'g'), separator));
+        });
+
+        return strParts;
+    }
+
+    static trim(str) {
+        if (typeof str === 'string')
+            return str.trim();
+        return str;
+    }
+
+    /**
+    * If an ALIAS is specified after 'AS', return the field/table name and the alias.
+    * @param {String} item 
+    * @returns {String[]}
+    */
+    static getNameAndAlias(item) {
+        let realName = item;
+        let alias = "";
+        const lastAs = SelectKeywordAnalysis.lastIndexOfOutsideLiteral(item.toUpperCase(), " AS ");
+        if (lastAs !== -1) {
+            const subStr = item.substring(lastAs + 4).trim();
+            if (subStr.length > 0) {
+                alias = subStr;
+                //  Remove quotes, if any.
+                if ((subStr.startsWith("'") &amp;&amp; subStr.endsWith("'")) ||
+                    (subStr.startsWith('"') &amp;&amp; subStr.endsWith('"')) ||
+                    (subStr.startsWith('[') &amp;&amp; subStr.endsWith(']')))
+                    alias = subStr.substring(1, subStr.length - 1);
+
+                //  Remove everything after 'AS'.
+                realName = item.substring(0, lastAs);
+            }
+        }
+
+        return [realName, alias];
+    }
+
+    /**
+     * 
+     * @param {String} srcString 
+     * @param {String} searchString 
+     * @returns {Number}
+     */
+    static lastIndexOfOutsideLiteral(srcString, searchString) {
+        let index = -1;
+        let inQuote = "";
+
+        for (let i = 0; i &lt; srcString.length; i++) {
+            const ch = srcString.charAt(i);
+
+            if (inQuote !== "") {
+                //  The ending quote.
+                if ((inQuote === "'" &amp;&amp; ch === "'") || (inQuote === '"' &amp;&amp; ch === '"') || (inQuote === "[" &amp;&amp; ch === "]"))
+                    inQuote = "";
+            }
+            else if ("\"'[".indexOf(ch) !== -1) {
+                //  The starting quote.
+                inQuote = ch;
+            }
+            else if (srcString.substring(i).startsWith(searchString)) {
+                //  Matched search.
+                index = i;
+            }
+        }
+
+        return index;
+    }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.0</a> on Mon Jan 09 2023 12:44:12 GMT-0500 (Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>

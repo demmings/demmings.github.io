@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>TableData.js - gsSQL</title>
+    
+    <meta name="description" content="Query Google Sheets using standard SQL SELECT syntax." />
+    
+        <meta name="keywords" content="Google Sheets Query SQL SELECT" />
+        <meta name="keyword" content="Google Sheets Query SQL SELECT" />
+    
+    
+    
+    <meta property="og:title" content="gsSQL Sheets Custom Function"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="https://demmings.github.io/img/logo.png"/>
+    <meta property="og:site_name" content="gsSQL"/>
+    <meta property="og:url" content="https://demmings.github.io/"/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://demmings.github.io" target="_blank" class="menu-item" id="website_link" >Project Website</a></h2><h2><a href="https://github.com/demmings/gsSQL" target="_blank" class="menu-item" id="website_link" >Github Website</a></h2><h3>Classes</h3><ul><li><a href="CalculatedField.html">CalculatedField</a><ul class='methods'><li data-type='method'><a href="CalculatedField.html#createAssignmentStatments">createAssignmentStatments</a></li><li data-type='method'><a href="CalculatedField.html#evaluateCalculatedField">evaluateCalculatedField</a></li><li data-type='method'><a href="CalculatedField.html#sqlServerCalcFields">sqlServerCalcFields</a></li><li data-type='method'><a href="CalculatedField.html#sqlServerFunctions">sqlServerFunctions</a></li></ul></li><li><a href="CondLexer.html">CondLexer</a><ul class='methods'><li data-type='method'><a href="CondLexer.html#isFinishedWord">isFinishedWord</a></li><li data-type='method'><a href="CondLexer.html#isStartOrEndOfString">isStartOrEndOfString</a></li></ul></li><li><a href="CondParser.html">CondParser</a><ul class='methods'><li data-type='method'><a href="CondParser.html#parseBaseExpression">parseBaseExpression</a></li><li data-type='method'><a href="CondParser.html#parseGroupExpression">parseGroupExpression</a></li><li data-type='method'><a href="CondParser.html#parseSelectExistsSubQuery">parseSelectExistsSubQuery</a></li><li data-type='method'><a href="CondParser.html#parseSelectIn">parseSelectIn</a></li><li data-type='method'><a href="CondParser.html#parseWordExpression">parseWordExpression</a></li></ul></li><li><a href="ConglomerateRecord.html">ConglomerateRecord</a><ul class='methods'><li data-type='method'><a href="ConglomerateRecord.html#squish">squish</a></li><li data-type='method'><a href="ConglomerateRecord.html#.aggregateColumn">aggregateColumn</a></li><li data-type='method'><a href="ConglomerateRecord.html#.maxCase">maxCase</a></li><li data-type='method'><a href="ConglomerateRecord.html#.minCase">minCase</a></li></ul></li><li><a href="CorrelatedSubQuery.html">CorrelatedSubQuery</a><ul class='methods'><li data-type='method'><a href="CorrelatedSubQuery.html#replaceOuterFieldValueInCorrelatedWhere">replaceOuterFieldValueInCorrelatedWhere</a></li><li data-type='method'><a href="CorrelatedSubQuery.html#select">select</a></li><li data-type='method'><a href="CorrelatedSubQuery.html#traverseWhere">traverseWhere</a></li></ul></li><li><a href="DerivedTable.html">DerivedTable</a><ul class='methods'><li data-type='method'><a href="DerivedTable.html#createTable">createTable</a></li><li data-type='method'><a href="DerivedTable.html#getTableData">getTableData</a></li><li data-type='method'><a href="DerivedTable.html#isDerivedTable">isDerivedTable</a></li><li data-type='method'><a href="DerivedTable.html#setIsOuterJoin">setIsOuterJoin</a></li><li data-type='method'><a href="DerivedTable.html#setLeftField">setLeftField</a></li><li data-type='method'><a href="DerivedTable.html#setLeftRecords">setLeftRecords</a></li><li data-type='method'><a href="DerivedTable.html#setRightField">setRightField</a></li><li data-type='method'><a href="DerivedTable.html#.getCombinedColumnTitles">getCombinedColumnTitles</a></li></ul></li><li><a href="JoinTables.html">JoinTables</a><ul class='methods'><li data-type='method'><a href="JoinTables.html#getJoinedTableInfo">getJoinedTableInfo</a></li><li data-type='method'><a href="JoinTables.html#isDerivedTable">isDerivedTable</a></li><li data-type='method'><a href="JoinTables.html#.joinTables">joinTables</a></li><li data-type='method'><a href="JoinTables.html#.leftRightJoin">leftRightJoin</a></li></ul></li><li><a href="PropertyData.html">PropertyData</a><ul class='methods'><li data-type='method'><a href="PropertyData.html#.getData">getData</a></li><li data-type='method'><a href="PropertyData.html#.isExpired">isExpired</a></li></ul></li><li><a href="Schema.html">Schema</a><ul class='methods'><li data-type='method'><a href="Schema.html#getAllExtendedNotationFieldNames">getAllExtendedNotationFieldNames</a></li><li data-type='method'><a href="Schema.html#getAllFieldNames">getAllFieldNames</a></li><li data-type='method'><a href="Schema.html#getAllVirtualFields">getAllVirtualFields</a></li><li data-type='method'><a href="Schema.html#getColumnNameVariants">getColumnNameVariants</a></li><li data-type='method'><a href="Schema.html#getFieldColumn">getFieldColumn</a></li><li data-type='method'><a href="Schema.html#getFieldColumns">getFieldColumns</a></li><li data-type='method'><a href="Schema.html#load">load</a></li><li data-type='method'><a href="Schema.html#setFieldVariantsColumNumber">setFieldVariantsColumNumber</a></li><li data-type='method'><a href="Schema.html#setTable">setTable</a></li><li data-type='method'><a href="Schema.html#setTableAlias">setTableAlias</a></li><li data-type='method'><a href="Schema.html#setTableData">setTableData</a></li><li data-type='method'><a href="Schema.html#setTableName">setTableName</a></li></ul></li><li><a href="ScriptSettings.html">ScriptSettings</a><ul class='methods'><li data-type='method'><a href="ScriptSettings.html#expire">expire</a></li><li data-type='method'><a href="ScriptSettings.html#get">get</a></li><li data-type='method'><a href="ScriptSettings.html#put">put</a></li><li data-type='method'><a href="ScriptSettings.html#putAll">putAll</a></li></ul></li><li><a href="SelectKeywordAnalysis.html">SelectKeywordAnalysis</a><ul class='methods'><li data-type='method'><a href="SelectKeywordAnalysis.html#.getNameAndAlias">getNameAndAlias</a></li><li data-type='method'><a href="SelectKeywordAnalysis.html#.lastIndexOfOutsideLiteral">lastIndexOfOutsideLiteral</a></li><li data-type='method'><a href="SelectKeywordAnalysis.html#.parseForCorrelatedSubQuery">parseForCorrelatedSubQuery</a></li><li data-type='method'><a href="SelectKeywordAnalysis.html#.protect_split">protect_split</a></li></ul></li><li><a href="SelectTables.html">SelectTables</a><ul class='methods'><li data-type='method'><a href="SelectTables.html#createGroupByKey">createGroupByKey</a></li><li data-type='method'><a href="SelectTables.html#getColumnTitles">getColumnTitles</a></li><li data-type='method'><a href="SelectTables.html#getRecordIDs">getRecordIDs</a></li><li data-type='method'><a href="SelectTables.html#getViewData">getViewData</a></li><li data-type='method'><a href="SelectTables.html#groupBy">groupBy</a></li><li data-type='method'><a href="SelectTables.html#groupByFields">groupByFields</a></li><li data-type='method'><a href="SelectTables.html#having">having</a></li><li data-type='method'><a href="SelectTables.html#join">join</a></li><li data-type='method'><a href="SelectTables.html#orderBy">orderBy</a></li><li data-type='method'><a href="SelectTables.html#removeTempColumns">removeTempColumns</a></li><li data-type='method'><a href="SelectTables.html#resolveCondition">resolveCondition</a></li><li data-type='method'><a href="SelectTables.html#resolveFieldCondition">resolveFieldCondition</a></li><li data-type='method'><a href="SelectTables.html#whereCondition">whereCondition</a></li><li data-type='method'><a href="SelectTables.html#.dateToMs">dateToMs</a></li><li data-type='method'><a href="SelectTables.html#.extractStringConstant">extractStringConstant</a></li><li data-type='method'><a href="SelectTables.html#.getConditionValue">getConditionValue</a></li><li data-type='method'><a href="SelectTables.html#.getSubQueryTableSet">getSubQueryTableSet</a></li><li data-type='method'><a href="SelectTables.html#.inCondition">inCondition</a></li><li data-type='method'><a href="SelectTables.html#.isCondition">isCondition</a></li><li data-type='method'><a href="SelectTables.html#.isConditionTrue">isConditionTrue</a></li><li data-type='method'><a href="SelectTables.html#.isStringConstant">isStringConstant</a></li><li data-type='method'><a href="SelectTables.html#.likeCondition">likeCondition</a></li><li data-type='method'><a href="SelectTables.html#.parseForFunctions">parseForFunctions</a></li><li data-type='method'><a href="SelectTables.html#.parseForParams">parseForParams</a></li><li data-type='method'><a href="SelectTables.html#.sortByColumnASC">sortByColumnASC</a></li><li data-type='method'><a href="SelectTables.html#.sortByColumnDESC">sortByColumnDESC</a></li><li data-type='method'><a href="SelectTables.html#.toUpperCaseExceptQuoted">toUpperCaseExceptQuoted</a></li></ul></li><li><a href="Sql.html">Sql</a><ul class='methods'><li data-type='method'><a href="Sql.html#addBindNamedRangeParameter">addBindNamedRangeParameter</a></li><li data-type='method'><a href="Sql.html#addBindParameter">addBindParameter</a></li><li data-type='method'><a href="Sql.html#addTableData">addTableData</a></li><li data-type='method'><a href="Sql.html#areColumnTitlesOutput">areColumnTitlesOutput</a></li><li data-type='method'><a href="Sql.html#clearBindParameters">clearBindParameters</a></li><li data-type='method'><a href="Sql.html#enableColumnTitle">enableColumnTitle</a></li><li data-type='method'><a href="Sql.html#execute">execute</a></li><li data-type='method'><a href="Sql.html#getBindData">getBindData</a></li><li data-type='method'><a href="Sql.html#getTableAlias">getTableAlias</a></li><li data-type='method'><a href="Sql.html#getTableAliasUnion">getTableAliasUnion</a></li><li data-type='method'><a href="Sql.html#getTableAliasWhereIn">getTableAliasWhereIn</a></li><li data-type='method'><a href="Sql.html#getTableAliasWhereTerms">getTableAliasWhereTerms</a></li><li data-type='method'><a href="Sql.html#getTables">getTables</a></li><li data-type='method'><a href="Sql.html#getUniquePivotData">getUniquePivotData</a></li><li data-type='method'><a href="Sql.html#pivotField">pivotField</a></li><li data-type='method'><a href="Sql.html#select">select</a></li><li data-type='method'><a href="Sql.html#selectFromSubQuery">selectFromSubQuery</a></li><li data-type='method'><a href="Sql.html#setBindValues">setBindValues</a></li><li data-type='method'><a href="Sql.html#setTables">setTables</a></li><li data-type='method'><a href="Sql.html#unionSets">unionSets</a></li><li data-type='method'><a href="Sql.html#.addCalculatedPivotFieldsToAst">addCalculatedPivotFieldsToAst</a></li><li data-type='method'><a href="Sql.html#.appendUniqueRows">appendUniqueRows</a></li><li data-type='method'><a href="Sql.html#.distinctField">distinctField</a></li><li data-type='method'><a href="Sql.html#.exceptRows">exceptRows</a></li><li data-type='method'><a href="Sql.html#.extractAstTables">extractAstTables</a></li><li data-type='method'><a href="Sql.html#.getReferencedTableNames">getReferencedTableNames</a></li><li data-type='method'><a href="Sql.html#.getTableAliasFromJoin">getTableAliasFromJoin</a></li><li data-type='method'><a href="Sql.html#.getTableNamesFromOrJoin">getTableNamesFromOrJoin</a></li><li data-type='method'><a href="Sql.html#.getTableNamesUnion">getTableNamesUnion</a></li><li data-type='method'><a href="Sql.html#.getTableNamesWhereIn">getTableNamesWhereIn</a></li><li data-type='method'><a href="Sql.html#.getTableNamesWhereTerms">getTableNamesWhereTerms</a></li><li data-type='method'><a href="Sql.html#.intersectRows">intersectRows</a></li><li data-type='method'><a href="Sql.html#.locateAstTableAlias">locateAstTableAlias</a></li></ul></li><li><a href="SqlParse.html">SqlParse</a><ul class='methods'><li data-type='method'><a href="SqlParse.html#.analyzeParts">analyzeParts</a></li><li data-type='method'><a href="SqlParse.html#.generateSqlSeparatorWords">generateSqlSeparatorWords</a></li><li data-type='method'><a href="SqlParse.html#.generateUsedKeywordList">generateUsedKeywordList</a></li><li data-type='method'><a href="SqlParse.html#.getPositionsOfSqlParts">getPositionsOfSqlParts</a></li><li data-type='method'><a href="SqlParse.html#.hideInnerSql">hideInnerSql</a></li><li data-type='method'><a href="SqlParse.html#.makeSqlPartsSplitterRegEx">makeSqlPartsSplitterRegEx</a></li><li data-type='method'><a href="SqlParse.html#.protect">protect</a></li><li data-type='method'><a href="SqlParse.html#.removeDuplicateEntries">removeDuplicateEntries</a></li><li data-type='method'><a href="SqlParse.html#.reorganizeJoins">reorganizeJoins</a></li><li data-type='method'><a href="SqlParse.html#.reorganizeSpecificJoin">reorganizeSpecificJoin</a></li><li data-type='method'><a href="SqlParse.html#.reorganizeUnions">reorganizeUnions</a></li><li data-type='method'><a href="SqlParse.html#.resolveSqlCondition">resolveSqlCondition</a></li><li data-type='method'><a href="SqlParse.html#.sql2ast">sql2ast</a></li><li data-type='method'><a href="SqlParse.html#.sqlCondition2JsCondition">sqlCondition2JsCondition</a></li><li data-type='method'><a href="SqlParse.html#.sqlStatementSplitter">sqlStatementSplitter</a></li><li data-type='method'><a href="SqlParse.html#.unprotect">unprotect</a></li></ul></li><li><a href="SqlServerFunctions.html">SqlServerFunctions</a><ul class='methods'><li data-type='method'><a href="SqlServerFunctions.html#caseEnd">caseEnd</a></li><li data-type='method'><a href="SqlServerFunctions.html#caseStart">caseStart</a></li><li data-type='method'><a href="SqlServerFunctions.html#caseWhen">caseWhen</a></li><li data-type='method'><a href="SqlServerFunctions.html#convertToJs">convertToJs</a></li><li data-type='method'><a href="SqlServerFunctions.html#parseFunctionArgs">parseFunctionArgs</a></li><li data-type='method'><a href="SqlServerFunctions.html#.charIndex">charIndex</a></li><li data-type='method'><a href="SqlServerFunctions.html#.coalesce">coalesce</a></li><li data-type='method'><a href="SqlServerFunctions.html#.concat_ws">concat_ws</a></li></ul></li><li><a href="Table.html">Table</a><ul class='methods'><li data-type='method'><a href="Table.html#addColumnLetters">addColumnLetters</a></li><li data-type='method'><a href="Table.html#addIndex">addIndex</a></li><li data-type='method'><a href="Table.html#concat">concat</a></li><li data-type='method'><a href="Table.html#getAllExtendedNotationFieldNames">getAllExtendedNotationFieldNames</a></li><li data-type='method'><a href="Table.html#getAllFieldNames">getAllFieldNames</a></li><li data-type='method'><a href="Table.html#getAllVirtualFields">getAllVirtualFields</a></li><li data-type='method'><a href="Table.html#getColumnCount">getColumnCount</a></li><li data-type='method'><a href="Table.html#getFieldColumn">getFieldColumn</a></li><li data-type='method'><a href="Table.html#getFieldColumns">getFieldColumns</a></li><li data-type='method'><a href="Table.html#getRecords">getRecords</a></li><li data-type='method'><a href="Table.html#loadArrayData">loadArrayData</a></li><li data-type='method'><a href="Table.html#loadNamedRangeData">loadNamedRangeData</a></li><li data-type='method'><a href="Table.html#loadSchema">loadSchema</a></li><li data-type='method'><a href="Table.html#numberToSheetColumnLetter">numberToSheetColumnLetter</a></li><li data-type='method'><a href="Table.html#search">search</a></li><li data-type='method'><a href="Table.html#setHasColumnTitle">setHasColumnTitle</a></li><li data-type='method'><a href="Table.html#setTableAlias">setTableAlias</a></li></ul></li><li><a href="TableData.html">TableData</a><ul class='methods'><li data-type='method'><a href="TableData.html#.cacheGetArray">cacheGetArray</a></li><li data-type='method'><a href="TableData.html#.cachePutArray">cachePutArray</a></li><li data-type='method'><a href="TableData.html#.cacheStatusName">cacheStatusName</a></li><li data-type='method'><a href="TableData.html#.fixJSONdates">fixJSONdates</a></li><li data-type='method'><a href="TableData.html#.forceLongCacheExpiryCheck">forceLongCacheExpiryCheck</a></li><li data-type='method'><a href="TableData.html#.getValueCached">getValueCached</a></li><li data-type='method'><a href="TableData.html#.getValuesCached">getValuesCached</a></li><li data-type='method'><a href="TableData.html#.isRangeLoading">isRangeLoading</a></li><li data-type='method'><a href="TableData.html#.isTimeToRunLongCacheExpiry">isTimeToRunLongCacheExpiry</a></li><li data-type='method'><a href="TableData.html#.loadTableData">loadTableData</a></li><li data-type='method'><a href="TableData.html#.loadValuesFromRangeOrSheet">loadValuesFromRangeOrSheet</a></li><li data-type='method'><a href="TableData.html#.lockLoadAndCache">lockLoadAndCache</a></li><li data-type='method'><a href="TableData.html#.setLongCacheExpiry">setLongCacheExpiry</a></li><li data-type='method'><a href="TableData.html#.setValueCached">setValueCached</a></li><li data-type='method'><a href="TableData.html#.setValuesCached">setValuesCached</a></li><li data-type='method'><a href="TableData.html#.verifyCachedData">verifyCachedData</a></li><li data-type='method'><a href="TableData.html#.waitForRangeToLoad">waitForRangeToLoad</a></li></ul></li><li><a href="TableField.html">TableField</a><ul class='methods'><li data-type='method'><a href="TableField.html#addAlias">addAlias</a></li><li data-type='method'><a href="TableField.html#getData">getData</a></li><li data-type='method'><a href="TableField.html#setAggregateFunction">setAggregateFunction</a></li><li data-type='method'><a href="TableField.html#setCalculatedFormula">setCalculatedFormula</a></li><li data-type='method'><a href="TableField.html#setColumnName">setColumnName</a></li><li data-type='method'><a href="TableField.html#setColumnTitle">setColumnTitle</a></li><li data-type='method'><a href="TableField.html#setIsPrimaryTable">setIsPrimaryTable</a></li><li data-type='method'><a href="TableField.html#setIsTempField">setIsTempField</a></li><li data-type='method'><a href="TableField.html#setOriginalTable">setOriginalTable</a></li><li data-type='method'><a href="TableField.html#setOriginalTableColumn">setOriginalTableColumn</a></li><li data-type='method'><a href="TableField.html#setSelectColumn">setSelectColumn</a></li><li data-type='method'><a href="TableField.html#setSubQueryAst">setSubQueryAst</a></li><li data-type='method'><a href="TableField.html#setTableInfo">setTableInfo</a></li><li data-type='method'><a href="TableField.html#.getAllExtendedAliasNames">getAllExtendedAliasNames</a></li></ul></li><li><a href="TableFields.html">TableFields</a><ul class='methods'><li data-type='method'><a href="TableFields.html#addReferencedColumnstoSelectFieldList">addReferencedColumnstoSelectFieldList</a></li><li data-type='method'><a href="TableFields.html#addTempMissingSelectedField">addTempMissingSelectedField</a></li><li data-type='method'><a href="TableFields.html#findTableField">findTableField</a></li><li data-type='method'><a href="TableFields.html#getColumnNames">getColumnNames</a></li><li data-type='method'><a href="TableFields.html#getColumnTitles">getColumnTitles</a></li><li data-type='method'><a href="TableFields.html#getConglomerateFieldCount">getConglomerateFieldCount</a></li><li data-type='method'><a href="TableFields.html#getFieldColumn">getFieldColumn</a></li><li data-type='method'><a href="TableFields.html#getFieldInfo">getFieldInfo</a></li><li data-type='method'><a href="TableFields.html#getNextSelectColumnNumber">getNextSelectColumnNumber</a></li><li data-type='method'><a href="TableFields.html#getSelectFieldColumn">getSelectFieldColumn</a></li><li data-type='method'><a href="TableFields.html#getSelectFieldNames">getSelectFieldNames</a></li><li data-type='method'><a href="TableFields.html#getSelectFields">getSelectFields</a></li><li data-type='method'><a href="TableFields.html#getTableInfo">getTableInfo</a></li><li data-type='method'><a href="TableFields.html#getTempSelectedColumnNumbers">getTempSelectedColumnNumbers</a></li><li data-type='method'><a href="TableFields.html#hasField">hasField</a></li><li data-type='method'><a href="TableFields.html#indexTableField">indexTableField</a></li><li data-type='method'><a href="TableFields.html#loadVirtualFields">loadVirtualFields</a></li><li data-type='method'><a href="TableFields.html#updateDerivedTableVirtualFields">updateDerivedTableVirtualFields</a></li><li data-type='method'><a href="TableFields.html#updateSelectFieldList">updateSelectFieldList</a></li><li data-type='method'><a href="TableFields.html#.getSelectCountModifiers">getSelectCountModifiers</a></li><li data-type='method'><a href="TableFields.html#.sortPrimaryFields">sortPrimaryFields</a></li></ul></li><li><a href="TestedStatements.html">TestedStatements</a><ul class='methods'><li data-type='method'><a href="TestedStatements.html#getTableDefinitionString">getTableDefinitionString</a></li></ul></li><li><a href="VirtualField.html">VirtualField</a></li><li><a href="VirtualFields.html">VirtualFields</a><ul class='methods'><li data-type='method'><a href="VirtualFields.html#add">add</a></li><li data-type='method'><a href="VirtualFields.html#getAllVirtualFields">getAllVirtualFields</a></li><li data-type='method'><a href="VirtualFields.html#.expandWildcardFields">expandWildcardFields</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#SQLselfTest">SQLselfTest</a></li><li><a href="global.html#customMenuGenerateTests">customMenuGenerateTests</a></li><li><a href="global.html#gsSQL">gsSQL</a></li><li><a href="global.html#isEqual">isEqual</a></li><li><a href="global.html#onOpen">onOpen</a></li><li><a href="global.html#parseTableSettings">parseTableSettings</a></li><li><a href="global.html#sqlTestCases">sqlTestCases</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">TableData.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//  Remove comments for testing in NODE
+//
+//  *** DEBUG START ***
+export { TableData };
+import { CacheService, LockService, SpreadsheetApp, Utilities } from "./SqlTest.js"; 
+import { ScriptSettings } from "./ScriptSettings.js";
+
+class Logger {
+    static log(msg) {
+        console.log(msg);
+    }
+}
+//  *** DEBUG END  ***/
+
+//  skipcq: JS-0128
+/** 
+ * Interface for loading table data either from CACHE or SHEET. 
+ * @class
+ * @classdesc
+ * * Automatically load table data from a **CACHE** or **SHEET** &lt;br>
+ * * In all cases, if the cache has expired, the data is read from the sheet. 
+ * &lt;br>
+ * 
+ * | Cache Seconds | Description |
+ * | ---           | ---         |
+ * | 0             | Data is not cached and always read directly from SHEET |
+ * | &lt;= 21600      | Data read from SHEETS cache if it has not expired |
+ * | > 21600       | Data read from Google Sheets Script Settings |
+ * 
+ */
+class TableData {
+    /**
+    * Retrieve table data from SHEET or CACHE.
+    * @param {String} namedRange - Location of table data.  Either a) SHEET Name, b) Named Range, c) A1 sheet notation.
+    * @param {Number} cacheSeconds - 0s Reads directly from sheet. > 21600s Sets in SCRIPT settings, else CacheService 
+    * @returns {any[][]}
+    */
+    static loadTableData(namedRange, cacheSeconds = 0) {
+        if (typeof namedRange === 'undefined' || namedRange === "")
+            return [];
+
+        Logger.log(`loadTableData: ${namedRange}. Seconds=${cacheSeconds}`);
+
+        let tempData = TableData.getValuesCached(namedRange, cacheSeconds)
+
+        tempData = tempData.filter(e => e.join().replace(/,/g, "").length);
+
+        return tempData;
+    }
+
+    /**
+     * Reads a RANGE of values.
+     * @param {String} namedRange 
+     * @param {Number} seconds 
+     * @returns {any[][]}
+     */
+    static getValuesCached(namedRange, seconds) {
+        let cache = {};
+        let cacheSeconds = seconds;
+
+        if (cacheSeconds &lt;= 0) {
+            return TableData.loadValuesFromRangeOrSheet(namedRange);
+        }
+        else if (cacheSeconds > 21600) {
+            cache = new ScriptSettings();
+            if (TableData.isTimeToRunLongCacheExpiry()) {
+                cache.expire(false);
+                TableData.setLongCacheExpiry();
+            }
+            cacheSeconds = cacheSeconds / 86400;  //  ScriptSettings put() wants days to hold.
+        }
+        else {
+            cache = CacheService.getScriptCache();
+        }
+
+        let arrData = TableData.cacheGetArray(cache, namedRange);
+        if (arrData !== null) {
+            Logger.log(`Found in CACHE: ${namedRange}. Items=${arrData.length}`);
+            return arrData;
+        }
+
+        Logger.log(`Not in cache: ${namedRange}`);
+
+        arrData = TableData.lockLoadAndCache(cache, namedRange, cacheSeconds);
+
+        return arrData;
+    }
+
+    /**
+     * Is it time to run the long term cache expiry check?
+     * @returns {Boolean}
+     */
+    static isTimeToRunLongCacheExpiry() {
+        const shortCache = CacheService.getScriptCache();
+        return shortCache.get("LONG_CACHE_EXPIRY") === null;
+    }
+
+    /**
+     * The long term expiry check is done every 21,000 seconds.  Set the clock now!
+     */
+    static setLongCacheExpiry() {
+        const shortCache = CacheService.getScriptCache();
+        shortCache.put("LONG_CACHE_EXPIRY", 'true', 21000);
+    }
+
+    /**
+     * In the interest of testing, force the expiry check.
+     * It does not mean items in cache will be removed - just 
+     * forces a check.
+     */
+    static forceLongCacheExpiryCheck() {
+        const shortCache = CacheService.getScriptCache();
+        if (shortCache.get("LONG_CACHE_EXPIRY") !== null) {
+            shortCache.remove("LONG_CACHE_EXPIRY");
+        }
+    }
+
+    /**
+     * Reads a single cell.
+     * @param {String} namedRange 
+     * @param {Number} seconds 
+     * @returns {any}
+     */
+    static getValueCached(namedRange, seconds = 60) {
+        const cache = CacheService.getScriptCache();
+
+        let singleData = cache.get(namedRange);
+
+        if (singleData === null) {
+            const ss = SpreadsheetApp.getActiveSpreadsheet();
+            singleData = ss.getRangeByName(namedRange).getValue();
+            cache.put(namedRange, JSON.stringify(singleData), seconds);
+        }
+        else {
+            singleData = JSON.parse(singleData);
+            const tempArr = [[singleData]];
+            TableData.fixJSONdates(tempArr);
+            singleData = tempArr[0][0];
+        }
+
+        return singleData;
+    }
+
+    /**
+     * For updating a sheet VALUE that may be later read from cache.
+     * @param {String} namedRange 
+     * @param {any} singleData 
+     * @param {Number} seconds 
+     */
+    static setValueCached(namedRange, singleData, seconds = 60) {
+        const ss = SpreadsheetApp.getActiveSpreadsheet();
+        ss.getRangeByName(namedRange).setValue(singleData);
+        let cache = null;
+
+        if (seconds === 0) {
+            return;
+        }
+        else if (seconds > 21600) {
+            cache = new ScriptSettings();
+        }
+        else {
+            cache = CacheService.getScriptCache();
+        }
+        cache.put(namedRange, JSON.stringify(singleData), seconds);
+    }
+
+    /**
+     * 
+     * @param {String} namedRange 
+     * @param {any[][]} arrData 
+     * @param {Number} seconds 
+     */
+    static setValuesCached(namedRange, arrData, seconds = 60) {
+        const cache = CacheService.getScriptCache();
+
+        const ss = SpreadsheetApp.getActiveSpreadsheet();
+        ss.getRangeByName(namedRange).setValues(arrData);
+        cache.put(namedRange, JSON.stringify(arrData), seconds)
+    }
+
+    /**
+     * Check if data from cache is in error.
+     * @param {any[][]} arrData 
+     * @returns {Boolean}
+     */
+    static verifyCachedData(arrData) {
+        let verified = true;
+
+        for (const rowData of arrData) {
+            for (const fieldData of rowData) {
+                if (fieldData === "#ERROR!") {
+                    Logger.log("Reading from CACHE has found '#ERROR!'.  Re-Loading...");
+                    verified = false;
+                    break;
+                }
+            }
+        }
+
+        return verified;
+    }
+
+    /**
+     * Checks if this range is loading elsewhere (i.e. from another call to custom function)
+     * @param {String} namedRange
+     * @returns {Boolean} 
+     */
+    static isRangeLoading(cache, namedRange) {
+        let loading = false;
+        const cacheData = cache.get(TableData.cacheStatusName(namedRange));
+
+        if (cacheData !== null &amp;&amp; cacheData === TABLE.LOADING) {
+            loading = true;
+        }
+
+        Logger.log(`isRangeLoading: ${namedRange}. Status: ${loading}`);
+
+        return loading;
+    }
+
+    /**
+     * Retrieve data from cache after it has loaded elsewhere.
+     * @param {Object} cache 
+     * @param {String} namedRange 
+     * @param {Number} cacheSeconds - How long to cache results.
+     * @returns {any[][]}
+     */
+    static waitForRangeToLoad(cache, namedRange, cacheSeconds) {
+        const start = new Date().getTime();
+        let current = new Date().getTime();
+
+        Logger.log(`waitForRangeToLoad() - Start: ${namedRange}`);
+        while (TableData.isRangeLoading(cache, namedRange) &amp;&amp; (current - start) &lt; 10000) {
+            Utilities.sleep(250);
+            current = new Date().getTime();
+        }
+        Logger.log("waitForRangeToLoad() - End");
+
+        let arrData = TableData.cacheGetArray(cache, namedRange);
+
+        //  Give up and load from SHEETS directly.
+        if (arrData === null) {
+            Logger.log(`waitForRangeToLoad - give up.  Read directly. ${namedRange}`);
+            arrData = TableData.loadValuesFromRangeOrSheet(namedRange);
+
+            if (TableData.isRangeLoading(cache, namedRange)) {
+                //  Other process probably timed out and left status hanging.
+                TableData.cachePutArray(cache, namedRange, cacheSeconds, arrData);
+            }
+        }
+
+        return arrData;
+    }
+
+    /**
+     * Read range of value from sheet and cache.
+     * @param {Object} cache - cache object can vary depending where the data is stored.
+     * @param {String} namedRange 
+     * @param {Number} cacheSeconds 
+     * @returns {any[][]} - data from range
+     */
+    static lockLoadAndCache(cache, namedRange, cacheSeconds) {
+        //  Only change our CACHE STATUS if we have a lock.
+        const lock = LockService.getScriptLock();
+        try {
+            lock.waitLock(10000); // wait 10 seconds for others' use of the code section and lock to stop and then proceed
+        } catch (e) {
+            throw new Error("Cache lock failed");
+        }
+
+        //  It is possible that just before getting the lock, another process started caching.
+        if (TableData.isRangeLoading(cache, namedRange)) {
+            lock.releaseLock();
+            return TableData.waitForRangeToLoad(cache, namedRange, cacheSeconds);
+        }
+
+        //  Mark the status for this named range that loading is in progress.
+        cache.put(TableData.cacheStatusName(namedRange), TABLE.LOADING, 15);
+        lock.releaseLock();
+
+        //  Load data from SHEETS.
+        const arrData = TableData.loadValuesFromRangeOrSheet(namedRange);
+
+        Logger.log(`Just LOADED from SHEET: ${arrData.length}`);
+
+        TableData.cachePutArray(cache, namedRange, cacheSeconds, arrData);
+
+        return arrData;
+    }
+
+    /**
+     * 
+     * @param {String} namedRange 
+     * @returns {any[]}
+     */
+    static loadValuesFromRangeOrSheet(namedRange) {
+        let tableNamedRange = namedRange;
+        let output = [];
+
+        try {
+            const sheetNamedRange = SpreadsheetApp.getActiveSpreadsheet().getRangeByName(tableNamedRange);
+
+            if (sheetNamedRange === null) {
+                //  This may be a SHEET NAME, so try getting SHEET RANGE.
+                if (tableNamedRange.startsWith("'") &amp;&amp; tableNamedRange.endsWith("'")) {
+                    tableNamedRange = tableNamedRange.substring(1, tableNamedRange.length - 1);
+                }
+                const sheetHandle = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(tableNamedRange);
+                if (sheetHandle === null)
+                    throw new Error(`Invalid table range specified:  ${tableNamedRange}`);
+
+                const lastColumn = sheetHandle.getLastColumn();
+                const lastRow = sheetHandle.getLastRow();
+                output = sheetHandle.getSheetValues(1, 1, lastRow, lastColumn);
+            }
+            else {
+                // @ts-ignore
+                output = sheetNamedRange.getValues();
+            }
+        }
+        catch (ex) {
+            throw new Error(`Error reading table data: ${tableNamedRange}`);
+        }
+
+        return output;
+    }
+
+    /**
+     * Takes array data to be cached, breaks up into chunks if necessary, puts each chunk into cache and updates status.
+     * @param {Object} cache 
+     * @param {String} namedRange 
+     * @param {Number} cacheSeconds 
+     * @param {any[][]} arrData 
+     */
+    static cachePutArray(cache, namedRange, cacheSeconds, arrData) {
+        const cacheStatusName = TableData.cacheStatusName(namedRange);
+        const json = JSON.stringify(arrData);
+
+        //  Split up data (for re-assembly on get() later)
+        let splitCount = (json.length / (100 * 1024)) * 1.3;    // 1.3 - assumes some blocks may be bigger.
+        splitCount = splitCount &lt; 1 ? 1 : splitCount;
+        const arrayLength = Math.ceil(arrData.length / splitCount);
+        const putObject = {};
+        let blockCount = 0;
+        let startIndex = 0;
+        while (startIndex &lt; arrData.length) {
+            const arrayBlock = arrData.slice(startIndex, startIndex + arrayLength);
+            blockCount++;
+            startIndex += arrayLength;
+            putObject[`${namedRange}:${blockCount.toString()}`] = JSON.stringify(arrayBlock);
+        }
+
+        //  Update status that cache is updated.
+        const lock = LockService.getScriptLock();
+        try {
+            lock.waitLock(10000); // wait 10 seconds for others' use of the code section and lock to stop and then proceed
+        } catch (e) {
+            throw new Error("Cache lock failed");
+        }
+        cache.putAll(putObject, cacheSeconds);
+        cache.put(cacheStatusName, TABLE.BLOCKS + blockCount.toString(), cacheSeconds);
+
+        Logger.log(`Writing STATUS: ${cacheStatusName}. Value=${TABLE.BLOCKS}${blockCount.toString()}. seconds=${cacheSeconds}. Items=${arrData.length}`);
+
+        lock.releaseLock();
+    }
+
+    /**
+     * Reads cache for range, and re-assembles blocks into return array of data.
+     * @param {Object} cache 
+     * @param {String} namedRange 
+     * @returns {any[][]}
+     */
+    static cacheGetArray(cache, namedRange) {
+        let arrData = [];
+
+        const cacheStatusName = TableData.cacheStatusName(namedRange);
+        const cacheStatus = cache.get(cacheStatusName);
+        if (cacheStatus === null) {
+            Logger.log(`Named Range Cache Status not found = ${cacheStatusName}`);
+            return null;
+        }
+
+        Logger.log(`Cache Status: ${cacheStatusName}. Value=${cacheStatus}`);
+        if (cacheStatus === TABLE.LOADING) {
+            return null;
+        }
+
+        const blockStr = cacheStatus.substring(cacheStatus.indexOf(TABLE.BLOCKS) + TABLE.BLOCKS.length);
+        if (blockStr !== "") {
+            const blocks = parseInt(blockStr, 10);
+            for (let i = 1; i &lt;= blocks; i++) {
+                const blockName = `${namedRange}:${i.toString()}`;
+                const jsonData = cache.get(blockName);
+
+                if (jsonData === null) {
+                    Logger.log(`Named Range Part not found. R=${blockName}`);
+                    return null;
+                }
+
+                const partArr = JSON.parse(jsonData);
+                if (TableData.verifyCachedData(partArr)) {
+                    arrData = arrData.concat(partArr);
+                }
+                else {
+                    Logger.log(`Failed to verify named range: ${blockName}`);
+                    return null;
+                }
+            }
+
+        }
+        Logger.log(`Just LOADED From CACHE: ${namedRange}. Items=${arrData.length}`);
+
+        //  The conversion to JSON causes SHEET DATES to be converted to a string.
+        //  This converts any DATE STRINGS back to javascript date.
+        TableData.fixJSONdates(arrData);
+
+        return arrData;
+    }
+
+    /**
+     * 
+     * @param {any[][]} arrData 
+     */
+    static fixJSONdates(arrData) {
+        const ISO_8601_FULL = /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?(([+-]\d\d:\d\d)|Z)?$/i
+
+        for (const row of arrData) {
+            for (let i = 0; i &lt; row.length; i++) {
+                const testStr = row[i];
+                if (ISO_8601_FULL.test(testStr)) {
+                    row[i] = new Date(testStr);
+                }
+            }
+        }
+    }
+
+    /**
+     * 
+     * @param {String} namedRange 
+     * @returns {String}
+     */
+    static cacheStatusName(namedRange) {
+        return namedRange + TABLE.STATUS;
+    }
+}
+
+const TABLE = {
+    STATUS: "__STATUS__",
+    LOADING: "LOADING",
+    BLOCKS: "BLOCKS="
+}
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.0</a> on Mon Jan 09 2023 12:44:12 GMT-0500 (Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>
