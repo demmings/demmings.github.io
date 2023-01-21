@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  "Bind Variables in gsSQL"
-date:   2023-01-21 17:00:00 -0500
+date:   2023-01-21 12:00:00 -0500
 categories: [New Feature]
 
 keywords:
@@ -41,7 +41,7 @@ gsSQL(statement, tableArr, columnTitle, …bindings)
 ## Simple Example.
 * Here is the basic syntax for using:
 ```
-=gsSQL("select * from table where fld = ?1", {{"table", "table", 0}}, true, "idData")
+=gsSQL("select * from table where fld = ?1", { {"table", "table", 0} }, true, "idData")
 ```
 
 * The ?1 will be substituted at run time.  The actual select would be run like this:
@@ -51,7 +51,7 @@ select * from table where fld = 'idData'
 
 * The number after the question mark indicates which bind data item should be used based on its position in the list.
 ```
-=gsSQL("select * from table where fld = ?1 and quantity < ?2 and price > ?3", {{"table", "table", 0}}, true, "idData", 10, 3.99)
+=gsSQL("select * from table where fld = ?1 and quantity < ?2 and price > ?3", { {"table", "table", 0} }, true, "idData", 10, 3.99)
 ```
 * This would be translated to
 ```
@@ -60,18 +60,18 @@ select * from table where fld = 'idData' and quantity < 10 and price > 3.99
 
 * The bind placeholders do not need to be used in the order they are listed and any variable can be reference more than once:
 ```
-=gsSQL("select * from table where backOrder < ?2 and order > ?2 and fld = ?1", {{"table", "table", 0}}, true, "idData", 10)
+=gsSQL("select * from table where backOrder < ?2 and order > ?2 and fld = ?1", { {"table", "table", 0} }, true, "idData", 10)
 ```
 
 * Using **Named Range** or **Cell** address.
 * In this example the **startDate** and **endDate** are named ranges that contain date date.
 ```
-=gsSQL("select * from table where date >= ?1 and date <= ?2", {{"table", "table", 0}}, true, startDate, endDate)
+=gsSQL("select * from table where date >= ?1 and date <= ?2", { {"table", "table", 0} }, true, startDate, endDate)
 ```
 
 * You can also use A1 cell notation:
 ```
-=gsSQL("select * from table where date >= ?1 and date <= ?2", {{"table", "table", 0}}, true, A1, A2)
+=gsSQL("select * from table where date >= ?1 and date <= ?2", { {"table", "table", 0} }, true, A1, A2)
 ```
 
 ## Syntax Shortcut
