@@ -105,10 +105,10 @@ categories: gssql custom function replacement to QUERY
         left join authors on books.author_id = authors.id 
         left join translators on books.translator_id = translators.id 
         left join editors on books.editor_id = editors.id 
-        where booksales.date >= ? and booksales.date <= ? 
+        where booksales.date >= ?1 and booksales.date <= ?2 
         union all select 'Total', SUM(booksales.quantity), avg(booksales.price), SUM(booksales.quantity * booksales.price), '' ,'', '', '', '', '' from booksales 
-        where booksales.date >= ? and booksales.date <= ?",
-        , true, startDate, endDate, startDate, endDate
+        where booksales.date >= ?1 and booksales.date <= ?2",
+        , true, startDate, endDate
     )
   ```
 
