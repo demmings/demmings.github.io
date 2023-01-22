@@ -10,8 +10,15 @@ keywords:
   - Bind
 ---
 
+# What does a BIND variable look like.
+
+```
+    select * from table where fld = ?1
+```
+
 # What are BIND variables.
 
+* A bind variable is a placeholder within your SELECT statement that is replaced at run time with data you list in the gsSQL() function.
 * For any variable data used from the Google Sheet, it can be easily inserted into the SELECT statement.
 * You can use cell data directly within the SELECT string, but this data needs to be concatenated into the string properly - which takes extra work.
   * This is especially true when trying to include DATE data in your select.
@@ -64,7 +71,7 @@ select * from table where fld = 'idData' and quantity < 10 and price > 3.99
 ```
 
 * Using **Named Range** or **Cell** address.
-* In this example the **startDate** and **endDate** are named ranges that contain date date.
+* In this example the **startDate** and **endDate** are named ranges that contain a date.
 ```
 =gsSQL("select * from table where date >= ?1 and date <= ?2", { {"table", "table", 0} }, true, startDate, endDate)
 ```
