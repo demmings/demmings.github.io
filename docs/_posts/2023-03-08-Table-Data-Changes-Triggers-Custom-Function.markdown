@@ -44,7 +44,7 @@ gsSQL(statement, tableDefinitions, outputColumnTitles, bindVariables)
 
 # Syntax Example
 
-![New Syntax](img/../../_site/img/postMar8_2023.png)
+![New Syntax](/img/postMar8_2023.png)
 
 * In this example you can see that two tables are referenced:  **sales** and **recipe**
   * **sales** is specified by the range  A216:C225
