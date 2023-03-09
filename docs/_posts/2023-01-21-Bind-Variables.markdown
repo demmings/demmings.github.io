@@ -2,7 +2,7 @@
 layout: default
 title:  "Bind Variables in gsSQL"
 date:   2023-01-21 12:00:00 -0500
-categories: [New Feature]
+categories: [New Feature, gsSQL]
 
 keywords:
   - SQL

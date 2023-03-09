@@ -2,7 +2,7 @@
 layout: default
 title:  "Correlated Sub Query"
 date:   2022-12-23 17:00:00 -0500
-categories: [New Feature]
+categories: [New Feature, gsSQL]
 ---
 
 # New Feature

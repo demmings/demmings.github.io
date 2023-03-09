@@ -2,7 +2,7 @@
 layout: default
 title:  "Select where EXISTS using correlated Sub Query"
 date:   2022-12-28 17:00:00 -0500
-categories: [New Feature]
+categories: [New Feature, gsSQL]
 
 keywords:
   - SQL

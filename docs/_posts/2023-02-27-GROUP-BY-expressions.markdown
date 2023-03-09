@@ -2,7 +2,7 @@
 layout: default
 title:  "GROUP BY in gsSQL"
 date:   2023-02-27 08:00:00 -0500
-categories: [New Feature]
+categories: [New Feature, gsSQL]
 
 keywords:
   - SQL
