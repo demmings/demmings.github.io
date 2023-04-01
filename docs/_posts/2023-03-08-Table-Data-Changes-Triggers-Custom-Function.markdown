@@ -2,7 +2,7 @@
 layout: default
 title:  "Custom Function Triggered on Data Changes"
 date:   2023-03-08 08:00:00 -0500
-categories: [New Feature, gsSQL]
+categories: [gsSQL]
 
 keywords:
   - SQL

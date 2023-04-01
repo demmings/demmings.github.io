@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>VirtualField - gsSQL</title>
+    <title>tests/join.test.js - gsSQL</title>
     
     <meta name="description" content="Query Google Sheets using standard SQL SELECT syntax." />
     
@@ -49,571 +49,66 @@
 
 <div id="main">
     
-    <h1 class="page-title">VirtualField</h1>
+    <h1 class="page-title">tests/join.test.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
-    
-        <h2>
-        
-            VirtualField
-        
-        </h2>
-        
-            <div class="class-description usertext"><p>Defines all possible table fields including '*' and long/short form (i.e. table.column).</p></div>
-        
-    
-</header>
-
-<article>
-    
-        <div class="container-overview">
-        
-            
-
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="VirtualField"><span class="type-signature"></span>new VirtualField<span class="signature">(fieldName, tableInfo, tableColumn)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Views.js.html">Views.js</a>, <a href="Views.js.html#line1244">line 1244</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>fieldName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>field name</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>tableInfo</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Table.html">Table</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>table this field belongs to.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>tableColumn</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>column number of this field.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        </div>
-    
-
-    
-
-    
-
-    
-    
-    
-
-     
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="fieldName"><span class="type-signature"></span>fieldName<span class="type-signature"></span></h4>
-
-
-
-
-
-<dl class="details">
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Views.js.html">Views.js</a>, <a href="Views.js.html#line1253">line 1253</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>field name</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="tableColumn"><span class="type-signature"></span>tableColumn<span class="type-signature"></span></h4>
-
-
-
-
-
-<dl class="details">
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Views.js.html">Views.js</a>, <a href="Views.js.html#line1257">line 1257</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>column number of this field.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="tableInfo"><span class="type-signature"></span>tableInfo<span class="type-signature"></span></h4>
-
-
-
-
-
-<dl class="details">
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Views.js.html">Views.js</a>, <a href="Views.js.html#line1255">line 1255</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Table.html">Table</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>table this field belongs to.</p></td>
-        </tr>
-
     
-    </tbody>
-</table>
-
-
-
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { SqlParse } from '../SimpleParser.js';
+import { SqlTester } from '../SqlTest.js';
+import { Sql } from '../Sql';
+import { TableFields, CalculatedField } from '../Views.js';
+import { expect, jest, test } from '@jest/globals';
+import { JoinTablesRecordIds } from '../JoinTables.js';
 
+/**
+ * @type {Sql}
+ */
+let sqlCmd = null;
+describe("JOIN Tests", () => {
+    beforeEach(() => {
 
+        const testData = new SqlTester();
 
+        sqlCmd = new Sql()
+            .addTableData("booksales", testData.bookSalesTable())
+            .addTableData("customers", testData.customerTable())
+            .enableColumnTitle(true);
+    })
 
+    test('Parse SELECT', () => {
+        const statement = "select * from booksales inner join customers on substr(booksales.customer_id, 2, 1) = substr(customers.id, 2, 1)";
+        let ast = SqlParse.sql2ast(statement);
 
+        /** @property {TableFields} */
+        const tableFields = new TableFields();
+        tableFields.loadVirtualFields("BOOKSALES", sqlCmd.getTables());
 
+        const masterTable = sqlCmd.getTables().get("BOOKSALES");
 
+        const calcSqlField = new CalculatedField(masterTable, masterTable, tableFields);
+        const result = calcSqlField.evaluateCalculatedField("substr(booksales.customer_id, 2, 1)", 1);
 
 
+        const joinTableIDs = new JoinTablesRecordIds();
 
-        
-    
-
-    
+        joinTableIDs
+            .setJoinType("inner")
+            .setLeftTableName("BOOKSALES")
+            .setRightTableName("CUSTOMERS")
+            .setTableFields(tableFields);
 
-    
-
-    
-</article>
+        expect(joinTableIDs.getRecordIDs(ast.JOIN[0])).toBe("1");
 
-</section>
+    })
+});</code></pre>
+        </article>
+    </section>
 
 
 
