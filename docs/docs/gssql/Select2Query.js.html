@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>ScriptSettings - gsSQL</title>
+    <title>Select2Query.js - gsSQL</title>
     
     <meta name="description" content="Query Google Sheets using standard SQL SELECT syntax." />
     
@@ -49,805 +49,234 @@
 
 <div id="main">
     
-    <h1 class="page-title">ScriptSettings</h1>
-    
-
-    
-
-
-
-
-<section>
-
-<header>
-    
-        <h2>
-        
-            ScriptSettings
-        
-        </h2>
-        
-            <div class="class-description usertext"><p>Stores settings for the SCRIPT.  Long term cache storage for small tables.</p></div>
-        
-    
-</header>
-
-<article>
-    
-        <div class="container-overview">
-        
-            
-
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="ScriptSettings"><span class="type-signature"></span>new ScriptSettings<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>For storing cache data for very long periods of time.</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ScriptSettings.js.html">ScriptSettings.js</a>, <a href="ScriptSettings.js.html#line8">line 8</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        </div>
-    
-
-    
-
-    
-
-    
-    
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="expire"><span class="type-signature"></span>expire<span class="signature">(deleteAll)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Removes script settings that have expired.</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ScriptSettings.js.html">ScriptSettings.js</a>, <a href="ScriptSettings.js.html#line71">line 71</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>deleteAll</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Boolean</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>true - removes ALL script settings regardless of expiry time.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(propertyKey)</span><span class="type-signature"> &rarr; {any}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Get script property using key.  If not found, returns null.</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ScriptSettings.js.html">ScriptSettings.js</a>, <a href="ScriptSettings.js.html#line21">line 21</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>propertyKey</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">any</span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="put"><span class="type-signature"></span>put<span class="signature">(propertyKey, propertyData, daysToHold)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Put data into our PROPERTY cache, which can be held for long periods of time.</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ScriptSettings.js.html">ScriptSettings.js</a>, <a href="ScriptSettings.js.html#line39">line 39</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>propertyKey</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>key to finding property data.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>propertyData</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>value.  Any object can be saved..</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>daysToHold</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    <code>1</code>
-                
-                </td>
-            
-
-            <td class="description last"><p>number of days to hold before item is expired.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="putAll"><span class="type-signature"></span>putAll<span class="signature">(propertyDataObject, daysToHold)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ScriptSettings.js.html">ScriptSettings.js</a>, <a href="ScriptSettings.js.html#line59">line 59</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>propertyDataObject</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>daysToHold</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    <code>1</code>
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <h1 class="page-title">Select2Query.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @author Chris Demmings - https://demmings.github.io/
+//  *** DEBUG START ***
+//  Remove comments for testing in NODE
+import { SqlParse } from './SimpleParser.js';
+export { Select2Query };
+
+class Logger {
+    static log(msg) {
+        console.log(msg);
+    }
+}
+//  *** DEBUG END ***/
+
+
+class Select2Query {
+    setTables(...parms) {
+        this.tables = this.addTableData(parms);
+        return this;
+    }
+
+    setTableMap(tables) {
+        this.tables = tables;
+        return this;
+    }
+
+    convert(selectStatement) {
+        let queryStatement = "";
+        let ast = null;
+
+        if (typeof selectStatement === 'string') {
+            ast = SqlParse.sql2ast(selectStatement);
+        }
+        else {
+            ast = selectStatement;
+        }
+        queryStatement = this.selectFields(ast);
+        queryStatement += this.whereCondition(ast);
+        queryStatement += this.groupBy(ast);
+        queryStatement += this.orderBy(ast);
+
+        const query = this.formatAsQuery(queryStatement, ast.FROM.table);
+        console.log(query);
+
+        return query;
+    }
+
+    formatAsQuery(statement, tableName) {
+        let range = this.tables.has(tableName.toUpperCase()) ? this.tables.get(tableName.toUpperCase()) : "";
+
+        return "=QUERY(" + range + ", \"" + statement + "\")";
+    }
+
+    addTableData(parms) {
+        const tables = new Map();
+
+        //  Should be:  TABLE NAME, TABLE RANGE, name, range, name, range,...
+        let i = 0;
+        while (i + 1 &lt; parms.length) {
+            console.log(`Add Table: ${parms[i]}. Items=${parms[i + 1].length}`);
+            tables.set(parms[i].trim().toUpperCase(), parms[i + 1]);
+            i += 2;
+        }
+
+        return tables;
+    }
+
+    selectFields(ast) {
+        let selectStr = "SELECT ";
+        if (typeof ast.SELECT !== 'undefined') {
+            for (let i = 0; i &lt; ast.SELECT.length; i++) {
+                let fld = ast.SELECT[i];
+                if (typeof fld.as !== 'undefined' &amp;&amp; fld.as !== '') {
+                    selectStr += fld.as.toUpperCase();
+                }
+                else {
+                    selectStr += fld.name;
+                }
+
+                if (i + 1 &lt; ast.SELECT.length) {
+                    selectStr += ", ";
+                }
+            }
+        }
+
+        return selectStr;
+    }
+
+    /**
+  * Retrieve filtered record ID's.
+  * @param {Object} ast - Abstract Syntax Tree
+  * @returns {String} - Query WHERE condition.
+  */
+    whereCondition(ast) {
+        let queryWhere = "";
+
+        let conditions = {};
+        if (typeof ast.WHERE !== 'undefined') {
+            conditions = ast.WHERE;
+        }
+        else {
+            //  Entire table is selected.  
+            return queryWhere;
+        }
+
+        if (typeof conditions.logic === 'undefined')
+            queryWhere = this.resolveCondition("OR", [conditions], "");
+        else
+            queryWhere = this.resolveCondition(conditions.logic, conditions.terms, "");
+
+        return " WHERE " + queryWhere.trim();
+    }
+
+    /**
+    * Recursively resolve WHERE condition and then apply AND/OR logic to results.
+    * @param {String} logic - logic condition (AND/OR) between terms
+    * @param {Object} terms - terms of WHERE condition (value compared to value)
+    * @returns {String} - condition of where 
+    */
+    resolveCondition(logic, terms, queryWhere) {
+
+        for (let i = 0; i &lt; terms.length; i++) {
+            let cond = terms[i];
+
+            if (typeof cond.logic === 'undefined') {
+                queryWhere += this.whereString(cond);
+            }
+            else {
+                queryWhere = this.resolveCondition(cond.logic, cond.terms, queryWhere);
+            }
+
+            if (i + 1 &lt; terms.length) {
+                queryWhere += " " + logic;
+            }
+        }
+
+        return queryWhere;
+    }
+
+    whereString(cond) {
+        let whereStr = "";
+
+        switch(cond.operator) {
+            case "NOT IN":
+                whereStr =  " NOT " + this.whereValue(cond.left) + " " + this.whereOp("IN") + " " + this.whereValue(cond.right);
+                break;
+            case "IN":
+            default:
+                whereStr =  " " + this.whereValue(cond.left) + " " + this.whereOp(cond.operator) + " " + this.whereValue(cond.right);
+                break;
+        }
+
+        return whereStr;
+    }
+
+    whereOp(operator) {
+        if (operator.trim().toUpperCase() === 'IN')
+            return "MATCHES";
+
+        return operator;
+    }
+
+    whereValue(cond) {
+        if (typeof cond.SELECT === 'undefined') {
+            return cond;
+        }
+        else {
+            const sql = new Select2Query().setTableMap(this.tables)
+
+            const preTextJoin = "'\"&amp;TEXTJOIN(\"|\", true, ";
+            const postTextJoin = ")&amp;\"'";
+            const query = sql.convert(cond).slice(1);       //  Get rid of starting '='.
+            return preTextJoin + query + postTextJoin;
+        }
+    }
+
+    orderBy(ast) {
+        let orderBy = "";
+
+        if (typeof ast['ORDER BY'] === 'undefined') {
+            return orderBy;
+        }
+
+        orderBy = " ORDER BY "
+        for (let i = 0; i &lt; ast['ORDER BY'].length; i++) {
+            let order = ast['ORDER BY'][i];
+            orderBy += order.name + " " + order.order.toUpperCase();
+
+            if (i + 1 &lt; ast['ORDER BY'].length) {
+                orderBy += ", ";
+            }
+        }
+
+        return orderBy;
+    }
+
+    groupBy(ast) {
+        let groupBy = "";
+
+        if (typeof ast['GROUP BY'] === 'undefined') {
+            return groupBy;
+        }
+
+        groupBy += " GROUP BY ";
+
+        for (let i = 0; i &lt; ast['GROUP BY'].length; i++) {
+            let order = ast['GROUP BY'][i];
+            groupBy += order.name;
+
+            if (i + 1 &lt; ast['GROUP BY'].length) {
+                groupBy += ", ";
+            }
+        }
+
+        return groupBy;
+    }
+}</code></pre>
+        </article>
+    </section>
 
 
 
