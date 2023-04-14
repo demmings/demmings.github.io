@@ -533,7 +533,7 @@ class SqlParse {
     static analyzeParts(parts_order, parts) {
         const result = {};
         let j = 0;
-        parts_order.forEach(function (item, _key) {
+        parts_order.forEach(function (item) {
             const itemName = item.toUpperCase();
             j++;
             const part_result = SelectKeywordAnalysis.analyze(item, parts[j]);
@@ -557,7 +557,7 @@ class SqlParse {
         SqlParse.reorganizeJoins(result);
 
         if (typeof result.JOIN !== 'undefined') {
-            result.JOIN.forEach((item, key) => result.JOIN[key].cond = CondParser.parse(item.cond));
+            result.JOIN.forEach((item, key) => {result.JOIN[key].cond = CondParser.parse(item.cond)});
         }
 
         SqlParse.reorganizeUnions(result);
@@ -1163,7 +1163,7 @@ class SelectKeywordAnalysis {
         const strParts = str.split(',');
         const pivotResult = [];
 
-        strParts.forEach((item, _key) => {
+        strParts.forEach((item) => {
             const pivotOn = /([\w.]+)/gi;
             const pivotData = pivotOn.exec(item);
             if (pivotData !== null) {
