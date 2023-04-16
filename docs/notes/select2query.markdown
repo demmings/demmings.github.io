@@ -15,18 +15,18 @@ categories: QUERY
 
       <label for="sqlSelect">Enter SQL SELECT statement:</label>
       <br>
-      <textarea id="sqlSelect" name="text" rows="5" cols="60" placeholder="SELECT A, B, C from books where B not in (select B from books where F like '3%')"></textarea>
+      <textarea id="sqlSelect" name="text" rows="5" cols="60" placeholder="SELECT BookSales.A, BookSales.C, BookSales.D, Books.B, Books.C from BookSales join Books on BookSales.B = Books.A"></textarea>
       <br><br>
         <div class="grid-container">
 
                 <div class="grid-item">
-                    <input class="table_item" placeholder="books" id="table1" />
-                    <input class="table_item" placeholder="Books!A1:F11" id="range1" />
+                    <input class="table_item" placeholder="Books" id="table1" />
+                    <input class="table_item" placeholder="Books!A2:F" id="range1" />
                 </div>
                 
                 <div class="grid-item">
-                    <input class="table_item" placeholder="table name 2" id="table2" />
-                    <input class="table_item" placeholder="range name 2" id="range2" />
+                    <input class="table_item" placeholder="BookSales" id="table2" />
+                    <input class="table_item" placeholder="BookSales!A2:F" id="range2" />
                 </div>  
                 <div class="grid-item">
                     <input class="table_item" placeholder="table name 3" id="table3" />
