@@ -262,9 +262,9 @@ class QueryJoin {
         const NO_MATCH_QUERY = "$$NO_MATCH$$";
         let leftKeyRangeValue = this.getKeyRangeString(leftTable, conditionLeft);
         let rightKeyRangeValue = this.getKeyRangeString(rightTable, conditionRight);
-        let leftSelectFieldValue = this.leftSelectFields(selectFields, originalLeftTable);
-        let rightSelectFieldValue = this.rightSelectFields(selectFields, originalRightTable);
-        let notFoundQuery = this.selectNotInJoin(ast, joinAst, leftTable, rightTable);
+        let leftSelectFieldValue = this.leftSelectFields(selectFields, leftTable);
+        let rightSelectFieldValue = this.rightSelectFields(selectFields, rightTable);
+        let notFoundQuery = this.selectNotInJoin(ast, joinAst, originalLeftTable, originalRightTable);
 
         if (leftSelectFieldValue !== '' && rightSelectFieldValue !== '') {
             rightSelectFieldValue = '&"!"&' + rightSelectFieldValue;
@@ -475,7 +475,7 @@ class QueryJoin {
 
                 rightSelect = rightSelect === '' ? '' : rightSelect + '&"!"& ';
 
-                rightSelect += 'Split(Textjoin("!",1,' + selectField + '),"!")';
+                rightSelect += 'Split(Textjoin("!",1,IF(' + selectField + '<>"",' + selectField + '," ")),"!")';
             }
         }
 

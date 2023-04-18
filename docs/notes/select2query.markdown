@@ -17,8 +17,8 @@ categories: QUERY
       <br>
       <textarea id="sqlSelect" name="text" rows="5" cols="60" placeholder="SELECT BookSales.A, BookSales.C, BookSales.D, Books.B, Books.C from BookSales join Books on BookSales.B = Books.A"></textarea>
       <br><br>
+        Table Definitions:
         <div class="grid-container">
-
                 <div class="grid-item">
                     <input class="table_item" placeholder="Books" id="table1" />
                     <input class="table_item" placeholder="Books!A2:F" id="range1" />
