@@ -67,12 +67,13 @@ class Select2Query {
         if (typeof ast.SELECT !== 'undefined') {
             for (let i = 0; i < ast.SELECT.length; i++) {
                 let fld = ast.SELECT[i];
-                if (typeof fld.as !== 'undefined' && fld.as !== '') {
-                    selectStr += fld.as.toUpperCase();
+
+                let fieldName = fld.name;
+                if (fld.name.indexOf(".") !== -1) {
+                    let parts = fld.name.split(".");
+                    fieldName = parts[1];
                 }
-                else {
-                    selectStr += fld.name;
-                }
+                selectStr += fieldName.toUpperCase();
 
                 if (i + 1 < ast.SELECT.length) {
                     selectStr += ", ";
@@ -238,12 +239,16 @@ class QueryJoin {
      * @returns {String}
      */
     joinCondition(leftTable, selectFields, joinAst, ast) {
+        const LEFT_KEY_RANGE = "$$LEFT_KEY$$";
+        const LEFT_SELECT_FIELDS = "$$LEFT_SELECT$$";
+        const RIGHT_KEY_RANGE = "$$RIGHT_KEY$$";
+        const RIGHT_SELECT_FIELDS = "$$RIGHT_SELECT$$";
+        const NO_MATCH_QUERY = "$$NO_MATCH$$";
+
         let query = "";
         let rightTable = joinAst.table;
         let conditionLeft = joinAst.cond.left;
         let conditionRight = joinAst.cond.right
-        let originalLeftTable = leftTable;
-        let originalRightTable = rightTable;
 
         if (joinAst.type === 'right') {
             let temp = leftTable;
@@ -255,16 +260,11 @@ class QueryJoin {
             conditionRight = temp;
         }
 
-        const LEFT_KEY_RANGE = "$$LEFT_KEY$$";
-        const LEFT_SELECT_FIELDS = "$$LEFT_SELECT$$";
-        const RIGHT_KEY_RANGE = "$$RIGHT_KEY$$";
-        const RIGHT_SELECT_FIELDS = "$$RIGHT_SELECT$$";
-        const NO_MATCH_QUERY = "$$NO_MATCH$$";
         let leftKeyRangeValue = this.getKeyRangeString(leftTable, conditionLeft);
         let rightKeyRangeValue = this.getKeyRangeString(rightTable, conditionRight);
         let leftSelectFieldValue = this.leftSelectFields(selectFields, leftTable);
         let rightSelectFieldValue = this.rightSelectFields(selectFields, rightTable);
-        let notFoundQuery = this.selectNotInJoin(ast, joinAst, originalLeftTable, originalRightTable);
+        let notFoundQuery = this.selectNotInJoin(ast, joinAst, leftTable, rightTable);
 
         if (leftSelectFieldValue !== '' && rightSelectFieldValue !== '') {
             rightSelectFieldValue = '&"!"&' + rightSelectFieldValue;
@@ -322,78 +322,107 @@ class QueryJoin {
             return "";
         }
 
-        let selectFlds = "";
-        let nullCnt = 1;
+        leftTable = leftTable.toUpperCase();
 
-        for (let fld of ast.SELECT) {
-            let fieldTable = leftTable;
-            let fieldName = fld.name;
-            if (fld.name.indexOf(".") !== -1) {
-                let parts = fld.name.split(".");
-                fieldTable = parts[0];
-                fieldName = parts[1];
-            }
+        //  Sort fields so that LEFT table are first and RIGHT table are after.
+        const sortedFields = this.sortSelectJoinFields(ast, leftTable);
 
-            selectFlds = selectFlds === '' ? '' : selectFlds + ",";
-            if (fieldTable.toUpperCase() === leftTable.toUpperCase()) {
-                selectFlds += fieldName;
-            }
-            else {
-                selectFlds += "'null" + " ".repeat(nullCnt) + "'";
-                nullCnt++;
-            }
-        }
+        const selectFlds = this.createSelectFieldsString(sortedFields);
+        const label = this.createSelectLabelString(sortedFields);
+        const rightFieldName = this.getJoinField(joinAst, joinAst.cond.right, joinAst.cond.left);
+        const leftFieldName = this.getJoinField(joinAst, joinAst.cond.left, joinAst.cond.right);
+        const leftRange = this.tables.get(leftTable.toUpperCase());       
+        const rightRange = this.tables.get(rightTable.toUpperCase());
+        
+        const queryStart = ";QUERY(" + leftRange + ",";
+        let selectStr = queryStart + "\"select " + selectFlds + " where " + rightFieldName + " is not null and NOT " + rightFieldName + " MATCHES ";
 
-        let fieldName = "";
-        if (joinAst.type === 'right') {
-            fieldName = joinAst.cond.right;
-        }
-        else {
-            fieldName = joinAst.cond.left;
-        }
-        if (fieldName.indexOf(".") !== -1) {
-            let parts = fieldName.split(".");
-            fieldName = parts[1];
-        }
-
-        let leftRange = this.tables.get(leftTable.toUpperCase());
-        let queryStart = ";QUERY(" + leftRange + ",";
-
-        let selectStr = queryStart + "\"select " + selectFlds + " where " + fieldName + " is not null and NOT " + fieldName + " MATCHES ";
-
-        let rightRange = this.tables.get(rightTable.toUpperCase());
-
-        if (joinAst.type === 'right') {
-            fieldName = joinAst.cond.left;
-        }
-        else {
-            fieldName = joinAst.cond.right;
-        }
-        if (fieldName.indexOf(".") !== -1) {
-            let parts = fieldName.split(".");
-            fieldName = parts[1];
-        }
-
-        let matchesQuery = '\'\"&TEXTJOIN("|", true, QUERY(' + rightRange + ', "SELECT ' + fieldName + ' where ' + fieldName + ' is not null"))&';
+        const matchesQuery = '\'\"&TEXTJOIN("|", true, QUERY(' + rightRange + ', "SELECT ' + leftFieldName + ' where ' + leftFieldName + ' is not null"))&';
         selectStr += matchesQuery;
 
-        if (nullCnt > 1) {
-            let label = "\"' label ";
-            for (let i = 1; i < nullCnt; i++) {
-                if (i > 1) {
-                    label += ", ";
-                }
-
-                label += "'null" + " ".repeat(i) + "' ''";
-            }
-
-            selectStr += label;
-        }
-
-        selectStr += '", 0)';
+        selectStr = selectStr + label + '", 0)';
 
 
         return selectStr;
+    }
+
+    getJoinField(joinAst, rightSide, leftSide) {
+        let fieldName = "";
+        if (joinAst.type === 'right') {
+            fieldName = rightSide;
+        }
+        else {
+            fieldName = leftSide;
+        }
+        if (fieldName.indexOf(".") !== -1) {
+            let parts = fieldName.split(".");
+            fieldName = parts[1];
+        }
+
+        return fieldName;
+    }
+
+    sortSelectJoinFields(ast, leftTable) {
+        //  Sort fields so that LEFT table are first and RIGHT table are after.
+        let leftFields = [];
+        let rightFields = [];
+        let nullCnt = 1;
+
+        for (let fld of ast.SELECT) {
+            let fieldTable = leftTable.toUpperCase();
+            let fieldName = fld.name.toUpperCase();
+            if (fld.name.indexOf(".") !== -1) {
+                let parts = fld.name.split(".");
+                fieldTable = parts[0].toUpperCase();
+                fieldName = parts[1].toUpperCase();
+            }
+
+            let isNull = false;
+            let fieldInfo = {
+                fieldTable,
+                fieldName,
+                isNull
+            };
+
+            if (fieldTable === leftTable) {
+                leftFields.push(fieldInfo);
+            }
+            else {
+                fieldInfo.fieldName = "'null" + " ".repeat(nullCnt) + "'";
+                fieldInfo.isNull = true;
+                nullCnt++;
+                rightFields.push(fieldInfo);
+            }
+        }
+
+        return leftFields.concat(rightFields);
+    }
+
+    createSelectFieldsString(sortedFields) {
+        let selectFlds = "";
+
+        for (let fld of sortedFields) {
+            selectFlds = (selectFlds === '' ? '' : selectFlds + ",") + fld.fieldName;
+        }
+
+        return selectFlds;
+    }
+
+    createSelectLabelString(sortedFields) {
+        let label = "";
+
+        for (let fld of sortedFields) {
+            if (fld.isNull) {
+                label = label !== "" ? label += ", " : ""; 
+                label += fld.fieldName + " ''";
+            }
+        }
+
+        if (label !== "") {
+            label = "\"' label " + label;
+        }
+
+        return label;
     }
 
     leftSelectFields(ast, leftTable) {
