@@ -260,17 +260,17 @@ class QueryJoin {
             conditionRight = temp;
         }
 
-        let leftKeyRangeValue = this.getKeyRangeString(leftTable, conditionLeft);
-        let rightKeyRangeValue = this.getKeyRangeString(rightTable, conditionRight);
-        let leftSelectFieldValue = this.leftSelectFields(selectFields, leftTable);
+        const leftKeyRangeValue = this.getKeyRangeString(leftTable, conditionLeft);
+        const rightKeyRangeValue = this.getKeyRangeString(rightTable, conditionRight);
+        const leftSelectFieldValue = this.leftSelectFields(selectFields, leftTable);
         let rightSelectFieldValue = this.rightSelectFields(selectFields, rightTable);
-        let notFoundQuery = this.selectNotInJoin(ast, joinAst, leftTable, rightTable);
+        const notFoundQuery = this.selectNotInJoin(ast, joinAst, leftTable, rightTable);
 
         if (leftSelectFieldValue !== '' && rightSelectFieldValue !== '') {
             rightSelectFieldValue = '&"!"&' + rightSelectFieldValue;
         }
 
-        let joinFormatString = '={ArrayFormula(Split(Query(Flatten(IF($$LEFT_KEY$$=Split(Textjoin("!",1,$$RIGHT_KEY$$),"!"),$$LEFT_SELECT$$ $$RIGHT_SELECT$$,)),"Where Col1!=\'\'"),"!"))$$NO_MATCH$$}';
+        const joinFormatString = '={ArrayFormula(Split(Query(Flatten(IF($$LEFT_KEY$$=Split(Textjoin("!",1,$$RIGHT_KEY$$),"!"),$$LEFT_SELECT$$ $$RIGHT_SELECT$$,)),"Where Col1!=\'\'"),"!"))$$NO_MATCH$$}';
 
         query = joinFormatString.replace(LEFT_KEY_RANGE, leftKeyRangeValue);
         query = query.replace(RIGHT_KEY_RANGE, rightKeyRangeValue);
@@ -278,7 +278,7 @@ class QueryJoin {
         query = query.replace(RIGHT_SELECT_FIELDS, rightSelectFieldValue);
         query = query.replace(NO_MATCH_QUERY, notFoundQuery);
 
-        let sql = new Select2Query();
+        const sql = new Select2Query();
         sql.setTableMap(this.tables);
 
         return query;
@@ -331,16 +331,18 @@ class QueryJoin {
         const label = this.createSelectLabelString(sortedFields);
         const rightFieldName = this.getJoinField(joinAst, joinAst.cond.right, joinAst.cond.left);
         const leftFieldName = this.getJoinField(joinAst, joinAst.cond.left, joinAst.cond.right);
-        const leftRange = this.tables.get(leftTable.toUpperCase());       
+        const leftRange = this.tables.get(leftTable.toUpperCase());
         const rightRange = this.tables.get(rightTable.toUpperCase());
-        
-        const queryStart = ";QUERY(" + leftRange + ",";
+
+        const queryStart = "QUERY(" + leftRange + ",";
         let selectStr = queryStart + "\"select " + selectFlds + " where " + rightFieldName + " is not null and NOT " + rightFieldName + " MATCHES ";
 
-        const matchesQuery = '\'\"&TEXTJOIN("|", true, QUERY(' + rightRange + ', "SELECT ' + leftFieldName + ' where ' + leftFieldName + ' is not null"))&';
+        const matchesQuery = '\'"&TEXTJOIN("|", true, QUERY(' + rightRange + ', "SELECT ' + leftFieldName + ' where ' + leftFieldName + ' is not null"))&';
         selectStr += matchesQuery;
-
         selectStr = selectStr + label + '", 0)';
+
+        //  If no records are found, we need to insert an empty record - otherwise we get an array error.
+        selectStr = ";IFNA(" + selectStr + "," + this.ifNaResult(ast) + ")";
 
 
         return selectStr;
@@ -362,6 +364,18 @@ class QueryJoin {
         return fieldName;
     }
 
+    /**
+     * @typedef {Object} JoinSelectField
+     * @property {String} fieldTable
+     * @property {String} fieldName
+     * @property {Boolean} isNull
+     */
+
+    /**
+     * @param {Object} ast 
+     * @param {String} leftTable
+     * @returns {JoinSelectField[]}
+     */
     sortSelectJoinFields(ast, leftTable) {
         //  Sort fields so that LEFT table are first and RIGHT table are after.
         let leftFields = [];
@@ -398,6 +412,30 @@ class QueryJoin {
         return leftFields.concat(rightFields);
     }
 
+    /**
+     * Build a string that will be used in IFNA() when select does not find any records.
+     * @param {Object} ast 
+     * @returns {String}
+     */
+    ifNaResult(ast) {
+        let naResult = "";
+        for (const element of ast.SELECT) {
+            naResult = (naResult === '') ? "" : naResult + ",";
+            naResult += '""';
+        }  
+        
+        if (naResult !== "") {
+            naResult = "{" + naResult + "}";
+        }
+
+        return naResult;
+    }
+
+    /**
+     * 
+     * @param {JoinSelectField[]} sortedFields 
+     * @returns {String}
+     */
     createSelectFieldsString(sortedFields) {
         let selectFlds = "";
 
@@ -408,12 +446,17 @@ class QueryJoin {
         return selectFlds;
     }
 
+    /**
+    * 
+    * @param {JoinSelectField[]} sortedFields 
+    * @returns {String}
+    */
     createSelectLabelString(sortedFields) {
         let label = "";
 
         for (let fld of sortedFields) {
             if (fld.isNull) {
-                label = label !== "" ? label += ", " : ""; 
+                label = label !== "" ? label += ", " : "";
                 label += fld.fieldName + " ''";
             }
         }
@@ -425,10 +468,15 @@ class QueryJoin {
         return label;
     }
 
+    /**
+     * Assembled selected fields string for LEFT.
+     * @param {Object} ast 
+     * @param {String} leftTable 
+     * @returns {String}
+     */
     leftSelectFields(ast, leftTable) {
         let leftSelect = "";
 
-        //  BookSales!A2:A&"!"&IF(BookSales!C2:C <> "",BookSales!C2:C, " ")&"!"& BookSales!D2:D
         for (let fld of ast) {
             let selectField = "";
 
@@ -445,17 +493,17 @@ class QueryJoin {
             let rangeTable = "";
             let range = "";
             if (selectField !== "") {
-                let tableInfo = this.tables.get(leftTable.toUpperCase());
+                const tableInfo = this.tables.get(leftTable.toUpperCase());
 
                 if (tableInfo.indexOf("!") !== -1) {
-                    let parts = tableInfo.split("!");
+                    const parts = tableInfo.split("!");
                     rangeTable = parts[0] + "!";
                     range = parts[1];
                 }
 
-                let rangeComponents = range.split(":");
-                let startRange = this.replaceColumn(rangeComponents[0], selectField);
-                let endRange = this.replaceColumn(rangeComponents[1], selectField);
+                const rangeComponents = range.split(":");
+                const startRange = this.replaceColumn(rangeComponents[0], selectField);
+                const endRange = this.replaceColumn(rangeComponents[1], selectField);
 
                 selectField = rangeTable + startRange + ":" + endRange;
 
@@ -468,9 +516,14 @@ class QueryJoin {
         return leftSelect;
     }
 
+    /**
+     * assemble SELECTED FIELDS string for RIGHT.
+     * @param {Object} ast 
+     * @param {String} rightTable 
+     * @returns {String}
+     */
     rightSelectFields(ast, rightTable) {
         let rightSelect = "";
-        // Split(Textjoin("!",1,Books!B2:B),"!")  &"!"&Split(Textjoin("!",1,Books!C2:C),"!")
 
         for (let fld of ast) {
             let selectField = "";
@@ -479,7 +532,7 @@ class QueryJoin {
                 selectField = fld.name;
             }
             else {
-                let parts = fld.name.split(".");
+                const parts = fld.name.split(".");
                 if (parts[0].toUpperCase() === rightTable.toUpperCase()) {
                     selectField = parts[1];
                 }
@@ -488,17 +541,17 @@ class QueryJoin {
             let rangeTable = "";
             let range = "";
             if (selectField !== "") {
-                let tableInfo = this.tables.get(rightTable.toUpperCase());
+                const tableInfo = this.tables.get(rightTable.toUpperCase());
 
                 if (tableInfo.indexOf("!") !== -1) {
-                    let parts = tableInfo.split("!");
+                    const parts = tableInfo.split("!");
                     rangeTable = parts[0] + "!";
                     range = parts[1];
                 }
 
-                let rangeComponents = range.split(":");
-                let startRange = this.replaceColumn(rangeComponents[0], selectField);
-                let endRange = this.replaceColumn(rangeComponents[1], selectField);
+                const rangeComponents = range.split(":");
+                const startRange = this.replaceColumn(rangeComponents[0], selectField);
+                const endRange = this.replaceColumn(rangeComponents[1], selectField);
 
                 selectField = rangeTable + startRange + ":" + endRange;
 
@@ -865,7 +918,7 @@ class SqlParse {
         SqlParse.reorganizeJoins(result);
 
         if (typeof result.JOIN !== 'undefined') {
-            result.JOIN.forEach((item, key) => {result.JOIN[key].cond = CondParser.parse(item.cond)});
+            result.JOIN.forEach((item, key) => { result.JOIN[key].cond = CondParser.parse(item.cond) });
         }
 
         SqlParse.reorganizeUnions(result);
@@ -1371,36 +1424,44 @@ class SelectKeywordAnalysis {
         const selectParts = SelectKeywordAnalysis.protect_split(',', str);
         const selectResult = selectParts.filter(function (item) {
             return item !== '';
-        }).map(function (item) {
-            let order = "";
-            if (isOrderBy) {
-                const order_by = /^(.+?)(\s+ASC|DESC)?$/gi;
-                const orderData = order_by.exec(item);
-                if (orderData !== null) {
-                    order = typeof orderData[2] === 'undefined' ? "ASC" : SelectKeywordAnalysis.trim(orderData[2]);
-                    item = orderData[1].trim();
-                }
-            }
-
-            //  Is there a column alias?
-            const [name, as] = SelectKeywordAnalysis.getNameAndAlias(item);
-
-            const splitPattern = /[\s()*/%+-]+/g;
-            let terms = name.split(splitPattern);
-
-            if (terms !== null) {
-                const aggFunc = ["SUM", "MIN", "MAX", "COUNT", "AVG", "DISTINCT"];
-                terms = (aggFunc.indexOf(terms[0].toUpperCase()) === -1) ? terms : null;
-            }
-            if (name !== "*" && terms !== null && terms.length > 1) {
-                const subQuery = SelectKeywordAnalysis.parseForCorrelatedSubQuery(item);
-                return { name, terms, as, subQuery, order };
-            }
-
-            return { name, as, order };
-        });
+        }).map(item => SelectKeywordAnalysis.extractSelectField(item, isOrderBy));
 
         return selectResult;
+    }
+
+    /**
+     * 
+     * @param {String} item 
+     * @param {Boolean} isOrderBy 
+     * @returns {Object}
+     */
+    static extractSelectField(item, isOrderBy) {
+        let order = "";
+        if (isOrderBy) {
+            const order_by = /^(.+?)(\s+ASC|DESC)?$/gi;
+            const orderData = order_by.exec(item);
+            if (orderData !== null) {
+                order = typeof orderData[2] === 'undefined' ? "ASC" : SelectKeywordAnalysis.trim(orderData[2]);
+                item = orderData[1].trim();
+            }
+        }
+
+        //  Is there a column alias?
+        const [name, as] = SelectKeywordAnalysis.getNameAndAlias(item);
+
+        const splitPattern = /[\s()*/%+-]+/g;
+        let terms = name.split(splitPattern);
+
+        if (terms !== null) {
+            const aggFunc = ["SUM", "MIN", "MAX", "COUNT", "AVG", "DISTINCT"];
+            terms = (aggFunc.indexOf(terms[0].toUpperCase()) === -1) ? terms : null;
+        }
+        if (name !== "*" && terms !== null && terms.length > 1) {
+            const subQuery = SelectKeywordAnalysis.parseForCorrelatedSubQuery(item);
+            return { name, terms, as, subQuery, order };
+        }
+
+        return { name, as, order };
     }
 
     static FROM(str) {
