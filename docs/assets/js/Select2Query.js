@@ -18,7 +18,12 @@ class Select2Query {
         let query = "";
 
         if (typeof selectStatement === 'string') {
-            ast = SqlParse.sql2ast(selectStatement);
+            try {
+                ast = SqlParse.sql2ast(selectStatement);
+            }
+            catch (ex) {
+                return ex.toString();
+            }
         }
         else {
             ast = selectStatement;
@@ -348,6 +353,13 @@ class QueryJoin {
         return selectStr;
     }
 
+    /**
+     * 
+     * @param {Object} joinAst 
+     * @param {String} rightSide 
+     * @param {String} leftSide 
+     * @returns {String}
+     */
     getJoinField(joinAst, rightSide, leftSide) {
         let fieldName = "";
         if (joinAst.type === 'right') {
@@ -422,8 +434,8 @@ class QueryJoin {
         for (const element of ast.SELECT) {
             naResult = (naResult === '') ? "" : naResult + ",";
             naResult += '""';
-        }  
-        
+        }
+
         if (naResult !== "") {
             naResult = "{" + naResult + "}";
         }
@@ -1425,6 +1437,10 @@ class SelectKeywordAnalysis {
         const selectResult = selectParts.filter(function (item) {
             return item !== '';
         }).map(item => SelectKeywordAnalysis.extractSelectField(item, isOrderBy));
+
+        if (selectResult.length === 0) {
+            throw new Error("No fields SELECTED.");
+        }
 
         return selectResult;
     }
