@@ -20,7 +20,7 @@ keywords:
 | ------------ | ----------- | ---- | ---  |
 | [gsSQL](https://github.com/demmings/gsSQL)  | Query Google Sheet data using standard SQL SELECT syntax |  [gsSQL Notes](/notes/gssql.markdown) | [JSDoc](/docs/gssql/index.html) |
 | [cachefinance](https://github.com/demmings/cachefinance) | Google Sheet custom function and/or event trigger for enhanced stock/etf data lookup | [cachefinance Notes](/notes/cachefinance.markdown/) | |
-| Select 2 Query | Convert SQL Select statement to Google Sheets QUERY | [Select2Query](/notes/select2query.markdown/) | |
+| [Select 2 Query](https://github.com/demmings/Select2Query) | Convert SQL Select statement to Google Sheets QUERY | [Select2Query](/notes/select2query.markdown/) | |
 
 <div class="col-md-12 main content-panel">
 
