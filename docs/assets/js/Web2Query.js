@@ -1,11 +1,10 @@
-//export { select2Query };
-//import { SqlParse } from "./SimpleParser.js";
+// import { Select2Query } from "./Select2Query";
 
 function setDefaultSelect2QueryData() {
-    let select2QueryData = localStorage.getItem("Select2Query");
+    const select2QueryData = localStorage.getItem("Select2Query");
 
     if (typeof select2QueryData !== 'undefined') {
-        let myData = JSON.parse(select2QueryData);
+        const myData = JSON.parse(select2QueryData);
 
         document.getElementById("sqlSelect").value = myData.sqlSelect;
 
@@ -34,12 +33,12 @@ function select2Query() {
 
     const sqlStatement = document.getElementById("sqlSelect").value;
 
-    let sql = new Select2Query().setTables(document.getElementById("table1").value, document.getElementById("range1").value,
+    const sql = new Select2Query().setTables(document.getElementById("table1").value, document.getElementById("range1").value,
         document.getElementById("table2").value, document.getElementById("range2").value,
         document.getElementById("table3").value, document.getElementById("range3").value,
         document.getElementById("table4").value, document.getElementById("range4").value);
 
-    let jsValue = sql.convert(sqlStatement);
+    const jsValue = sql.convert(sqlStatement);
 
     document.getElementById('output').value = jsValue;
 
