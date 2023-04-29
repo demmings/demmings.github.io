@@ -57,8 +57,6 @@ class Select2Query {
             query = this.formatAsQuery(queryStatement, ast.FROM.table);
         }
 
-        console.log(query);
-
         return query;
     }
 
@@ -85,7 +83,6 @@ class Select2Query {
         //  Should be:  TABLE NAME, TABLE RANGE, name, range, name, range,...
         let i = 0;
         while (i + 1 < parms.length) {
-            console.log(`Add Table: ${parms[i]}. Items=${parms[i + 1].length}`);
             tables.set(parms[i].trim().toUpperCase(), parms[i + 1]);
             i += 2;
         }
@@ -142,7 +139,7 @@ class Select2Query {
         else
             queryWhere = this.resolveCondition(conditions.logic, conditions.terms, "");
 
-        return " WHERE " + queryWhere.trim();
+        return ` WHERE ${queryWhere.trim()}`;
     }
 
     /**
@@ -164,7 +161,7 @@ class Select2Query {
             }
 
             if (i + 1 < terms.length) {
-                queryWhere += " " + logic;
+                queryWhere += ` ${logic}`;
             }
         }
 
@@ -238,7 +235,7 @@ class Select2Query {
         orderBy = " ORDER BY "
         for (let i = 0; i < ast['ORDER BY'].length; i++) {
             const order = ast['ORDER BY'][i];
-            orderBy += order.name + " " + order.order.toUpperCase();
+            orderBy += `${order.name} ${order.order.toUpperCase()}`;
 
             if (i + 1 < ast['ORDER BY'].length) {
                 orderBy += ", ";
@@ -369,7 +366,7 @@ class QueryJoin {
         let rangeTable = "";
         if (range.indexOf("!") !== -1) {
             const parts = range.split("!");
-            rangeTable = parts[0] + "!";
+            rangeTable = `${parts[0]}!`;
             range = parts[1];
         }
 
@@ -377,7 +374,7 @@ class QueryJoin {
         const startRange = QueryJoin.replaceColumn(rangeComponents[0], field);
         const endRange = QueryJoin.replaceColumn(rangeComponents[1], field);
 
-        return rangeTable + startRange + ":" + endRange;
+        return `${rangeTable}${startRange}:${endRange}`;
     }
 
     /**
@@ -421,7 +418,7 @@ class QueryJoin {
 
         const matchesQuery = `'"&TEXTJOIN("|", true, QUERY(${rightRange}, "SELECT ${leftFieldName} where ${leftFieldName} is not null"))&`;
         selectStr += matchesQuery;
-        selectStr = selectStr + label + '", 0)';
+        selectStr = `${selectStr}${label}", 0)`;
 
         //  If no records are found, we need to insert an empty record - otherwise we get an array error.
         selectStr = `;IFNA(${selectStr},${QueryJoin.ifNaResult(ast)})`;
@@ -546,7 +543,7 @@ class QueryJoin {
         for (const fld of sortedFields) {
             if (fld.isNull) {
                 label = label !== "" ? `${label}, ` : "";
-                label += fld.fieldName + " ''";
+                label += `${fld.fieldName} ''`;
             }
         }
 
@@ -586,7 +583,7 @@ class QueryJoin {
 
                 if (tableInfo.indexOf("!") !== -1) {
                     const parts = tableInfo.split("!");
-                    rangeTable = parts[0] + "!";
+                    rangeTable = `${parts[0]}!`;
                     range = parts[1];
                 }
 
@@ -594,11 +591,11 @@ class QueryJoin {
                 const startRange = QueryJoin.replaceColumn(rangeComponents[0], selectField);
                 const endRange = QueryJoin.replaceColumn(rangeComponents[1], selectField);
 
-                selectField = rangeTable + startRange + ":" + endRange;
+                selectField = `${rangeTable}${startRange}:${endRange}`;
 
                 leftSelect = leftSelect === '' ? '' : `${leftSelect}&"!"& `;
 
-                leftSelect += 'IF(' + selectField + ' <> "",' + selectField + ', " ")';
+                leftSelect += `IF(${selectField} <> "",${selectField}, " ")`;
             }
         }
 
@@ -634,7 +631,7 @@ class QueryJoin {
 
                 if (tableInfo.indexOf("!") !== -1) {
                     const parts = tableInfo.split("!");
-                    rangeTable = parts[0] + "!";
+                    rangeTable = `${parts[0]}!`;
                     range = parts[1];
                 }
 
@@ -642,11 +639,11 @@ class QueryJoin {
                 const startRange = QueryJoin.replaceColumn(rangeComponents[0], selectField);
                 const endRange = QueryJoin.replaceColumn(rangeComponents[1], selectField);
 
-                selectField = rangeTable + startRange + ":" + endRange;
+                const columnRange = `${rangeTable}${startRange}:${endRange}`;
 
                 rightSelect = rightSelect === '' ? '' : `${rightSelect}&"!"& `;
 
-                rightSelect += 'Split(Textjoin("!",1,IF(' + selectField + '<>"",' + selectField + '," ")),"!")';
+                rightSelect += `Split(Textjoin("!",1,IF(${columnRange}<>"",${columnRange}," ")),"!")`;
             }
         }
 
@@ -904,9 +901,17 @@ class SqlParse {
     static getPositionsOfSqlParts(modifiedQuery, parts_name) {
         // Write the position(s) in query of these separators
         const parts_order = [];
+
+        /**
+         * 
+         * @param {String} _match 
+         * @param {String} name 
+         * @returns {String}
+         */
         function realNameCallback(_match, name) {
             return name;
         }
+        
         parts_name.forEach(function (item) {
             let pos = 0;
             let part = 0;
@@ -1551,6 +1556,12 @@ class CondParser {
 
 /** Analyze each distinct component of SELECT statement. */
 class SelectKeywordAnalysis {
+    /**
+     * 
+     * @param {String} itemName 
+     * @param {Object} part 
+     * @returns {any}
+     */
     static analyze(itemName, part) {
         const keyWord = itemName.toUpperCase().replace(/ /g, '_');
 
@@ -1561,6 +1572,12 @@ class SelectKeywordAnalysis {
         return SelectKeywordAnalysis[keyWord](part);
     }
 
+    /**
+     * 
+     * @param {String} str 
+     * @param {Boolean} isOrderBy 
+     * @returns {Object[]}
+     */
     static SELECT(str, isOrderBy = false) {
         const selectParts = SelectKeywordAnalysis.protect_split(',', str);
         const selectResult = selectParts.filter(function (item) {
@@ -1609,6 +1626,11 @@ class SelectKeywordAnalysis {
         return { name, as, order };
     }
 
+    /**
+     * 
+     * @param {String} str 
+     * @returns {Object}
+     */
     static FROM(str) {
         const subqueryAst = this.parseForCorrelatedSubQuery(str);
         if (subqueryAst !== null) {
@@ -1622,13 +1644,14 @@ class SelectKeywordAnalysis {
             return subqueryAst;
         }
 
-        let fromResult = str.split(',');
+        let fromParts = str.split(',');
+        fromParts = fromParts.map(item => SelectKeywordAnalysis.trim(item));
 
-        fromResult = fromResult.map(item => SelectKeywordAnalysis.trim(item));
-        fromResult = fromResult.map(item => {
+        const fromResult = fromParts.map(item => {
             const [table, as] = SelectKeywordAnalysis.getNameAndAlias(item);
             return { table, as };
         });
+
         return fromResult[0];
     }
 

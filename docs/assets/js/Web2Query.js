@@ -1,5 +1,3 @@
-// import { Select2Query } from "./Select2Query";
-
 function setDefaultSelect2QueryData() {
     const select2QueryData = localStorage.getItem("Select2Query");
 
@@ -27,10 +25,10 @@ window.onload = function () { // Or window.addEventListener("load", function() {
     setDefaultSelect2QueryData();
 }
 
-
+/**
+ * Called from page to read inputs and generate Sheets Query statement.
+ */
 function select2Query() {
-    console.log("Submitted");
-
     const sqlStatement = document.getElementById("sqlSelect").value;
 
     const sql = new Select2Query().setTables(document.getElementById("table1").value, document.getElementById("range1").value,
