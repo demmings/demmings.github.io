@@ -44,5 +44,5 @@ categories: QUERY
       <label for="output">QUERY syntax: </label><textarea id="output" name="text" rows="5" cols="60"></textarea>
     </form>
 
-    <script src="{{ '/assets/js/query.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/Web2Query.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/Select2Query.js' | relative_url }}"></script>
