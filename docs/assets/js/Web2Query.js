@@ -1,3 +1,7 @@
+/**
+ * Read defaults (if any) from local storage and set current screen inputs using defaults.
+ * The default is the last value in each prompt at the time of a SUBMIT request.
+ */
 function setDefaultSelect2QueryData() {
     const select2QueryData = localStorage.getItem("Select2Query");
 
