@@ -17,3 +17,4 @@ permalink: /about/
 | this.Current      | Google Sheets             | tracking all things for personal finance. |
 | this.Goals        | One visitor, one comment  | Nice to hear of someone using one of my custom functions and leaving a not so brutal comment. |
 | this.Privacy      | <a href="/privacyPolicy.html">Privacy</a> | **gsSQL**  What data is collected. |
+| this.terms        | <a href="/termsOfService.html">Terms</a> | **gsSQL** Terms of Service. |
