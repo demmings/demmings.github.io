@@ -17,6 +17,15 @@ Custom Function's use of information received from Google APIs will adhere to th
 
 
 # Contact
+
+### eMail
+
 <p>If you have any questions about this Privacy Policy, You can contact us:</p>
-* [gsSQLinfo@gmail.com](mailto:gsSQLinfo@gmail.com)
+[gsSQLinfo@gmail.com](mailto:gsSQLinfo@gmail.com)
+<br>
+
+
+### Comments and Feedback
+
+[Github Discussions](https://github.com/demmings/gsSQL/discussions)
 
