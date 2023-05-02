@@ -43,9 +43,14 @@ categories: QUERY
       <br><br>
       <label for="output">QUERY syntax: </label><textarea id="output" name="text" rows="5" cols="60"></textarea>
 
-      <br><br>
-      <a href="https://github.com/demmings/Select2Query/discussions">Feedback to Author</a>
+      <script src="{{ '/assets/js/Web2Query.js' | relative_url }}"></script>
+      <script src="{{ '/assets/js/Select2Query.js' | relative_url }}"></script>
     </form>
 
-    <script src="{{ '/assets/js/Web2Query.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/Select2Query.js' | relative_url }}"></script>
+<br>
+
+### Feedback
+
+* <a href="https://github.com/demmings/Select2Query/discussions">Github Discussions</a>
+* <a href="mailto:gsSQLinfo@gmail.com">eMail Feedback</a>
+
