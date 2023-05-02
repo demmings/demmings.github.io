@@ -42,6 +42,9 @@ categories: QUERY
       <button type='button' onclick="select2Query()">Submit</button>
       <br><br>
       <label for="output">QUERY syntax: </label><textarea id="output" name="text" rows="5" cols="60"></textarea>
+
+      <br><br>
+      <a href="https://github.com/demmings/Select2Query/discussions">Feedback to Author</a>
     </form>
 
     <script src="{{ '/assets/js/Web2Query.js' | relative_url }}"></script>
