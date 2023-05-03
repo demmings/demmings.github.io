@@ -161,6 +161,10 @@ class SelectTables {
         if (typeof ast.WHERE !== 'undefined') {
             conditions = ast.WHERE;
         }
+        else if (typeof ast["GROUP BY"] === 'undefined' &amp;&amp; typeof ast["HAVING"] !== 'undefined') {
+            //  This will work in mySql as long as select field is in having clause.
+            conditions = ast.HAVING;
+        }
         else {
             //  Entire table is selected.  
             conditions = { operator: "=", left: "\"A\"", right: "\"A\"" };
@@ -450,18 +454,20 @@ class SelectTables {
     /**
      * Parse the input for a calculated field.
      * String split on comma, EXCEPT if comma is within brackets (i.e. within an inner function)
+     * or within a string like ", "
      * @param {String} paramString - Search and parse this string for parameters.
      * @returns {String[]} - List of function parameters.
      */
     static parseForParams(paramString, startBracket = "(", endBracket = ")") {
         const args = [];
         let bracketCount = 0;
+        let inQuotes = "";
         let start = 0;
 
         for (let i = 0; i &lt; paramString.length; i++) {
             const ch = paramString.charAt(i);
 
-            if (ch === "," &amp;&amp; bracketCount === 0) {
+            if (ch === "," &amp;&amp; bracketCount === 0 &amp;&amp; inQuotes === "") {
                 args.push(paramString.substring(start, i));
                 start = i + 1;
             }
@@ -469,6 +475,16 @@ class SelectTables {
                 bracketCount++;
             else if (ch === endBracket)
                 bracketCount--;
+
+            if (inQuotes === "") {
+                if (ch === '"' || ch === "'")
+                    inQuotes = ch;
+            }
+            else {
+                if (ch === inQuotes)
+                    inQuotes = "";
+            }
+
         }
 
         const lastStr = paramString.substring(start);
@@ -783,7 +799,7 @@ class SelectTables {
 
     /**
      * Get constant bind data
-     * @param {Object} fieldCondition - left or right portion of condition
+     * @param {String} fieldCondition - left or right portion of condition
      * @returns {any}
      */
     resolveBindData(fieldCondition) {
@@ -914,7 +930,7 @@ class SelectTables {
         }
 
         // @ts-ignore
-        const expanded = rightValue.replace(/%/g, ".*").replace(/_/g, ".");
+        const expanded = `^${rightValue.replace(/%/g, ".*").replace(/_/g, ".")}`;
 
         const result = leftValue.search(expanded);
         return result !== -1;
@@ -1048,6 +1064,10 @@ class CalculatedField {
             result = new Function(functionString)();
         }
         catch (ex) {
+            if (calculatedFormula !== '') {
+                throw new Error(`Invalid select field: ${calculatedFormula}`);
+            }
+
             throw new Error(`Calculated Field Error: ${ex.message}.  ${functionString}`);
         }
 
@@ -1311,11 +1331,23 @@ class VirtualField {                        //  skipcq: JS-0128
      */
     constructor(fieldName, tableInfo, tableColumn) {
         /** @property {String} - field name */
-        this.fieldName = fieldName;
+        this._fieldName = fieldName;
         /** @property {Table} - table this field belongs to. */
-        this.tableInfo = tableInfo;
+        this._tableInfo = tableInfo;
         /** @property {Number} - column number of this field. */
-        this.tableColumn = tableColumn;
+        this._tableColumn = tableColumn;
+    }
+
+    get fieldName() {
+        return this._fieldName;
+    }
+
+    get tableInfo() {
+        return this._tableInfo;
+    }
+
+    get tableColumn() {
+        return this._tableColumn;
     }
 }
 
@@ -1633,7 +1665,7 @@ class SqlServerFunctions {
         let args = [];
 
         if (func === "CASE")
-            args = functionString.match(this.matchCaseWhenThenStr);
+            args = this.matchCaseWhenThenStr.exec(functionString);
         else
             args = SelectTables.parseForFunctions(functionString, func);
 
@@ -1764,7 +1796,7 @@ class SqlServerFunctions {
         let caseString = functionString;
 
         if (func === "CASE") {
-            caseArguments = functionString.match(/CASE(.*?)END/i);
+            caseArguments = /CASE(.*?)END/i.exec(functionString);
 
             if (caseArguments !== null &amp;&amp; caseArguments.length > 1) {
                 this.firstCase = true;
@@ -2319,8 +2351,9 @@ class TableFields {
 
                 //  When subquery table data becomes data for the derived table name, references to
                 //  original table names in column output needs to be changed to new derived table name.
-                if (columnTableNameReplacement !== null &amp;&amp; columnOutput.startsWith(`${fld.originalTable}.`)) {
-                    columnOutput = columnOutput.replace(`${fld.originalTable}.`, `${columnTableNameReplacement}.`);
+                if (columnTableNameReplacement !== null) {
+                    const matchingTableIndex = columnOutput.toUpperCase().indexOf(`${fld.originalTable}.`);
+                    columnOutput = matchingTableIndex === 0 ? columnTableNameReplacement + columnOutput.slice(matchingTableIndex + fld.originalTable.length) : columnOutput;
                 }
                 columnTitles.push(columnOutput);
             }
@@ -2657,7 +2690,7 @@ class TableField {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.0</a> on Mon May 01 2023 13:32:37 GMT-0400 (Eastern Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.0</a> on Wed May 03 2023 19:55:08 GMT-0400 (Eastern Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
