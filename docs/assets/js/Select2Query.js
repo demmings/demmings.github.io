@@ -654,7 +654,7 @@ class QueryJoin {
 
 //  Code inspired from:  https://github.com/dsferruzza/simpleSqlParser
 
-/** Parse SQL SELECT statement and convert into Abstract Syntax Tree */
+/** @classdesc Parse SQL SELECT statement and convert into Abstract Syntax Tree */
 class SqlParse {
     /**
      * 

@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>SqlParse - gsSQL</title>
+    <title>JoinTablesRecordIds - gsSQL</title>
     
     <meta name="description" content="Query Google Sheets using standard SQL SELECT syntax." />
     
@@ -49,7 +49,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">SqlParse</h1>
+    <h1 class="page-title">JoinTablesRecordIds</h1>
     
 
     
@@ -63,11 +63,11 @@
     
         <h2>
         
-            SqlParse
+            JoinTablesRecordIds
         
         </h2>
         
-            <div class="class-description usertext"><p>Parse SQL SELECT statement and convert into Abstract Syntax Tree</p></div>
+            <div class="class-description usertext"><p>Find record ID's for matching JOINed table records.</p></div>
         
     
 </header>
@@ -82,7 +82,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="SqlParse"><span class="type-signature"></span>new SqlParse<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="JoinTablesRecordIds"><span class="type-signature"></span>new JoinTablesRecordIds<span class="signature">(joinTables)</span><span class="type-signature"></span></h4>
 
     
 
@@ -95,7 +95,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SimpleParser.js.html">SimpleParser.js</a>, <a href="SimpleParser.js.html#line9">line 9</a>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line300">line 300</a>
     </li></ul></dd>
     
 
@@ -140,6 +140,56 @@
 
 
 
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>joinTables</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="JoinTables.html">JoinTables</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -176,6 +226,1280 @@
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="bindVariables"><span class="type-signature"></span>bindVariables<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line316">line 316</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="BindData.html">BindData</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="dataJoin"><span class="type-signature"></span>dataJoin<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line306">line 306</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="JoinTables.html">JoinTables</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="joinFields"><span class="type-signature"></span>joinFields<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line310">line 310</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#LeftRightJoinFields">LeftRightJoinFields</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="joinType"><span class="type-signature"></span>joinType<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line326">line 326</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="leftTableName"><span class="type-signature"></span>leftTableName<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line324">line 324</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="masterTable"><span class="type-signature"></span>masterTable<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line320">line 320</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Table.html">Table</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="masterTable"><span class="type-signature"></span>masterTable<span class="type-signature"> :<a href="Table.html">Table</a></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line336">line 336</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+    <h5 class="h5-types">Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="Table.html">Table</a></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="primaryTableInfo"><span class="type-signature"></span>primaryTableInfo<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line318">line 318</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Table.html">Table</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="rightTableName"><span class="type-signature"></span>rightTableName<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line322">line 322</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tableFields"><span class="type-signature"></span>tableFields<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line308">line 308</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="TableFields.html">TableFields</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tableFields"><span class="type-signature"></span>tableFields<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line312">line 312</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="TableFields.html">TableFields</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tableInfo"><span class="type-signature"></span>tableInfo<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line314">line 314</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Map.&lt;String, <a href="Table.html">Table</a>></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -185,7 +1509,7 @@
 
     
 
-    <h4 class="name" id=".analyzeParts"><span class="type-signature type-signature-static">(static) </span>analyzeParts<span class="signature">(parts_order, parts)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="createKeyFieldRecordMap"><span class="type-signature"></span>createKeyFieldRecordMap<span class="signature">(rightField)</span><span class="type-signature"> &rarr; {Map.&lt;String, Array.&lt;Number>>}</span></h4>
 
     
 
@@ -198,7 +1522,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SimpleParser.js.html">SimpleParser.js</a>, <a href="SimpleParser.js.html#line344">line 344</a>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line656">line 656</a>
     </li></ul></dd>
     
 
@@ -270,37 +1594,13 @@
 
         <tr>
             
-                <td class="name"><code>parts_order</code></td>
+                <td class="name"><code>rightField</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;String></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>parts</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;String></span>
+<span class="param-type"><a href="global.html#JoinSideInfo">JoinSideInfo</a></span>
 
 
 
@@ -344,7 +1644,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Object</span>
+<span class="param-type">Map.&lt;String, Array.&lt;Number>></span>
 
 
 
@@ -360,7 +1660,7 @@
 
     
 
-    <h4 class="name" id=".generateSqlSeparatorWords"><span class="type-signature type-signature-static">(static) </span>generateSqlSeparatorWords<span class="signature">(keywords)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;String>>}</span></h4>
+    <h4 class="name" id="getJoinColumnData"><span class="type-signature"></span>getJoinColumnData<span class="signature">(fieldInfo, recordNumber)</span><span class="type-signature"> &rarr; {String}</span></h4>
 
     
 
@@ -373,7 +1673,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SimpleParser.js.html">SimpleParser.js</a>, <a href="SimpleParser.js.html#line147">line 147</a>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line633">line 633</a>
     </li></ul></dd>
     
 
@@ -445,13 +1745,37 @@
 
         <tr>
             
-                <td class="name"><code>keywords</code></td>
+                <td class="name"><code>fieldInfo</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;String></span>
+<span class="param-type"><a href="global.html#JoinSideInfo">JoinSideInfo</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>recordNumber</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
 
 
 
@@ -495,130 +1819,80 @@
     </dt>
     <dd>
         
-<span class="param-type">Array.&lt;Array.&lt;String>></span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".generateUsedKeywordList"><span class="type-signature type-signature-static">(static) </span>generateUsedKeywordList<span class="signature">(query)</span><span class="type-signature"> &rarr; {Array.&lt;String>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SimpleParser.js.html">SimpleParser.js</a>, <a href="SimpleParser.js.html#line119">line 119</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>query</code></td>
-            
-
-            <td class="type">
-            
-                
 <span class="param-type">String</span>
 
 
 
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
+    </dd>
+</dl>
 
     
-    </tbody>
-</table>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getJoinFieldsInfo"><span class="type-signature"></span>getJoinFieldsInfo<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="global.html#LeftRightJoinFields">LeftRightJoinFields</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line418">line 418</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -646,7 +1920,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Array.&lt;String></span>
+<span class="param-type"><a href="global.html#LeftRightJoinFields">LeftRightJoinFields</a></span>
 
 
 
@@ -662,7 +1936,7 @@
 
     
 
-    <h4 class="name" id=".getPositionsOfSqlParts"><span class="type-signature type-signature-static">(static) </span>getPositionsOfSqlParts<span class="signature">(modifiedQuery, parts_name)</span><span class="type-signature"> &rarr; {Array.&lt;String>}</span></h4>
+    <h4 class="name" id="getLeftRightFieldInfo"><span class="type-signature"></span>getLeftRightFieldInfo<span class="signature">(astJoin)</span><span class="type-signature"> &rarr; {<a href="global.html#LeftRightJoinFields">LeftRightJoinFields</a>}</span></h4>
 
     
 
@@ -675,7 +1949,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SimpleParser.js.html">SimpleParser.js</a>, <a href="SimpleParser.js.html#line257">line 257</a>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line440">line 440</a>
     </li></ul></dd>
     
 
@@ -747,230 +2021,7 @@
 
         <tr>
             
-                <td class="name"><code>modifiedQuery</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>parts_name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;String></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;String></span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".hideInnerSql"><span class="type-signature type-signature-static">(static) </span>hideInnerSql<span class="signature">(str, parts_name_escaped, replaceFunction)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SimpleParser.js.html">SimpleParser.js</a>, <a href="SimpleParser.js.html#line217">line 217</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>str</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>parts_name_escaped</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;String></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>replaceFunction</code></td>
+                <td class="name"><code>astJoin</code></td>
             
 
             <td class="type">
@@ -1009,6 +2060,25 @@
 
 
 
+<h5 class="h5-returns">Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#LeftRightJoinFields">LeftRightJoinFields</a></span>
+
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -1017,7 +2087,7 @@
 
     
 
-    <h4 class="name" id=".makeSqlPartsSplitterRegEx"><span class="type-signature type-signature-static">(static) </span>makeSqlPartsSplitterRegEx<span class="signature">(keywords)</span><span class="type-signature"> &rarr; {RegExp}</span></h4>
+    <h4 class="name" id="getMatchedRecordIds"><span class="type-signature"></span>getMatchedRecordIds<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="global.html#MatchingJoinRecordIDs">MatchingJoinRecordIDs</a>}</span></h4>
 
     
 
@@ -1030,7 +2100,108 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SimpleParser.js.html">SimpleParser.js</a>, <a href="SimpleParser.js.html#line201">line 201</a>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line557">line 557</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#MatchingJoinRecordIDs">MatchingJoinRecordIDs</a></span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getRecordIDs"><span class="type-signature"></span>getRecordIDs<span class="signature">(conditionAst)</span><span class="type-signature"> &rarr; {<a href="global.html#MatchingJoinRecordIDs">MatchingJoinRecordIDs</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line334">line 334</a>
     </li></ul></dd>
     
 
@@ -1102,13 +2273,13 @@
 
         <tr>
             
-                <td class="name"><code>keywords</code></td>
+                <td class="name"><code>conditionAst</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;String></span>
+<span class="param-type">Object</span>
 
 
 
@@ -1152,7 +2323,7 @@
     </dt>
     <dd>
         
-<span class="param-type">RegExp</span>
+<span class="param-type"><a href="global.html#MatchingJoinRecordIDs">MatchingJoinRecordIDs</a></span>
 
 
 
@@ -1168,7 +2339,7 @@
 
     
 
-    <h4 class="name" id=".parseUnion"><span class="type-signature type-signature-static">(static) </span>parseUnion<span class="signature">(inStr)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    <h4 class="name" id="getReferencedTableInfo"><span class="type-signature"></span>getReferencedTableInfo<span class="signature">(calcField)</span><span class="type-signature"> &rarr; {<a href="TableField.html">TableField</a>}</span></h4>
 
     
 
@@ -1181,7 +2352,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SimpleParser.js.html">SimpleParser.js</a>, <a href="SimpleParser.js.html#line444">line 444</a>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line495">line 495</a>
     </li></ul></dd>
     
 
@@ -1253,7 +2424,7 @@
 
         <tr>
             
-                <td class="name"><code>inStr</code></td>
+                <td class="name"><code>calcField</code></td>
             
 
             <td class="type">
@@ -1303,7 +2474,7 @@
     </dt>
     <dd>
         
-<span class="param-type">String</span>
+<span class="param-type"><a href="TableField.html">TableField</a></span>
 
 
 
@@ -1319,7 +2490,7 @@
 
     
 
-    <h4 class="name" id=".protect"><span class="type-signature type-signature-static">(static) </span>protect<span class="signature">(str)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    <h4 class="name" id="getTableInfoFromCalculatedField"><span class="type-signature"></span>getTableInfoFromCalculatedField<span class="signature">(calcField)</span><span class="type-signature"> &rarr; {<a href="TableField.html">TableField</a>}</span></h4>
 
     
 
@@ -1329,13 +2500,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Add some # inside a string to avoid it to match a regex/split</p></li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li><p>Look for referenced columns in expression to determine table.</p></li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SimpleParser.js.html">SimpleParser.js</a>, <a href="SimpleParser.js.html#line317">line 317</a>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line479">line 479</a>
     </li></ul></dd>
     
 
@@ -1407,13 +2578,403 @@
 
         <tr>
             
-                <td class="name"><code>str</code></td>
+                <td class="name"><code>calcField</code></td>
             
 
             <td class="type">
             
                 
 <span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Expression to parse.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>All SQL function parameters found.  It will include COLUMN names and constant data.</li>
+</ul>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="TableField.html">TableField</a></span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="leftRightJoin"><span class="type-signature"></span>leftRightJoin<span class="signature">(leftField, rightField, type)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;Number>>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Returns array of each matching record ID from right table for every record in left table.
+If the right table entry could NOT be found, -1 is set for that record index.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line591">line 591</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>leftField</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#JoinSideInfo">JoinSideInfo</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>left table field</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>rightField</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#JoinSideInfo">JoinSideInfo</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>right table field</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>either 'inner' or 'outer'.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>first index is record ID of left table, second index is a list of the matching record ID's in right table.</li>
+</ul>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;Array.&lt;Number>></span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="searchColumnsForTable"><span class="type-signature"></span>searchColumnsForTable<span class="signature">(calcField, columns)</span><span class="type-signature"> &rarr; {<a href="TableField.html">TableField</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line531">line 531</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>calcField</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>columns</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;String></span>
 
 
 
@@ -1457,7 +3018,7 @@
     </dt>
     <dd>
         
-<span class="param-type">String</span>
+<span class="param-type"><a href="TableField.html">TableField</a></span>
 
 
 
@@ -1473,7 +3034,7 @@
 
     
 
-    <h4 class="name" id=".removeDuplicateEntries"><span class="type-signature type-signature-static">(static) </span>removeDuplicateEntries<span class="signature">(parts_order)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="setBindVariables"><span class="type-signature"></span>setBindVariables<span class="signature">(bindVariables)</span><span class="type-signature"> &rarr; {<a href="JoinTablesRecordIds.html">JoinTablesRecordIds</a>}</span></h4>
 
     
 
@@ -1482,14 +3043,11 @@
 
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Delete duplicates (caused, for example, by JOIN and INNER JOIN)</p></li></ul></dd>
-    
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SimpleParser.js.html">SimpleParser.js</a>, <a href="SimpleParser.js.html#line297">line 297</a>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line369">line 369</a>
     </li></ul></dd>
     
 
@@ -1561,13 +3119,13 @@
 
         <tr>
             
-                <td class="name"><code>parts_order</code></td>
+                <td class="name"><code>bindVariables</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;String></span>
+<span class="param-type"><a href="BindData.html">BindData</a></span>
 
 
 
@@ -1578,7 +3136,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Bind variable data.</p></td>
         </tr>
 
     
@@ -1600,6 +3158,25 @@
 
 
 
+<h5 class="h5-returns">Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="JoinTablesRecordIds.html">JoinTablesRecordIds</a></span>
+
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -1608,7 +3185,7 @@
 
     
 
-    <h4 class="name" id=".reorganizeJoins"><span class="type-signature type-signature-static">(static) </span>reorganizeJoins<span class="signature">(result)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="setJoinType"><span class="type-signature"></span>setJoinType<span class="signature">(joinType)</span><span class="type-signature"> &rarr; {<a href="JoinTablesRecordIds.html">JoinTablesRecordIds</a>}</span></h4>
 
     
 
@@ -1621,7 +3198,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SimpleParser.js.html">SimpleParser.js</a>, <a href="SimpleParser.js.html#line383">line 383</a>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line399">line 399</a>
     </li></ul></dd>
     
 
@@ -1689,186 +3266,6 @@
     </thead>
 
     <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>result</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".reorganizeSpecificJoin"><span class="type-signature type-signature-static">(static) </span>reorganizeSpecificJoin<span class="signature">(result, joinName, joinType)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SimpleParser.js.html">SimpleParser.js</a>, <a href="SimpleParser.js.html#line403">line 403</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>result</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>joinName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
     
 
         <tr>
@@ -1912,294 +3309,6 @@
 
 
 
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".reorganizeUnions"><span class="type-signature type-signature-static">(static) </span>reorganizeUnions<span class="signature">(result)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SimpleParser.js.html">SimpleParser.js</a>, <a href="SimpleParser.js.html#line424">line 424</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>result</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".resolveSqlCondition"><span class="type-signature type-signature-static">(static) </span>resolveSqlCondition<span class="signature">(logic, terms)</span><span class="type-signature"> &rarr; {String}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SimpleParser.js.html">SimpleParser.js</a>, <a href="SimpleParser.js.html#line87">line 87</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>logic</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>terms</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <h5 class="h5-returns">Returns:</h5>
 
         
@@ -2211,7 +3320,7 @@
     </dt>
     <dd>
         
-<span class="param-type">String</span>
+<span class="param-type"><a href="JoinTablesRecordIds.html">JoinTablesRecordIds</a></span>
 
 
 
@@ -2227,7 +3336,7 @@
 
     
 
-    <h4 class="name" id=".sql2ast"><span class="type-signature type-signature-static">(static) </span>sql2ast<span class="signature">(query)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="setLeftTableName"><span class="type-signature"></span>setLeftTableName<span class="signature">(name)</span><span class="type-signature"> &rarr; {<a href="JoinTablesRecordIds.html">JoinTablesRecordIds</a>}</span></h4>
 
     
 
@@ -2236,14 +3345,11 @@
 
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Parse a query</p></li></ul></dd>
-    
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SimpleParser.js.html">SimpleParser.js</a>, <a href="SimpleParser.js.html#line36">line 36</a>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line389">line 389</a>
     </li></ul></dd>
     
 
@@ -2315,7 +3421,7 @@
 
         <tr>
             
-                <td class="name"><code>query</code></td>
+                <td class="name"><code>name</code></td>
             
 
             <td class="type">
@@ -2365,7 +3471,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Object</span>
+<span class="param-type"><a href="JoinTablesRecordIds.html">JoinTablesRecordIds</a></span>
 
 
 
@@ -2381,7 +3487,7 @@
 
     
 
-    <h4 class="name" id=".sqlCondition2JsCondition"><span class="type-signature type-signature-static">(static) </span>sqlCondition2JsCondition<span class="signature">(cond)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    <h4 class="name" id="setPrimaryTableInfo"><span class="type-signature"></span>setPrimaryTableInfo<span class="signature">(primaryTableInfo)</span><span class="type-signature"> &rarr; {<a href="JoinTablesRecordIds.html">JoinTablesRecordIds</a>}</span></h4>
 
     
 
@@ -2394,7 +3500,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SimpleParser.js.html">SimpleParser.js</a>, <a href="SimpleParser.js.html#line15">line 15</a>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line409">line 409</a>
     </li></ul></dd>
     
 
@@ -2466,13 +3572,13 @@
 
         <tr>
             
-                <td class="name"><code>cond</code></td>
+                <td class="name"><code>primaryTableInfo</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type"><a href="Table.html">Table</a></span>
 
 
 
@@ -2516,7 +3622,7 @@
     </dt>
     <dd>
         
-<span class="param-type">String</span>
+<span class="param-type"><a href="JoinTablesRecordIds.html">JoinTablesRecordIds</a></span>
 
 
 
@@ -2532,7 +3638,7 @@
 
     
 
-    <h4 class="name" id=".sqlStatementSplitter"><span class="type-signature type-signature-static">(static) </span>sqlStatementSplitter<span class="signature">(src)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    <h4 class="name" id="setRightTableName"><span class="type-signature"></span>setRightTableName<span class="signature">(name)</span><span class="type-signature"> &rarr; {<a href="JoinTablesRecordIds.html">JoinTablesRecordIds</a>}</span></h4>
 
     
 
@@ -2545,7 +3651,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SimpleParser.js.html">SimpleParser.js</a>, <a href="SimpleParser.js.html#line160">line 160</a>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line379">line 379</a>
     </li></ul></dd>
     
 
@@ -2617,7 +3723,7 @@
 
         <tr>
             
-                <td class="name"><code>src</code></td>
+                <td class="name"><code>name</code></td>
             
 
             <td class="type">
@@ -2667,7 +3773,7 @@
     </dt>
     <dd>
         
-<span class="param-type">String</span>
+<span class="param-type"><a href="JoinTablesRecordIds.html">JoinTablesRecordIds</a></span>
 
 
 
@@ -2683,7 +3789,7 @@
 
     
 
-    <h4 class="name" id=".unprotect"><span class="type-signature type-signature-static">(static) </span>unprotect<span class="signature">(str)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    <h4 class="name" id="setTableFields"><span class="type-signature"></span>setTableFields<span class="signature">(tableFields)</span><span class="type-signature"> &rarr; {<a href="JoinTablesRecordIds.html">JoinTablesRecordIds</a>}</span></h4>
 
     
 
@@ -2692,14 +3798,11 @@
 
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Restore a string output by protect() to its original state</p></li></ul></dd>
-    
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SimpleParser.js.html">SimpleParser.js</a>, <a href="SimpleParser.js.html#line331">line 331</a>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line349">line 349</a>
     </li></ul></dd>
     
 
@@ -2771,13 +3874,13 @@
 
         <tr>
             
-                <td class="name"><code>str</code></td>
+                <td class="name"><code>tableFields</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type"><a href="TableFields.html">TableFields</a></span>
 
 
 
@@ -2821,7 +3924,158 @@
     </dt>
     <dd>
         
-<span class="param-type">String</span>
+<span class="param-type"><a href="JoinTablesRecordIds.html">JoinTablesRecordIds</a></span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setTableInfo"><span class="type-signature"></span>setTableInfo<span class="signature">(tableInfo)</span><span class="type-signature"> &rarr; {<a href="JoinTablesRecordIds.html">JoinTablesRecordIds</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JoinTables.js.html">JoinTables.js</a>, <a href="JoinTables.js.html#line359">line 359</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tableInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Map.&lt;String, <a href="Table.html">Table</a>></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Map of table info.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="JoinTablesRecordIds.html">JoinTablesRecordIds</a></span>
 
 
 
