@@ -654,10 +654,12 @@ class QueryJoin {
 
 //  Code inspired from:  https://github.com/dsferruzza/simpleSqlParser
 
-/** @classdesc Parse SQL SELECT statement and convert into Abstract Syntax Tree */
+/**
+ * @classdesc 
+ * Parse SQL SELECT statement and convert into Abstract Syntax Tree 
+ */
 class SqlParse {
     /**
-     * 
      * @param {String} cond 
      * @returns {String}
      */
@@ -667,10 +669,12 @@ class SqlParse {
 
         if (typeof ast.WHERE !== 'undefined') {
             const conditions = ast.WHERE;
-            if (typeof conditions.logic === 'undefined')
+            if (typeof conditions.logic === 'undefined') {
                 sqlData = SqlParse.resolveSqlCondition("OR", [conditions]);
-            else
+            }
+            else {
                 sqlData = SqlParse.resolveSqlCondition(conditions.logic, conditions.terms);
+            }
 
         }
 
@@ -746,10 +750,12 @@ class SqlParse {
                 }
 
                 jsCondition += ` ${cond.left}`;
-                if (cond.operator === "=")
+                if (cond.operator === "=") {
                     jsCondition += " == ";
-                else
+                }
+                else {
                     jsCondition += ` ${cond.operator}`;
+                }
                 jsCondition += ` ${cond.right}`;
             }
             else {
@@ -813,8 +819,9 @@ class SqlParse {
         const reg = SqlParse.makeSqlPartsSplitterRegEx(["UNION ALL", "UNION", "INTERSECT", "EXCEPT"]);
 
         const matchedUnions = reg.exec(newStr);
-        if (matchedUnions === null || matchedUnions.length === 0)
+        if (matchedUnions === null || matchedUnions.length === 0) {
             return newStr;
+        }
 
         let prefix = "";
         const parts = [];
@@ -946,8 +953,9 @@ class SqlParse {
     static removeDuplicateEntries(parts_order) {
         let busy_until = 0;
         parts_order.forEach((item, key) => {
-            if (busy_until > key)
+            if (busy_until > key) {
                 delete parts_order[key];
+            }
             else {
                 busy_until = key + item.length;
 
@@ -996,7 +1004,7 @@ class SqlParse {
         parts_order.forEach(item => {
             const itemName = item.toUpperCase();
             j++;
-            const part_result = SelectKeywordAnalysis.analyze(item, parts[j]);
+            const selectComponentAst = SelectKeywordAnalysis.analyze(item, parts[j]);
 
             if (typeof result[itemName] !== 'undefined') {
                 if (typeof result[itemName] === 'string' || typeof result[itemName][0] === 'undefined') {
@@ -1005,10 +1013,10 @@ class SqlParse {
                     result[itemName].push(tmp);
                 }
 
-                result[itemName].push(part_result);
+                result[itemName].push(selectComponentAst);
             }
             else {
-                result[itemName] = part_result;
+                result[itemName] = selectComponentAst;
             }
 
         });
