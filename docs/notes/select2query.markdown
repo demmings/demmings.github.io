@@ -53,5 +53,5 @@ categories: QUERY
 
 * <a href="https://github.com/demmings/Select2Query/discussions">Github Discussions</a>
 * <a href="mailto:gsSQLinfo@gmail.com">eMail Feedback</a>
-* [Feedback Form](/notes/select2queryfeedback.html/)
+* [Feedback Form](/notes/select2queryfeedback.html)
 
