@@ -11,7 +11,7 @@ categories: QUERY
 <form 
   id="select2queryfeedback-form"
   method="POST" 
-  action="https://script.google.com/macros/s/AKfycby0qz6X2lhBNEHjuh_yg_3qNBwGKnLF6V78XMrDhZ-Qlww4vNd8W1dPJDAYSv2aG5KW/exec"
+  action="https://script.google.com/macros/s/AKfycbz7i25W1Fqif4rjT3xHIqinttC3znAix-L8AHw8UUnrWTw1gYW92cq-l8t0CgAruKF7/exec"
   
 >
   <label for="eMail"><b>eMail address </b>(optional)</label><br>
