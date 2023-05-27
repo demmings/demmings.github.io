@@ -14,8 +14,12 @@ categories: cachefinance custom function replacement for CACHEFINANCE
 
 ## Purpose
 
-* A custom function that provides enhanced functionality over GOOGLEFINANCE() function.
-* Using this function as an event Trigger, along with GOOGLEFINANCE() provides improved reliability.
+* A custom function that provides enhanced reliability over GOOGLEFINANCE() function.
+* GOOGLEFINANCE fails on a regular basis.  What does CACHEFINANCE() do to help?
+  1. When GOOGLEFINANCE() works, the current value is saved to a cache and the function just returns this value.
+  2. When GOOGLEFINANCE() fails, the last cached value is returned instead of the error.
+  3. Where there is an error and no cached value is available, 3rd party finance websites are queried in an attempt to extract the data.
+       * Successful 3rd party website data is then cached for next request in case the 3rd party website also fails. 
 
 ## Using as a custom function.
 * The custom function **CACHEFINANCE** enhances the capabilities of GOOGLEFINANCE.
