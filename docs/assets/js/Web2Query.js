@@ -32,7 +32,7 @@ window.onload = function () { // Or window.addEventListener("load", function() {
 /**
  * Called from page to read inputs and generate Sheets Query statement.
  */
-function select2Query() {
+function select2Query() {                                       // skipcq:  JS-0125
     const sqlStatement = document.getElementById("sqlSelect").value;
 
     const sql = new Select2Query().setTables(document.getElementById("table1").value, document.getElementById("range1").value,
