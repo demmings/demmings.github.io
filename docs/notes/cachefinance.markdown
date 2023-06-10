@@ -9,36 +9,62 @@ categories: cachefinance custom function replacement for CACHEFINANCE
 
 ## About
 
-* A new custom function written in Javascript for use in Google Sheets.
-* Used in conjunction with GOOGLEFINANCE() and sheets cache, so that valid results are always available.
+* A Google Sheets custom function used to improve the reliability of GOOGLEFINANCE.
+
 
 ## Purpose
 
-* A custom function that provides enhanced reliability over GOOGLEFINANCE() function.
+* Used with GOOGLEFINANCE() and sheets cache, so that valid results are always available - even when GOOGLEFINANCE is down.
+* It also does a 3rd party website search for ticker symbols not supported by GoogleFinance.
+
+## How does it help?
 * GOOGLEFINANCE fails on a regular basis.  What does CACHEFINANCE() do to help?
   1. When GOOGLEFINANCE() works, the current value is saved to a cache and the function just returns this value.
+     1. When it is working, GOOGLEFINANCE is much faster than checking external websites for data.
   2. When GOOGLEFINANCE() fails, the last cached value is returned instead of the error.
   3. Where there is an error and no cached value is available, 3rd party finance websites are queried in an attempt to extract the data.
        * Successful 3rd party website data is then cached for next request in case the 3rd party website also fails. 
+       * Only the attributes:  "price", "name", "yieldpct" are supported when searching external websites.
 
-## Using as a custom function.
-* The custom function **CACHEFINANCE** enhances the capabilities of GOOGLEFINANCE.
-* When it is working, GOOGLEFINANCE() is much faster to retrieve stock data than calling a URL and scraping the finance data - so it is used as the default source of information.
-* When GOOGLEFINANCE() works, the data is cached.
-* When GOOGLEFINANCE() fails ('#N/A'), CACHEFINANCE() will search for a cached version of the data.  It is better to return a reasonable value, rather than just fail.  If your asset tracking scripts have just one bad data point, your total values will be invalid.
-* If the data cannot be found in cache, the function will attempt to find the data at various financial websites.  This process however can take several seconds just to retrieve one data point.
-* If this also fails, PRICE and YIELDPCT return 0, while NAME returns an empty string.
-* **CAVEAT EMPTOR**.  Custom functions are also far from perfect.  If Google Sheets decides to throw up the dreaded 'Loading' error, you are almost back to where we started with an unreliable GOOGLEFINANCE() function.
-     * However, in my testing it seems to happen more often when you are doing a large number of finance lookups. 
+## The custom function.
+* You need to copy the source from:  https://github.com/demmings/cachefinance/blob/main/dist/CacheFinance.js
+* In your sheet, go to **Extensions** ==> **Apps Script** ==> **Files** ==> **+** ==> **Script**
+* In the **Untitled**, just name the file anything you want, no extension is needed.
+* Replace the:
+```
+function myFunction() { 
+}
+```
+* with the data copied from **CacheFinance.js**
+* Click on the **diskette** icon to save.
+* Sheets may prompt you about allowing this script to run if this is the first Apps Script you have used in the project.
+* You now have a new function available in your sheet.
+  * In any cell, just start typing **=CACHEFINANCE** and you should see the help for this function.
+
+
+## Using 
 * **SYNTAX**.
     *  ```CACHEFINANCE(symbol, attribute, defaultValue)```
     * **symbol** - stock symbol using regular GOOGLEFINANCE conventions.
-    * **attribute** - three supported attributes doing 3'rd party website lookups:  
-       * "price" 
-       * "yieldpct"
-       * "name"
-       * "test" -  special case.  Lists in a table results of tests to third party finance sites.
-         * ```CACHEFINANCE("", "TEST")```
+      * e.g.:  "NASDAQ:IGOV", "NYSEARCA:EWA", "TSE:BNS"
+    * **attribute** - 
+        * All GOOGLEFINANCE attributes:  https://support.google.com/docs/answer/3093281?hl=en
+          * The valid return of any of these data points will be cached in case of future errors.
+        * Three supported attributes doing 3'rd party website lookups.
+          * For the case where GOOGLEFIANCE just never supports a stock symbol.  
+             * "price" 
+             * "yieldpct"
+             * "name"
+       * Special case attributes.
+         * "test" -  special case.  Lists in a table results of tests to third party finance sites.
+           * ```CACHEFINANCE("", "TEST")```
+         * "clearcache" - special case.  Removes all Script Property settings created by CACHEFINANCE. 
+           * ```CACHEFINANCE("", "clearcache")``` 
+           * Will force a re-test of all finance web sites to find the best site whenever GOOGLEFINANCE fails.
+           * Useful for cleaning up stock symbols that are no longer used on your sheet.
+           * **NOTE:** You may get a timeout if there is a large number of entries in your script properties.
+             * You can run it again by making Google think your parameters have changed.  Just change "clearcache" to "CLEARCACHE" and hit enter.  It will run again.
+           * You will see **Cache Cleared** when the last entry has been removed from your script settings.
       * You can specify other attributes that GOOGLEFINANCE uses, but the CacheFinance() function will not look up this data (using 3rd party finance website) if GOOGLEFINANCE does not provide an initial default value.
       * The following "low52" does not lookup 3'rd party website data, it will just save any value returned by GOOGLEFINANCE to cache, for the case when GOOGLEFINANCE fails to work:
     ```
@@ -47,7 +73,23 @@ categories: cachefinance custom function replacement for CACHEFINANCE
     * **defaultValue** - Use GOOGLEFINANCE() to supply this value either directly or using a CELL that contains the GOOGLEFINANCE value.
       * 'yieldpct' does not work for STOCKS and ETF's in GOOGLEFINANCE, so don't supply the third parameter when using that attribute.
     * Example: (symbol that is not recognized by GOOGLEFINANCE)
-        *  ```=CACHEFINANCE("TSE:ZTL", "price", GOOGLEFINANCE("TSE:ZTL", "price"))```
+  
+    ```
+      =CACHEFINANCE("TSE:ZTL", "price", GOOGLEFINANCE("TSE:ZTL", "price"))
+    ```
+
+## Disadvantages of using IMPORTXML.
+  * You could always just import from a site within your sheet but,
+    * GoogleFinance is FASTEST.
+      * Using just IMPORTXML means that it always searches external site for data, which is fine for a couple of stocks, but very slow for many lookups.
+    * If the external site is down/not available, you will still get an error - nothing is cached.
+    * CACHEFINANCE is the best of both worlds.  
+      * Uses GOOGLEFINANCE data when working...
+      * Uses a cached value when not working...
+      * Uses external web site when nothing valid is available.
+```
+=iferror(IMPORTXML("https://ceo.ca/thnc", "//span[contains(concat(' ',normalize-space(@class),' '),' last-value ')]"))
+```
 
 
 ## Github Project
