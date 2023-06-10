@@ -27,7 +27,7 @@ categories: cachefinance custom function replacement for CACHEFINANCE
        * Only the attributes:  "price", "name", "yieldpct" are supported when searching external websites.
 
 ## The custom function.
-* You need to copy the source from:  https://github.com/demmings/cachefinance/blob/main/dist/CacheFinance.js
+* You need to copy the source from:  [CacheFinance.js](https://github.com/demmings/cachefinance/blob/main/dist/CacheFinance.js)
 * In your sheet, go to **Extensions** ==> **Apps Script** ==> **Files** ==> **+** ==> **Script**
 * In the **Untitled**, just name the file anything you want, no extension is needed.
 * Replace the:
@@ -48,7 +48,7 @@ function myFunction() {
     * **symbol** - stock symbol using regular GOOGLEFINANCE conventions.
       * e.g.:  "NASDAQ:IGOV", "NYSEARCA:EWA", "TSE:BNS"
     * **attribute** - 
-        * All GOOGLEFINANCE attributes:  https://support.google.com/docs/answer/3093281?hl=en
+        * All GOOGLEFINANCE attributes:  [GoogleFinance Docs](https://support.google.com/docs/answer/3093281?hl=en)
           * The valid return of any of these data points will be cached in case of future errors.
         * Three supported attributes doing 3'rd party website lookups.
           * For the case where GOOGLEFIANCE just never supports a stock symbol.  
