@@ -46,6 +46,8 @@ function myFunction() {
 * **SYNTAX**.
     *  ```CACHEFINANCE(symbol, attribute, defaultValue)```
     * **symbol** - stock symbol using regular GOOGLEFINANCE conventions.
+      * For best results, include the exchange code in the symbol (like'NASDAQ', 'NYSEARCA', ...).  
+        * If you just specify the base stock symbol (like 'BNS') and the stock is interlisted, the website lookup may not retrieve the results you are expecting, i.e. BNS on TSE will be different than BNS on NASDAQ.
       * e.g.:  "NASDAQ:IGOV", "NYSEARCA:EWA", "TSE:BNS"
     * **attribute** - 
         * All GOOGLEFINANCE attributes:  [GoogleFinance Docs](https://support.google.com/docs/answer/3093281?hl=en)
