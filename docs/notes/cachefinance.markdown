@@ -91,6 +91,15 @@ function myFunction() {
 =iferror(IMPORTXML("https://ceo.ca/thnc", "//span[contains(concat(' ',normalize-space(@class),' '),' last-value ')]"))
 ```
 
+## Advanages of having an API
+  * Most of my third party website lookups are screen scraping the data - which is kinda slow.
+  * Using an API is much faster, so I have added FINNHUB as a data source.
+  * **Finnhub** 
+    * For faster U.S. stock price lookups when external finance data is used, add the key to **Apps Script** ==> **Project Settings** ==> **Script Properties**
+      * Click on **Edit Script Properties** ==> **Add Script Property**.  
+        * Set the property name to:  **FINNHUB_API_KEY**
+        * Set the value to:  *'YOUR FINNHUB API KEY'*
+          * Get your API key at:  https://finnhub.io/   
 
 ## Github Project
 
