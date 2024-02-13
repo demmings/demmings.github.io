@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>TableData - gsSQL</title>
+    <title>TableExtract - gsSQL</title>
     
     <meta name="description" content="Query Google Sheets using standard SQL SELECT syntax." />
     
@@ -49,7 +49,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">TableData</h1>
+    <h1 class="page-title">TableExtract</h1>
     
 
     
@@ -63,37 +63,11 @@
     
         <h2>
         
-            TableData
+            TableExtract
         
         </h2>
         
-            <div class="class-description usertext"><ul>
-<li>Automatically load table data from a <strong>CACHE</strong> or <strong>SHEET</strong> <br></li>
-<li>In all cases, if the cache has expired, the data is read from the sheet.
-<br></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Cache Seconds</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>Data is not cached and always read directly from SHEET</td>
-</tr>
-<tr>
-<td>&lt;= 21600</td>
-<td>Data read from SHEETS cache if it has not expired</td>
-</tr>
-<tr>
-<td>&gt; 21600</td>
-<td>Data read from Google Sheets Script Settings</td>
-</tr>
-</tbody>
-</table></div>
+            <div class="class-description usertext"><p>Deals with extracting all TABLE names referenece inside SELECT.</p></div>
         
     
 </header>
@@ -108,7 +82,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="TableData"><span class="type-signature"></span>new TableData<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="TableExtract"><span class="type-signature"></span>new TableExtract<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -121,7 +95,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TableData.js.html">TableData.js</a>, <a href="TableData.js.html#line32">line 32</a>
+        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line789">line 789</a>
     </li></ul></dd>
     
 
@@ -211,7 +185,7 @@
 
     
 
-    <h4 class="name" id=".cacheGetArray"><span class="type-signature type-signature-static">(static) </span>cacheGetArray<span class="signature">(cache, namedRange)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;any>>}</span></h4>
+    <h4 class="name" id=".extractAstTables"><span class="type-signature type-signature-static">(static) </span>extractAstTables<span class="signature">(ast, tableSet)</span><span class="type-signature"></span></h4>
 
     
 
@@ -221,13 +195,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Reads cache for range, and re-assembles blocks into return array of data.</p></li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li><p>Search for all referenced tables in SELECT.</p></li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TableData.js.html">TableData.js</a>, <a href="TableData.js.html#line379">line 379</a>
+        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line832">line 832</a>
     </li></ul></dd>
     
 
@@ -299,7 +273,7 @@
 
         <tr>
             
-                <td class="name"><code>cache</code></td>
+                <td class="name"><code>ast</code></td>
             
 
             <td class="type">
@@ -316,20 +290,20 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>AST for SELECT.</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>namedRange</code></td>
+                <td class="name"><code>tableSet</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Map.&lt;String, String></span>
 
 
 
@@ -340,7 +314,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Function updates this map of table names and alias name.</p></td>
         </tr>
 
     
@@ -362,25 +336,6 @@
 
 
 
-<h5 class="h5-returns">Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
-
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -389,7 +344,7 @@
 
     
 
-    <h4 class="name" id=".cachePutArray"><span class="type-signature type-signature-static">(static) </span>cachePutArray<span class="signature">(cache, namedRange, cacheSeconds, arrData)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".getReferencedTableNames"><span class="type-signature type-signature-static">(static) </span>getReferencedTableNames<span class="signature">(statement)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;String>>}</span></h4>
 
     
 
@@ -399,13 +354,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Takes array data to be cached, breaks up into chunks if necessary, puts each chunk into cache and updates status.</p></li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li><p>Create table definition array from select string.</p></li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TableData.js.html">TableData.js</a>, <a href="TableData.js.html#line340">line 340</a>
+        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line795">line 795</a>
     </li></ul></dd>
     
 
@@ -477,31 +432,7 @@
 
         <tr>
             
-                <td class="name"><code>cache</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>namedRange</code></td>
+                <td class="name"><code>statement</code></td>
             
 
             <td class="type">
@@ -518,1376 +449,7 @@
 
             
 
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cacheSeconds</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>arrData</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".cacheStatusName"><span class="type-signature type-signature-static">(static) </span>cacheStatusName<span class="signature">(namedRange)</span><span class="type-signature"> &rarr; {String}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TableData.js.html">TableData.js</a>, <a href="TableData.js.html#line448">line 448</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>namedRange</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">String</span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".fixJSONdates"><span class="type-signature type-signature-static">(static) </span>fixJSONdates<span class="signature">(arrData)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TableData.js.html">TableData.js</a>, <a href="TableData.js.html#line430">line 430</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>arrData</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".forceLongCacheExpiryCheck"><span class="type-signature type-signature-static">(static) </span>forceLongCacheExpiryCheck<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>In the interest of testing, force the expiry check.
-It does not mean items in cache will be removed - just
-forces a check.</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TableData.js.html">TableData.js</a>, <a href="TableData.js.html#line108">line 108</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".getValueCached"><span class="type-signature type-signature-static">(static) </span>getValueCached<span class="signature">(namedRange, seconds)</span><span class="type-signature"> &rarr; {any}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Reads a single cell.</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TableData.js.html">TableData.js</a>, <a href="TableData.js.html#line121">line 121</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>namedRange</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>seconds</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    <code>60</code>
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">any</span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".getValuesCached"><span class="type-signature type-signature-static">(static) </span>getValuesCached<span class="signature">(namedRange, seconds)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;any>>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Reads a RANGE of values.</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TableData.js.html">TableData.js</a>, <a href="TableData.js.html#line54">line 54</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>namedRange</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>seconds</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".isRangeLoading"><span class="type-signature type-signature-static">(static) </span>isRangeLoading<span class="signature">(namedRange)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Checks if this range is loading elsewhere (i.e. from another call to custom function)</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TableData.js.html">TableData.js</a>, <a href="TableData.js.html#line204">line 204</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>namedRange</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".isTimeToRunLongCacheExpiry"><span class="type-signature type-signature-static">(static) </span>isTimeToRunLongCacheExpiry<span class="signature">()</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Is it time to run the long term cache expiry check?</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TableData.js.html">TableData.js</a>, <a href="TableData.js.html#line90">line 90</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".loadTableData"><span class="type-signature type-signature-static">(static) </span>loadTableData<span class="signature">(namedRange, cacheSeconds)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;any>>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Retrieve table data from SHEET or CACHE.</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TableData.js.html">TableData.js</a>, <a href="TableData.js.html#line39">line 39</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>namedRange</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>Location of table data.  Either a) SHEET Name, b) Named Range, c) A1 sheet notation.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cacheSeconds</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    <code>0</code>
-                
-                </td>
-            
-
-            <td class="description last"><p>0s Reads directly from sheet. &gt; 21600s Sets in SCRIPT settings, else CacheService</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".loadValuesFromRangeOrSheet"><span class="type-signature type-signature-static">(static) </span>loadValuesFromRangeOrSheet<span class="signature">(namedRange)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;any>>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Read sheet data into double array.</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TableData.js.html">TableData.js</a>, <a href="TableData.js.html#line292">line 292</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>namedRange</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>named range, A1 notation or sheet name</p></td>
+            <td class="description last"><p>full sql select statement.</p></td>
         </tr>
 
     
@@ -1914,7 +476,7 @@ forces a check.</p></li></ul></dd>
         
 <div class="param-desc">
     <ul>
-<li>table data.</li>
+<li>table definition array.</li>
 </ul>
 </div>
 
@@ -1926,7 +488,7 @@ forces a check.</p></li></ul></dd>
     </dt>
     <dd>
         
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
+<span class="param-type">Array.&lt;Array.&lt;String>></span>
 
 
 
@@ -1942,7 +504,7 @@ forces a check.</p></li></ul></dd>
 
     
 
-    <h4 class="name" id=".lockLoadAndCache"><span class="type-signature type-signature-static">(static) </span>lockLoadAndCache<span class="signature">(cache, namedRange, cacheSeconds)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;any>>}</span></h4>
+    <h4 class="name" id=".getReferencedTableNamesFromAst"><span class="type-signature type-signature-static">(static) </span>getReferencedTableNamesFromAst<span class="signature">(ast)</span><span class="type-signature"> &rarr; {Array.&lt;any>}</span></h4>
 
     
 
@@ -1952,13 +514,13 @@ forces a check.</p></li></ul></dd>
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Read range of value from sheet and cache.</p></li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li><p>Create table definition array from select AST.</p></li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TableData.js.html">TableData.js</a>, <a href="TableData.js.html#line258">line 258</a>
+        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line809">line 809</a>
     </li></ul></dd>
     
 
@@ -2030,7 +592,7 @@ forces a check.</p></li></ul></dd>
 
         <tr>
             
-                <td class="name"><code>cache</code></td>
+                <td class="name"><code>ast</code></td>
             
 
             <td class="type">
@@ -2047,55 +609,7 @@ forces a check.</p></li></ul></dd>
 
             
 
-            <td class="description last"><p>cache object can vary depending where the data is stored.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>namedRange</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cacheSeconds</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
+            <td class="description last"><p>AST for SELECT.</p></td>
         </tr>
 
     
@@ -2122,7 +636,13 @@ forces a check.</p></li></ul></dd>
         
 <div class="param-desc">
     <ul>
-<li>data from range</li>
+<li>table definition array.</li>
+</ul>
+<ul>
+<li>[0] - table name.</li>
+<li>[1] - sheet tab name</li>
+<li>[2] - cache seconds</li>
+<li>[3] - output column title flag</li>
 </ul>
 </div>
 
@@ -2134,7 +654,7 @@ forces a check.</p></li></ul></dd>
     </dt>
     <dd>
         
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
+<span class="param-type">Array.&lt;any></span>
 
 
 
@@ -2150,7 +670,7 @@ forces a check.</p></li></ul></dd>
 
     
 
-    <h4 class="name" id=".setLongCacheExpiry"><span class="type-signature type-signature-static">(static) </span>setLongCacheExpiry<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".getTableNamesCorrelatedSelect"><span class="type-signature type-signature-static">(static) </span>getTableNamesCorrelatedSelect<span class="signature">(ast, tableSet)</span><span class="type-signature"></span></h4>
 
     
 
@@ -2160,98 +680,13 @@ forces a check.</p></li></ul></dd>
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>The long term expiry check is done every 21,000 seconds.  Set the clock now!</p></li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li><p>Search CORRELATES sub-query for table names.</p></li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TableData.js.html">TableData.js</a>, <a href="TableData.js.html#line98">line 98</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".setValueCached"><span class="type-signature type-signature-static">(static) </span>setValueCached<span class="signature">(namedRange, singleData, seconds)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>For updating a sheet VALUE that may be later read from cache.</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TableData.js.html">TableData.js</a>, <a href="TableData.js.html#line147">line 147</a>
+        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line951">line 951</a>
     </li></ul></dd>
     
 
@@ -2313,8 +748,6 @@ forces a check.</p></li></ul></dd>
         
 
         
-        <th>Default</th>
-        
 
         <th class="last">Description</th>
     </tr>
@@ -2325,13 +758,13 @@ forces a check.</p></li></ul></dd>
 
         <tr>
             
-                <td class="name"><code>namedRange</code></td>
+                <td class="name"><code>ast</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">*</span>
 
 
 
@@ -2341,25 +774,21 @@ forces a check.</p></li></ul></dd>
             
 
             
-                <td class="default">
-                
-                </td>
-            
 
-            <td class="description last"></td>
+            <td class="description last"><p>AST to search</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>singleData</code></td>
+                <td class="name"><code>tableSet</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">any</span>
+<span class="param-type">*</span>
 
 
 
@@ -2369,42 +798,8 @@ forces a check.</p></li></ul></dd>
             
 
             
-                <td class="default">
-                
-                </td>
-            
 
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>seconds</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    <code>60</code>
-                
-                </td>
-            
-
-            <td class="description last"></td>
+            <td class="description last"><p>Function updates this map of table names and alias name.</p></td>
         </tr>
 
     
@@ -2434,203 +829,7 @@ forces a check.</p></li></ul></dd>
 
     
 
-    <h4 class="name" id=".setValuesCached"><span class="type-signature type-signature-static">(static) </span>setValuesCached<span class="signature">(namedRange, arrData, seconds)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TableData.js.html">TableData.js</a>, <a href="TableData.js.html#line170">line 170</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>namedRange</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>arrData</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>seconds</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    <code>60</code>
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".verifyCachedData"><span class="type-signature type-signature-static">(static) </span>verifyCachedData<span class="signature">(arrData)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    <h4 class="name" id=".getTableNamesFrom"><span class="type-signature type-signature-static">(static) </span>getTableNamesFrom<span class="signature">(ast, tableSet)</span><span class="type-signature"></span></h4>
 
     
 
@@ -2640,13 +839,13 @@ forces a check.</p></li></ul></dd>
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Check if data from cache is in error.</p></li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li><p>Search for referenced table in FROM or JOIN part of select.</p></li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TableData.js.html">TableData.js</a>, <a href="TableData.js.html#line183">line 183</a>
+        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line846">line 846</a>
     </li></ul></dd>
     
 
@@ -2718,161 +917,7 @@ forces a check.</p></li></ul></dd>
 
         <tr>
             
-                <td class="name"><code>arrData</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".waitForRangeToLoad"><span class="type-signature type-signature-static">(static) </span>waitForRangeToLoad<span class="signature">(cache, namedRange, cacheSeconds)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;any>>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Retrieve data from cache after it has loaded elsewhere.</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TableData.js.html">TableData.js</a>, <a href="TableData.js.html#line224">line 224</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>cache</code></td>
+                <td class="name"><code>ast</code></td>
             
 
             <td class="type">
@@ -2889,20 +934,20 @@ forces a check.</p></li></ul></dd>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>AST for SELECT.</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>namedRange</code></td>
+                <td class="name"><code>tableSet</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Map.&lt;String, String></span>
 
 
 
@@ -2913,31 +958,7 @@ forces a check.</p></li></ul></dd>
 
             
 
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cacheSeconds</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>How long to cache results.</p></td>
+            <td class="description last"><p>Function updates this map of table names and alias name.</p></td>
         </tr>
 
     
@@ -2959,25 +980,801 @@ forces a check.</p></li></ul></dd>
 
 
 
-<h5 class="h5-returns">Returns:</h5>
+
+
 
         
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
-
-
-
-    </dd>
-</dl>
+            
 
     
+
+    <h4 class="name" id=".getTableNamesJoin"><span class="type-signature type-signature-static">(static) </span>getTableNamesJoin<span class="signature">(ast, tableSet)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Search for referenced table in FROM or JOIN part of select.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line864">line 864</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ast</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>AST for SELECT.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tableSet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Map.&lt;String, String></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function updates this map of table names and alias name.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getTableNamesUnion"><span class="type-signature type-signature-static">(static) </span>getTableNamesUnion<span class="signature">(ast, tableSet)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Searches for table names within SELECT (union, intersect, except) statements.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line883">line 883</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ast</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>AST for SELECT</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tableSet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Map.&lt;String, String></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function updates this map of table names and alias name.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getTableNamesWhereCondition"><span class="type-signature type-signature-static">(static) </span>getTableNamesWhereCondition<span class="signature">(ast, tableSet)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Search for table references in the WHERE condition.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line930">line 930</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ast</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>AST to search.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tableSet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Map.&lt;String, String></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function updates this map of table names and alias name.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getTableNamesWhereIn"><span class="type-signature type-signature-static">(static) </span>getTableNamesWhereIn<span class="signature">(ast, tableSet)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Searches for tables names within SELECT (in, exists) statements.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line900">line 900</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ast</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>AST for SELECT</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tableSet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Map.&lt;String, String></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function updates this map of table names and alias name.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getTableNamesWhereTerms"><span class="type-signature type-signature-static">(static) </span>getTableNamesWhereTerms<span class="signature">(ast, tableSet)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Search WHERE to find referenced table names.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line917">line 917</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ast</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>AST to search.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tableSet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Map.&lt;String, String></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function updates this map of table names and alias name.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
