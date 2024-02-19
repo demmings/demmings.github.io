@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>SqlSets - gsSQL</title>
+    <title>Pivot - gsSQL</title>
     
     <meta name="description" content="Query Google Sheets using standard SQL SELECT syntax." />
     
@@ -49,7 +49,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">SqlSets</h1>
+    <h1 class="page-title">Pivot</h1>
     
 
     
@@ -63,11 +63,11 @@
     
         <h2>
         
-            SqlSets
+            Pivot
         
         </h2>
         
-            <div class="class-description usertext"><p>Deals with processing SET theory on SELECT table results.</p></div>
+            <div class="class-description usertext"><p>Manipulation of AST to handle PIVOT statement.</p></div>
         
     
 </header>
@@ -82,7 +82,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="SqlSets"><span class="type-signature"></span>new SqlSets<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Pivot"><span class="type-signature"></span>new Pivot<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -95,7 +95,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line1055">line 1055</a>
+        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line966">line 966</a>
     </li></ul></dd>
     
 
@@ -185,7 +185,7 @@
 
     
 
-    <h4 class="name" id=".applySet"><span class="type-signature type-signature-static">(static) </span>applySet<span class="signature">(type, leftTableData, rightTableData)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;any>>}</span></h4>
+    <h4 class="name" id=".addCalculatedPivotFieldsToAst"><span class="type-signature type-signature-static">(static) </span>addCalculatedPivotFieldsToAst<span class="signature">(ast, pivotFieldData)</span><span class="type-signature"> &rarr; {Object}</span></h4>
 
     
 
@@ -195,399 +195,17 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Apply set theory to data.</p></li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li><p>Add new calculated fields to the existing SELECT fields.  A field is add for each combination of
+aggregate function and unqiue pivot data points.  The CASE function is used for each new field.
+A test is made if the column data equal the pivot data.  If it is, the aggregate function data
+is returned, otherwise null.  The GROUP BY is later applied and the appropiate pivot data will
+be calculated.</p></li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line1086">line 1086</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>type</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>(&quot;UNION&quot;, &quot;UNION ALL&quot;, &quot;INTERSECT&quot;, &quot;EXCEPT&quot;)</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>leftTableData</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>rightTableData</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".exceptRows"><span class="type-signature type-signature-static">(static) </span>exceptRows<span class="signature">(srcData, newData)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;any>>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Returns all rows in srcData MINUS any rows that match it from newData.</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line1183">line 1183</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>srcData</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>starting table</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>newData</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>minus table (if it matches srcData row)</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-<div class="param-desc">
-    <ul>
-<li>srcData MINUS newData</li>
-</ul>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".getSetType"><span class="type-signature type-signature-static">(static) </span>getSetType<span class="signature">(ast)</span><span class="type-signature"> &rarr; {String}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Determine what set type is applied to the select results.</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line1069">line 1069</a>
+        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line1026">line 1026</a>
     </li></ul></dd>
     
 
@@ -676,248 +294,14 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>AST to be updated.</p></td>
         </tr>
 
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">String</span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".getUnionTypes"><span class="type-signature type-signature-static">(static) </span>getUnionTypes<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;String>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Get list of valid set types.</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line1060">line 1060</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;String></span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".intersectRows"><span class="type-signature type-signature-static">(static) </span>intersectRows<span class="signature">(srcData, newData)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;any>>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Finds the rows that are common between srcData and newData</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line1161">line 1161</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
     
 
         <tr>
             
-                <td class="name"><code>srcData</code></td>
+                <td class="name"><code>pivotFieldData</code></td>
             
 
             <td class="type">
@@ -934,31 +318,7 @@
 
             
 
-            <td class="description last"><p>table data</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>newData</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>table data</p></td>
+            <td class="description last"><p>Table data with unique pivot field data points.</p></td>
         </tr>
 
     
@@ -985,7 +345,7 @@
         
 <div class="param-desc">
     <ul>
-<li>returns only rows that intersect srcData and newData.</li>
+<li>Abstract Sytax Tree with new SELECT fields with a CASE for each pivot data and aggregate function.</li>
 </ul>
 </div>
 
@@ -997,7 +357,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
+<span class="param-type">Object</span>
 
 
 
@@ -1013,7 +373,7 @@
 
     
 
-    <h4 class="name" id=".isSqlSet"><span class="type-signature type-signature-static">(static) </span>isSqlSet<span class="signature">(ast)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    <h4 class="name" id=".getUniquePivotData"><span class="type-signature type-signature-static">(static) </span>getUniquePivotData<span class="signature">(ast)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;any>>}</span></h4>
 
     
 
@@ -1022,11 +382,14 @@
 
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Find distinct pivot column data.</p></li></ul></dd>
+    
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line1124">line 1124</a>
+        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line997">line 997</a>
     </li></ul></dd>
     
 
@@ -1115,7 +478,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Abstract Syntax Tree containing the PIVOT option.</p></td>
         </tr>
 
     
@@ -1140,6 +503,12 @@
 <h5 class="h5-returns">Returns:</h5>
 
         
+<div class="param-desc">
+    <ul>
+<li>All unique data points found in the PIVOT field for the given SELECT.</li>
+</ul>
+</div>
+
 
 
 <dl class="param-type">
@@ -1148,7 +517,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Boolean</span>
+<span class="param-type">Array.&lt;Array.&lt;any>></span>
 
 
 
@@ -1164,7 +533,7 @@
 
     
 
-    <h4 class="name" id=".removeDuplicateRows"><span class="type-signature type-signature-static">(static) </span>removeDuplicateRows<span class="signature">(srcData)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;any>>}</span></h4>
+    <h4 class="name" id=".pivotField"><span class="type-signature type-signature-static">(static) </span>pivotField<span class="signature">(ast, tables, bindData)</span><span class="type-signature"> &rarr; {Object}</span></h4>
 
     
 
@@ -1174,13 +543,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Remove all duplicate table rows</p></li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li><p>Add new column to AST for every AGGREGATE function and unique pivot column data.</p></li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line1139">line 1139</a>
+        <a href="Sql.js.html">Sql.js</a>, <a href="Sql.js.html#line974">line 974</a>
     </li></ul></dd>
     
 
@@ -1252,13 +621,13 @@
 
         <tr>
             
-                <td class="name"><code>srcData</code></td>
+                <td class="name"><code>ast</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
+<span class="param-type">Object</span>
 
 
 
@@ -1269,7 +638,55 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>AST which is checked to see if a PIVOT is used.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tables</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Map.&lt;String, <a href="Table.html">Table</a>></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Map of table info.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bindData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="BindData.html">BindData</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>List of bind data.</p></td>
         </tr>
 
     
@@ -1294,6 +711,12 @@
 <h5 class="h5-returns">Returns:</h5>
 
         
+<div class="param-desc">
+    <ul>
+<li>Updated AST containing SELECT FIELDS for the pivot data OR original AST if no pivot.</li>
+</ul>
+</div>
+
 
 
 <dl class="param-type">
@@ -1302,7 +725,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Array.&lt;Array.&lt;any>></span>
+<span class="param-type">Object</span>
 
 
 
