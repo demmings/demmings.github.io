@@ -45,6 +45,22 @@ function myFunction() {
 ## Using 
 * **SYNTAX**.
     *  ```CACHEFINANCE(symbol, attribute, defaultValue)```
+       *  Used for **SINGLE** stock data lookups.
+    *  ```CACHEFINANCES(symbolRange, attribute, defaultValueRange, shortCacheTimeoutSeconds)```
+       *  Used for **MANY** stock data lookups that are arranged in a vertical table.
+       *  When there are many stocks to be found, this command is much more efficient than **CACHEFINANCE**.
+       *  **shortCacheTimeoutSeconds** optional parameter.  How long is short term cache active.
+          *  Web site lookups are much slower than the default value from GOOGLEFINANCE.
+          *  Some data like **NAME** and **YIELDPCT** almost never change, so doing frequent lookups on those attributes is a waste of resources.
+          *  Suggested values for attributes:  
+             *  PRICE --> 1200
+             *  NAME, YIELDPCT --> 21600 (max seconds for short cache).
+       *  The backdoor commands are not available using this custom function.
+       *  Example:
+          *  =CACHEFINANCES(A8:A108, "Price", CB8:CB108, 1200)
+             *  The number of items in the range for symbolRange and defaultValueRange must be identical.
+          *  =CACHEFINANCES(A8:A108, "Yieldpct", ,21598)
+             *  If no default values, leave that parameter value blank.
     * **symbol** - stock symbol using regular GOOGLEFINANCE conventions.
       * For best results, include the exchange code in the symbol (like'NASDAQ', 'NYSEARCA', ...).  
         * If you just specify the base stock symbol (like 'BNS') and the stock is interlisted, the website lookup may not retrieve the results you are expecting, i.e. BNS on TSE will be different than BNS on NASDAQ.
@@ -98,7 +114,7 @@ function myFunction() {
             * This syntax does **NOT** remove preferred site or blocked site settings for this symbol/attribute.
       * **GET**, **GETBLOCKED** Shows the preferred site (GET) and the block site (GETBLOCKED) for the symbol/attribute combo.
         *  ```=CACHEFINANCE("TSE:CJP", "PRICE", "GET")```
-      * **SET**, **SETBLOCKED**   Sets the preferred site (SET) and blocked site (SETBLOCKED)
+      * **SET**, **SETBLOCKED**   Sets the preferred site (SET) and blocked site (SETBLOCKED).  Use the fourth parameter to indicate the web site id.
         * ```=CACHEFINANCE("TSE:CJP", "PRICE", "SET", "YAHOO")```
         * **NOTE**  The preferred site may be changed by the custom function **IF** that site fails on a future lookup.  The **BLOCKED** site however is never changed automatically.
       *  **TEST**   Lists in a table results of a sanity test to third party finance sites.
