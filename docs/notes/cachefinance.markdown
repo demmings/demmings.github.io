@@ -57,16 +57,6 @@ function myFunction() {
              * "price" 
              * "yieldpct"
              * "name"
-       * Special case attributes.
-         * "test" -  special case.  Lists in a table results of tests to third party finance sites.
-           * ```CACHEFINANCE("", "TEST")```
-         * "clearcache" - special case.  Removes all Script Property settings created by CACHEFINANCE. 
-           * ```CACHEFINANCE("", "clearcache")``` 
-           * Will force a re-test of all finance web sites to find the best site whenever GOOGLEFINANCE fails.
-           * Useful for cleaning up stock symbols that are no longer used on your sheet.
-           * **NOTE:** You may get a timeout if there is a large number of entries in your script properties.
-             * You can run it again by making Google think your parameters have changed.  Just change "clearcache" to "CLEARCACHE" and hit enter.  It will run again.
-           * You will see **Cache Cleared** when the last entry has been removed from your script settings.
       * You can specify other attributes that GOOGLEFINANCE uses, but the CacheFinance() function will not look up this data (using 3rd party finance website) if GOOGLEFINANCE does not provide an initial default value.
       * The following "low52" does not lookup 3'rd party website data, it will just save any value returned by GOOGLEFINANCE to cache, for the case when GOOGLEFINANCE fails to work:
     ```
@@ -79,6 +69,57 @@ function myFunction() {
     ```
       =CACHEFINANCE("TSE:ZTL", "price", GOOGLEFINANCE("TSE:ZTL", "price"))
     ```
+    * **Backdoor Commands**
+        * Special commands are performed by entering specific values into the default parameter.
+          * Yes I know it is possible that it could match a legitimate company name someday, but for now I will take that risk.
+          * These functions are necessary in the case where you have many cached items in the script properties.  When this occurs, you cannot manually edit these properties anymore and the UI informs you that they must be changed programatically - which these functions will do for you.
+        * Supported commands in third parameter:
+          * **?**
+          * **CLEARCACHE**
+          * **GET**
+          * **GETBLOCKED**
+          * **HELP**
+          * **LIST**
+          * **REMOVED**
+          * **SET**
+          * **SETBLOCKED**
+          * **TEST**
+ 
+       * **?** or **HELP**.  Displays all supported special case commands.
+         *  ```=CACHEFINANCE("", "", "?")```
+      * **CLEARCACHE** - Removes CACHEFINANCE entries in script settings.  
+         * You will see **Cache Cleared** when the entry has been removed from your script settings.  
+         * ```=CACHEFINANCE("", "", "CLEARCACHE")```
+           * Removes **ALL** CACHEFINANCE entries in script settings.  This will force a re-test of all finance websites the next time CACHEFINANCE cannot get valid data from GOOGLEFINANCE.  It will also remove entries for BLOCKED sites.
+             * **NOTE:** You may get a timeout if there is a large number of entries in your script properties.
+             * You can run it again by making Google think your parameters have changed.  Just change "clearcache" to "CLEARCACHE" and hit enter.  It will run again.
+         * If you specify a symbol/attribute and clearcache, the long and short term cache for this data only is removed.
+            * ```=CACHEFINANCE("TSE:CJP", "PRICE", "CLEARCACHE")```
+            * This syntax does **NOT** remove preferred site or blocked site settings for this symbol/attribute.
+      * **GET**, **GETBLOCKED** Shows the preferred site (GET) and the block site (GETBLOCKED) for the symbol/attribute combo.
+        *  ```=CACHEFINANCE("TSE:CJP", "PRICE", "GET")```
+      * **SET**, **SETBLOCKED**   Sets the preferred site (SET) and blocked site (SETBLOCKED)
+        * ```=CACHEFINANCE("TSE:CJP", "PRICE", "SET", "YAHOO")```
+        * **NOTE**  The preferred site may be changed by the custom function **IF** that site fails on a future lookup.  The **BLOCKED** site however is never changed automatically.
+      *  **TEST**   Lists in a table results of a sanity test to third party finance sites.
+            * ```=CACHEFINANCE("", "", "TEST")```
+            * You will need around 20 free rows below for this command to run, as it will generate results for tests to each of the supported web sites.
+      * **LIST**   Displays the ID for each web site lookup supported.
+         * ```=CACHEFINANCE("", "", "LIST")```
+         * You will need several free rows below ans this command will display each supported WEB ID.
+         * Current supported web id's.
+           * FINNHUB
+             * Site is not used unless you set script property **FINNHUB_API_KEY** to key you generate from https://finnhub.io/register
+           * TDETF
+           * TDSTOCK
+           * GLOBE
+           * YAHOO
+           * ALPHAVANTAGE
+             * Site is not used unless you set script property **ALPHA_VANTAGE_API_KEY** to key you generate from https://www.alphavantage.co/
+           * GOOGLEWEBSITEFINANCE
+      * **REMOVE**  Takes the preferred site and moves it to the blocked site.
+        * ```=CACHEFINANCE("TSE:CJP", "PRICE", "REMOVE")```
+
 
 ## Disadvantages of using IMPORTXML.
   * You could always just import from a site within your sheet but,
