@@ -42,7 +42,7 @@ categories: Canadian Taxes custom function
     * Remove the default contents of the file **myFunction()** and paste in the new content you have copied from Github (Ctrl-v).
     * Click the little diskette icon to save.
     * Change to your spreadsheet screen and try typing in any cell
-    * ```=CanadianTaxes()``` or ```=CanadianTaxesS()```.  The new function with online help should be available.
+    * ```=GET_GROSS_INCOMES_V2()``` or ```=GET_NET_INCOMES_V2()```.  The new function with online help should be available.
 
 ## Using
 
