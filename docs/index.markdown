@@ -21,6 +21,7 @@ keywords:
 | [gsSQL](https://github.com/demmings/gsSQL)  | Query Google Sheet data using standard SQL SELECT syntax |  [gsSQL Notes](/notes/gssql.markdown) | [JSDoc](/docs/gssql/index.html) |
 | [cachefinance](https://github.com/demmings/cachefinance) | Google Sheet custom function and/or event trigger for enhanced stock/etf data lookup | [cachefinance Notes](/notes/cachefinance.markdown/) | |
 | [Select 2 Query](https://github.com/demmings/Select2Query) | Convert SQL Select statement to Google Sheets QUERY | [Select2Query](/notes/select2query.markdown/) | |
+| [CanadianTaxes](https://github.com/demmings/CanadianTaxes) | Project future **gross incomes** from **net incomes** taking Canadian Taxes into account | [CanadianTaxes](/notes/CanadianTaxes.markdown/) | |
 
 <div class="col-md-12 main content-panel">
 
