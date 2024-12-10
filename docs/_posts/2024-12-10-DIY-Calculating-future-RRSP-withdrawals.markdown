@@ -23,10 +23,10 @@ keywords:
 * If you have a robust defined benefit pension plan (you know who you are government/hydro workers), please don't read any future and just keep collecting your overly generous pension cheques.
 * For the rest of us where most of our pension incomes will be derived from our RRSP savings, we need to have some kind of withdrawal strategy.
 * Typical strategies are:
-  * 4% rule - https://www.britannica.com/money/4-percent-rule-retirement
+  * [4% rule](https://www.britannica.com/money/4-percent-rule-retirement)
   * Percentage of portfolio - withdraw exact same percent of existing portfolio every year (you can never run out of money).
   * Buckets of money (money allocated for next 'x' years)
-  * Safety first - Wade Pfau - https://retirementresearcher.com/what-is-a-safety-first-retirement-plan/#:~:text=The%20goal%20is%20to%20have,cash%20flow%20characteristics%20are%20comparable.
+  * Safety first - [Wade Pfau](https://retirementresearcher.com/what-is-a-safety-first-retirement-plan/#:~:text=The%20goal%20is%20to%20have,cash%20flow%20characteristics%20are%20comparable).
   * Dynamic spending - you adjust spending depending on how markets have performed
 * My approach is SOME SAFETY plus DYNAMIC spending.
   * The safety porition is annuities I have purchase for me and my wife PLUS CPP and OAS.
@@ -37,7 +37,7 @@ keywords:
 ## My RRSP estimation strategy
 * Find an initial net income and in the years that follow,  use whatever increase/decrease algorithm you feel appropriate about.
 * For example, as you get into the SLOW-GO and NO-GO years, your spending will drop.
-  * https://www.kitces.com/blog/age-banding-by-basu-to-model-retirement-spending-needs-by-category/
+  * [kitches.com](https://www.kitces.com/blog/age-banding-by-basu-to-model-retirement-spending-needs-by-category/)
 * From that net income entry, subtract any no/low tax income (i.e. from TFSA or any after tax money).
 * The amount that is left must be funded from taxable money - so find the GROSS income needed from this - using the CanadianTaxes custom function I have written.
 * From this amount - subtract all non-RRSP income sources like CPP, OAS, company pensions, taxable annuity...
