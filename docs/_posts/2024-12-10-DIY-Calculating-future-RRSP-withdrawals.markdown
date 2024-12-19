@@ -18,6 +18,10 @@ keywords:
 * The more accurately you can estimate future taxes on your RRSP withdrawals, the more accurately you will be able to estimate how much to take out of your RRSP this coming year (and beyond).
   * So you can die with ZERO.  I would prefer enough to cover funeral expenses though.
 
+## CanadianTaxes Google Sheets Custom Function
+* Project link [Github Project](https://github.com/demmings/CanadianTaxes)
+* Source code link [CanadianTaxes Custom Function Source](https://github.com/demmings/CanadianTaxes/blob/main/dist/CanadianTaxes.js)
+
 ## RRSP meltdown strategy
 
 * If you have a robust defined benefit pension plan (you know who you are government/hydro workers), please don't read any future and just keep collecting your overly generous pension cheques.
