@@ -21,6 +21,20 @@ keywords:
 ## CanadianTaxes Google Sheets Custom Function
 * Project link [Github Project](https://github.com/demmings/CanadianTaxes)
 * Source code link [CanadianTaxes Custom Function Source](https://github.com/demmings/CanadianTaxes/blob/main/dist/CanadianTaxes.js)
+* [github.io project notes](https://demmings.github.io/notes/CanadianTaxes.html)
+* Factors used for accurately estimating future gross incomes:
+  * **income** - what is the required net income
+  * **ageInFuture** - age you will be (affects age credits, inflation of tax brackets)
+  * **currentAge** - what is your current (starting) age (this age is the current tax year)
+  * **taxYear** - tax year of your current age
+  * **projectedInflation** - used to inflate tax brackets beyond current (knowable) brackets (estimate only)
+  * **projectedGains** - expected declared capital gains in year
+  * **projectedDividends** - expected amount of eligible Canadian company dividends
+  * **yearlyOAS** - projected amount of yearly OAS (old age security)
+  * **incomeEligibleForPensionCredit** - expected income that qualifies for the pension income credits
+  * **medicalExpenses** - expected yearly claimable medical expenses (like group plan premiums)
+  * **nonEligibleDividends** - expected non eligible dividend income
+  * **donations** - yearly charitable donations to be claimed
 
 ## RRSP meltdown strategy
 
