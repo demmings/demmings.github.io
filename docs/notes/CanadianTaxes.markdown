@@ -109,6 +109,5 @@ categories: Canadian Taxes custom function
     *   I have coded the js so it should be fairly easy to extended support for other provinces.
 *  Only 2024, 2025 tax brackets currently entered.
    *  However, even if this data is not updated and you use in a later year (e.g. 2030) - the tax brackets will be adjusted for inflation from 2025 to 2030.  
-*  Only a single year of tax rates are supported - it would be nice to handle this years and next (if known) -  future expansion.
 *  Spousal returns are not calculated.
 *  Many special credits that many affect your total tax bill are not calculated (at this time).
