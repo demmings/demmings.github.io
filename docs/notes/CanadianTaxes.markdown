@@ -24,10 +24,14 @@ categories: Canadian Taxes custom function
   * Eligible Canadian Dividends
   * OAS clawbacks
   * Pension credit eligible income
+  * Medical Expenses
+  * non Eligible Dividends
+  * Charitable donations
 
 
 ## Installing
 
+* Googles guide to adding custom functions: [Google Help](https://developers.google.com/apps-script/guides/sheets/functions#creating_a_custom_function)
 * Copy files manually.
 * In the ./dist folder there is one file.  Only one is required.  
     * [CanadianTaxes.js](https://github.com/demmings/CanadianTaxes/blob/main/dist/CanadianTaxes.js)
