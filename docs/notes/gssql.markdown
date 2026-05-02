@@ -29,6 +29,57 @@ categories: gssql custom function replacement to QUERY
 * Open source and free to use.
 
 
+## Installing
+
+1.  Copy files manually.
+    *  Navigate to Github repository:
+      https://github.com/demmings/gsSQL
+
+    * In the ./dist folder there is **ONE** required file:
+      * gssql.js
+      * If you never plan to run the test suite, just use this ONE file in your app script.
+      * None of the files in ./src are required if you use **gssql.js**
+      * All required files in SRC folder are amalgamated into gssql.js
+    * The simple approach is to copy and paste gssql.js from github to your Apps Script.
+      * From your sheets Select **Extensions** and then **Apps Script**
+      * Ensure that Editor is selected.  It is the **< >**
+      * Click the PLUS sign beside **File** and then select **Script**
+      * Click on: [gssql.js](https://github.com/demmings/gsSQL/blob/main/dist/gssql.js)
+        and then click on **Copy Raw Contents** which puts the file into your copy buffer.
+      * Back in your Google Project, rename **Untitled** to "gssql".  It is not necessary to enter the .gs extension.
+      * Remove the default contents of the file **myFunction()** and **paste** in the new content you have copied from Github (Ctrl-v).
+      * Click the little diskette icon to save.
+      * Continue with all five files until done.
+      * Change to your spreadsheet screen and try typing in any cell
+        * ```=gsSQL()```.  The new function with online help should be available.
+2.  **Library**
+       * Add the library to your project.
+       * For detailed install notes see:  https://demmings.github.io/gssql/2024/02/15/gsSQL-Library.html
+        * https://script.google.com/macros/library/d/1ZfedAgGG2K5kPLC2NPfe0Kb1xAg-0gvmliR3V8pRNk6DZMTUQyCbMW1W/4
+       * The Library Script ID:  
+         * AKfycbwoaCaO7f9vdTlK4GFLQUkNFTnVxPdy0Hx-owl9lH5XL1Hvf-HpzANZRwj22HlsLdbmrA
+       * After adding the library, you have access to gsSQL() function in your Google Apps Script javascript code like:  
+```
+gsSqlLibrary.gsSQL("select * from authorts");
+```
+   * To add the ability to use as a custom function within your sheets, you need to add the following code:
+```
+/**
+ * @param {String} sqlStatement - e.g. "select * from authors"
+ * @param {...any} parms - Optional ["tableName", range, "tableName2", range2,...][addTitle][bindVariables]
+ * @returns {any[][]}
+ * @customfunction
+ */
+    function gsSQL(sqlStatement, ...parms) {
+        return gsSqlLibrary.gsSQL(sqlStatement, ...parms);
+    }
+```
+* After saving this to any apps script code file, you will have the ability to perform SQL SELECT statements on your sheet by typing into any cell code like this example:
+```
+=gsSQL("select * from authors", "authors", authors!A1:C, true)
+```
+
+
 
 ## Github Project
 
